@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph Bolkovatz | Portfolio</title>
+    
+
+  
+    
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/brittany-signature" rel="stylesheet">
+
+<style>
+/* =========================================================
+   ROOT VARIABLES / COLORS / FONTS
+   Change all colors here.
+========================================================= */
+
+:root{
+    --bg:#0d0d0d;
+  --paper:#161616;
+  --ink:#f2f2f2;
+  --soft:#b8b8b8;
+  --muted:#6f6f6f;
+  --cream:#1f1f1f;
+  --white:#ffffff;
+  --black:#000000;
+
+  --primary:#d9d9d9; /* to make it pop */ 
+  --secondary:#7d7d7d;
+  --gold:#b8b8b8;
+  --sideBg:#111111;
+  --transparent:transparent;
+  
+  
+
+  /* === DO NOT TOUCH :3 === */
+  --line:color-mix(in srgb,var(--ink) 20%,var(--transparent));
+  --lineSoft:color-mix(in srgb,var(--white) 54%,var(--transparent));
+
+  --white55:color-mix(in srgb,var(--white) 55%,var(--transparent));
+  --white42:color-mix(in srgb,var(--white) 42%,var(--transparent));
+  --white34:color-mix(in srgb,var(--white) 34%,var(--transparent));
+  --white25:color-mix(in srgb,var(--white) 25%,var(--transparent));
+  --white12:color-mix(in srgb,var(--white) 12%,var(--transparent));
+
+  --black62:color-mix(in srgb,var(--black) 62%,var(--transparent));
+  --black52:color-mix(in srgb,var(--black) 52%,var(--transparent));
+  --black35:color-mix(in srgb,var(--black) 35%,var(--transparent));
+  --black22:color-mix(in srgb,var(--black) 22%,var(--transparent));
+
+  --primarySoft:color-mix(in srgb,var(--primary) 32%,var(--transparent));
+  --primaryLight:color-mix(in srgb,var(--primary) 18%,var(--transparent));
+  --primaryLine:color-mix(in srgb,var(--primary) 42%,var(--transparent));
+  --secondarySoft:color-mix(in srgb,var(--secondary) 32%,var(--transparent));
+
+  --musicBg:color-mix(in srgb,var(--paper) 88%,var(--primary) 12%);
+  --musicBgHover:color-mix(in srgb,var(--paper) 78%,var(--primary) 22%);
+  --musicGlass:color-mix(in srgb,var(--paper) 82%,var(--transparent));
+  --musicPanel:color-mix(in srgb,var(--paper) 92%,var(--primary) 8%);
+  --musicBorder:color-mix(in srgb,var(--primary) 22%,var(--white));
+  --musicShadow:color-mix(in srgb,var(--primary) 18%,var(--black) 82%);
+  --musicText:color-mix(in srgb,var(--ink) 82%,var(--transparent));
+  --musicSoftText:color-mix(in srgb,var(--primary) 72%,var(--transparent));
+
+  --serif:'Playfair Display',serif;
+  --softserif:'Cormorant Garamond',serif;
+  --sans:'Nunito',Arial,sans-serif;
+}
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+*{box-sizing:border-box}
+
+body{
+  margin:40px auto;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.bg{
+  width:900px;
+  height:720px;
+  margin:auto;
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  color:var(--ink);
+  font-family:var(--sans);
+  background:
+    radial-gradient(circle at 82% 80%,var(--secondarySoft),var(--transparent) 32%),
+    radial-gradient(circle at 52% 78%,var(--primarySoft),var(--transparent) 26%),
+    linear-gradient(135deg,var(--paper),var(--bg));
+  border:1px solid var(--lineSoft);
+  box-shadow:0 28px 90px var(--black62);
+}
+
+.bg:after{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px solid var(--white55);
+  border-radius:18px;
+  pointer-events:none;
+  z-index:60;
+}
+
+/* =========================================================
+   LEFT IMAGE PANEL
+========================================================= */
+
+.imgSide{
+  position:absolute;
+  left:0;
+  top:0;
+  width:380px;
+  height:100%;
+  background:var(--sideBg);
+  overflow:hidden;
+  z-index:1;
+}
+
+.imgBox{
+  position:absolute;
+  inset:0;
+}
+
+.imgBox img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.12) brightness(.78) saturate(.92);
+  transition:.8s ease;
+}
+
+.imgSide:hover .imgBox img{
+  transform:scale(1.04);
+  filter:contrast(1.18) brightness(.86) saturate(1);
+}
+
+.imgBox:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,var(--black62),var(--transparent) 55%),
+    linear-gradient(to bottom,var(--transparent) 55%,var(--black52));
+  z-index:2;
+}
+
+.sideQuote{
+  position:absolute;
+  left:32px;
+  top:110px;
+  z-index:8;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font:900 9px var(--sans);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.sideStar{
+  position:absolute;
+  left:31px;
+  top:36px;
+  z-index:8;
+  color:var(--gold);
+  font-size:30px;
+  transition:.45s ease;
+}
+
+.imgSide:hover .sideStar{
+  transform:rotate(45deg) scale(1.12);
+  color:var(--cream);
+}
+
+.sideCaption{
+  position:absolute;
+  left:34px;
+  bottom:35px;
+  z-index:8;
+}
+
+.sideCaption b{
+  display:block;
+  font:italic 52px/.76 var(--softserif);
+  color:var(--primary);
+  text-shadow:
+    0 0 18px var(--black35),
+    1px 1px 0 var(--gold),
+    -1px 0 0 var(--cream);
+  transition:.45s ease;
+}
+
+.sideCaption:hover b{
+  letter-spacing:1px;
+  color:var(--gold);
+}
+
+.sideCaption span{
+  display:block;
+  margin-top:12px;
+  font:900 9px var(--sans);
+  letter-spacing:5px;
+  color:var(--cream);
+  text-transform:uppercase;
+}
+
+/* =========================================================
+   DECORATION / BIG TITLE
+========================================================= */
+
+.bigTitleBg{
+  position:absolute;
+  left:362px;
+  top:0;
+  width:14px;
+  height:100%;
+  z-index:6;
+  background:linear-gradient(180deg,var(--primary),var(--secondary),var(--primary));
+  background-size:100% 260%;
+  opacity:.24;
+  mix-blend-mode:multiply;
+  animation:colorBar 8s ease-in-out infinite;
+}
+
+.bigTitle{
+  position:absolute;
+  left:278px;
+  top:28px;
+  width:170px;
+  height:680px;
+  z-index:12;
+  pointer-events:none;
+}
+
+.bigTitle span{
+  display:block;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  font:900 136px/.78 var(--serif);
+  letter-spacing:-8px;
+  text-transform:uppercase;
+  color:var(--transparent);
+  -webkit-text-stroke:1.35px var(--white55);
+  text-shadow:0 0 12px var(--black22);
+}
+
+.flowerOne,
+.flowerTwo{
+  position:absolute;
+  pointer-events:none;
+  object-fit:cover;
+  z-index:7;
+}
+
+.flowerOne{
+  left:20px;
+  bottom:58px;
+  width:165px;
+  height:210px;
+  opacity:.2;
+  mix-blend-mode:difference;
+  filter:grayscale(.35) contrast(1.15) sepia(.25);
+}
+
+.flowerTwo{
+  right:90px;
+  bottom:0;
+  width:255px;
+  height:320px;
+  opacity:.08;
+  mix-blend-mode:difference;
+  filter:grayscale(.2) contrast(1.05) sepia(.2);
+}
+
+/* =========================================================
+   RIGHT CONTENT AREA
+========================================================= */
+
+.content{
+  position:absolute;
+  left:410px;
+  right:92px;
+  top:32px;
+  bottom:24px;
+  z-index:15;
+}
+
+.number{
+  position:absolute;
+  right:94px;
+  top:0;
+  font:900 96px/1 var(--serif);
+  color:color-mix(in srgb,var(--ink) 8%,var(--transparent));
+  z-index:2;
+  transition:.45s ease;
+}
+
+.topline{
+  display:grid;
+  grid-template-columns:minmax(300px,1fr) 185px;
+  align-items:center;
+  gap:10px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--primaryLine);
+}
+
+.quote{
+  max-width:90px;
+  font:700 14px/1.05 var(--softserif);
+  color:var(--primary);
+  text-align:right;
+  font-style:italic;
+}
+
+/* =========================================================
+   CUSTOM MUSIC PLAYER
+   Replace audio src in HTML.
+========================================================= */
+
+.musicBox{
+  position:relative;
+  width:90%;
+  min-height:54px;
+  z-index:45;
+  display:grid;
+  grid-template-columns:34px 1fr 30px;
+  gap:10px;
+  align-items:center;
+  padding:8px 10px;
+  border:1px solid var(--musicBorder);
+  border-radius:999px;
+  background:
+    linear-gradient(135deg,var(--white34),var(--primaryLight)),
+    var(--musicGlass);
+  backdrop-filter:blur(18px);
+  color:var(--musicText);
+  box-shadow:
+    0 12px 28px var(--black22),
+    inset 0 0 0 1px var(--white12);
+  transition:.35s ease;
+}
+
+.musicBox:hover,
+.musicBox.playing{
+  border-color:var(--primaryLine);
+  background:
+    linear-gradient(135deg,var(--white42),var(--primarySoft)),
+    var(--musicBgHover);
+  transform:translateY(-2px);
+  box-shadow:
+    0 18px 38px var(--musicShadow),
+    inset 0 0 0 1px var(--white55);
+}
+
+.musicPlay{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1px solid var(--white55);
+  background:var(--primary);
+  color:var(--cream);
+  cursor:pointer;
+  font-size:12px;
+  box-shadow:0 0 14px var(--primarySoft);
+  transition:.35s ease;
+}
+
+.musicPlay:hover{
+  background:var(--gold);
+  color:var(--ink);
+  transform:scale(1.06);
+}
+
+.musicInfo{
+  overflow:hidden;
+  min-width:0;
+}
+
+.musicInfo b{
+  display:block;
+  font:900 7px var(--sans);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  opacity:.72;
+  color:var(--musicSoftText);
+}
+
+.musicInfo span{
+  display:block;
+  margin-top:2px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  font:italic 15px/1 var(--softserif);
+  color:var(--musicText);
+}
+
+.volumeToggle{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:1px solid var(--white25);
+  background:color-mix(in srgb,var(--gold) 75%,var(--paper));
+  color:var(--ink);
+  cursor:pointer;
+  font:900 7px var(--sans);
+  letter-spacing:1px;
+  transition:.35s ease;
+}
+
+.volumeToggle:hover{
+  background:var(--primary);
+  color:var(--cream);
+  transform:scale(1.06);
+}
+
+.volumePanel{
+  position:absolute;
+  right:8px;
+  top:calc(100% + 8px);
+  width:170px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:var(--musicPanel);
+  border:1px solid var(--musicBorder);
+  backdrop-filter:blur(14px);
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-4px);
+  transition:.3s ease;
+  box-shadow:0 12px 26px var(--black22);
+}
+
+.musicBox.volumeOpen .volumePanel{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+.volumePanel input{
+  width:100%;
+  height:4px;
+  accent-color:var(--primary);
+  cursor:pointer;
+}
+
+.musicBars{
+  display:flex;
+  gap:3px;
+  align-items:end;
+  height:11px;
+  margin-top:5px;
+  opacity:.65;
+}
+
+.musicBars i{
+  display:block;
+  width:2px;
+  height:5px;
+  background:var(--primary);
+  border-radius:4px;
+  animation:mahriBars 1.1s ease-in-out infinite;
+  animation-play-state:paused;
+}
+
+.musicBox.playing .musicBars i{
+  animation-play-state:running;
+}
+
+.musicBars i:nth-child(2){animation-delay:.14s;height:9px}
+.musicBars i:nth-child(3){animation-delay:.28s;height:6px}
+.musicBars i:nth-child(4){animation-delay:.42s;height:10px}
+.musicBars i:nth-child(5){animation-delay:.56s;height:7px}
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+.page{
+  display:none;
+  position:absolute;
+  inset:98px 0 0 0;
+  animation:fade .55s ease;
+}
+
+.page.active{display:block}
+
+.page h1{
+  margin:0;
+  font:900 38px/1 var(--serif);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.page h2{
+  margin:6px 0 22px;
+  font:900 10px var(--sans);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.pageScroll{
+  height:565px;
+  overflow:auto;
+  padding-right:22px;
+  scrollbar-width:thin;
+  scrollbar-color:var(--primary) var(--white25);
+}
+
+.pageScroll::-webkit-scrollbar{width:6px}
+.pageScroll::-webkit-scrollbar-track{
+  background:var(--white25);
+  border-radius:999px;
+}
+.pageScroll::-webkit-scrollbar-thumb{
+  background:linear-gradient(var(--primary),var(--secondary));
+  border-radius:999px;
+  border:1px solid var(--lineSoft);
+}
+.pageScroll::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(var(--gold),var(--primary));
+}
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.dossier{
+  display:grid;
+  grid-template-columns:1.08fr 1fr;
+  gap:18px;
+  margin:0 0 18px;
+  padding:17px 0 18px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.dossierName{
+  position:relative;
+  padding:8px 0 0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.dossierName b,
+.dossierMeta b{
+  display:block;
+  font:900 8px var(--sans);
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.dossierName b{margin-bottom:50px}
+
+.dossierName span{
+  position:relative;
+  z-index:2;
+  display:block;
+  font-family:'Brittany Signature',cursive;
+  font-size:62px;
+  line-height:.72;
+  font-weight:400;
+  color:color-mix(in srgb,var(--ink) 88%,var(--primary));
+  text-shadow:
+    0 2px 0 var(--cream),
+    0 10px 22px var(--primaryLight);
+  transform:rotate(-3deg);
+  transition:.45s ease;
+}
+
+.dossierName span:hover{
+  transform:rotate(-4deg) translateY(-2px) scale(1.01);
+  color:var(--primary);
+}
+
+.dossierMeta{
+  display:grid;
+  gap:6px;
+}
+
+.dossierMeta p{
+  margin:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+  border-bottom:1px solid var(--line);
+  padding-bottom:5px;
+}
+
+.dossierMeta p:hover{border-color:var(--primaryLine)}
+
+.dossierMeta span{
+  font:600 13px var(--softserif);
+  color:var(--ink);
+  text-align:right;
+}
+
+.introCard{
+  margin:0 0 18px;
+  padding:14px 16px;
+  border-left:3px solid var(--primary);
+  background:
+    linear-gradient(90deg,var(--primaryLight),var(--transparent)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+}
+
+.introCard b{
+  display:block;
+  margin-bottom:7px;
+  font:900 8px var(--sans);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.introCard p{
+  margin:0;
+  font:italic 18px/1.25 var(--softserif);
+  color:var(--soft);
+}
+
+.text{
+  font:400 14px/1.8 var(--sans);
+  text-align:justify;
+  color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
+}
+
+.text b{color:var(--primary)}
+
+/* =========================================================
+   PERSONA PAGE
+========================================================= */
+
+.personaFeature{
+  display:grid;
+  grid-template-columns:145px 1fr;
+  gap:16px;
+  margin-bottom:14px;
+  padding:12px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,var(--white34),var(--white12)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+  transition:.4s ease;
+}
+
+.personaFeature:hover{
+  border-color:var(--primaryLine);
+  transform:translateY(-3px);
+}
+
+.personaFeature img{
+  width:100%;
+  height:170px;
+  object-fit:cover;
+  border:1px solid var(--lineSoft);
+  filter:contrast(1.08) saturate(.82);
+  transition:.45s ease;
+}
+
+.personaFeature:hover img{
+  filter:contrast(1.14) saturate(1);
+  transform:scale(1.03);
+}
+
+.personaFeature b,
+.personaTextCard b,
+.personaNotes b{
+  display:block;
+  margin-bottom:7px;
+  font:900 8px var(--sans);
+  letter-spacing:2.6px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.personaFeature h3,
+.personaTextCard h3{
+  margin:0 0 8px;
+  font:italic 25px/.95 var(--softserif);
+  color:var(--ink);
+}
+
+.personaFeature p,
+.personaTextCard p{
+  margin:0;
+  font:400 13px/1.7 var(--sans);
+  text-align:justify;
+  color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
+}
+
+.personaRow{
+  display:grid;
+  grid-template-columns:1fr 118px;
+  gap:13px;
+  min-height:132px;
+  margin-bottom:14px;
+}
+
+.personaRow.reverse{
+  grid-template-columns:118px 1fr;
+}
+
+.personaRow.reverse img{
+  grid-column:1;
+  grid-row:1;
+}
+
+.personaRow.reverse .personaTextCard{
+  grid-column:2;
+  grid-row:1;
+}
+
+.personaRow img{
+  width:100%;
+  height:132px;
+  object-fit:cover;
+  border:1px solid var(--lineSoft);
+  filter:contrast(1.08) saturate(.82);
+  transition:.45s ease;
+}
+
+.personaRow:hover img{
+  filter:contrast(1.14) saturate(1);
+  transform:scale(1.03);
+}
+
+.personaTextCard{
+  padding:13px 15px;
+  border-left:3px solid var(--primary);
+  background:
+    linear-gradient(90deg,var(--primaryLight),var(--transparent)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+  transition:.35s ease;
+}
+
+.personaTextCard:hover{
+  background:
+    linear-gradient(90deg,var(--primaryLight),var(--white25)),
+    var(--white34);
+  transform:translateX(3px);
+}
+
+.personaMeters{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 14px;
+  margin:4px 0 16px;
+  padding:12px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.meterItem b{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:6px;
+  font:900 8px var(--sans);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--soft);
+}
+
+.meterItem div{
+  height:8px;
+  border:1px solid var(--line);
+  background:var(--white25);
+  overflow:hidden;
+}
+
+.meterItem span{
+  display:block;
+  width:var(--level);
+  height:100%;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  transition:.5s ease;
+}
+
+.meterItem:hover span{width:100%}
+
+.personaNotes{
+  display:grid;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.personaNotes div{
+  padding:12px 14px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,var(--white34),var(--white12)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+  transition:.35s ease;
+}
+
+.personaNotes div:hover{
+  border-color:var(--primaryLine);
+  transform:translateY(-2px);
+}
+
+.personaNotes p{
+  margin:0;
+  font:600 14px/1.35 var(--softserif);
+  color:var(--ink);
+}
+
+/* =========================================================
+   APPEARANCE PAGE
+========================================================= */
+
+.palette{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:16px;
+}
+
+.colorSwatch{
+  min-height:78px;
+  border:1px solid var(--line);
+  background:var(--white25);
+  backdrop-filter:blur(10px);
+  padding:8px;
+  transition:.35s ease;
+}
+
+.colorSwatch:hover{
+  transform:translateY(-3px);
+  border-color:var(--primaryLine);
+  background:var(--white34);
+}
+
+.colorSwatch i{
+  display:block;
+  height:28px;
+  margin-bottom:8px;
+  background:var(--swatch);
+  border:1px solid var(--lineSoft);
+}
+
+.colorSwatch b{
+  display:block;
+  font:900 7px var(--sans);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.colorSwatch span{
+  display:block;
+  margin-top:4px;
+  font:600 12px var(--softserif);
+  color:var(--ink);
+}
+
+.lookbook{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  grid-template-rows:repeat(2,145px);
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.lookItem{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--white25);
+  transition:.4s ease;
+}
+
+.lookItem.large{grid-row:span 2}
+
+.lookItem img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.08) brightness(.82) saturate(.86);
+  transition:.55s ease;
+}
+
+.lookItem:hover{
+  border-color:var(--primaryLine);
+  transform:translateY(-3px);
+}
+
+.lookItem:hover img{
+  transform:scale(1.06);
+  filter:contrast(1.15) brightness(.9) saturate(1);
+}
+
+.lookItem:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top,var(--black52),var(--transparent) 62%),
+    linear-gradient(90deg,var(--black35),var(--transparent));
+  pointer-events:none;
+}
+
+.lookItem b,
+.lookItem span{
+  position:absolute;
+  left:12px;
+  right:12px;
+  z-index:2;
+}
+
+.lookItem b{
+  bottom:39px;
+  font:900 8px var(--sans);
+  letter-spacing:2.4px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.lookItem span{
+  bottom:12px;
+  font:500 13px/1.15 var(--softserif);
+  color:var(--cream);
+}
+
+.appearanceBlock{
+  margin-bottom:14px;
+  padding:15px 17px;
+  border-left:3px solid var(--primary);
+  background:
+    linear-gradient(90deg,var(--primaryLight),var(--transparent)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+}
+
+.appearanceBlock b,
+.appearanceCard b{
+  display:block;
+  margin-bottom:8px;
+  font:900 8px var(--sans);
+  letter-spacing:2.6px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.appearanceBlock p,
+.appearanceCard p{
+  margin:0;
+  font:400 13px/1.75 var(--sans);
+  text-align:justify;
+  color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
+}
+
+.appearanceSections{
+  display:grid;
+  gap:18px;
+  margin-bottom:20px;
+}
+
+.appearanceSection{
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,var(--white34),var(--white12)),
+    var(--white25);
+  padding:13px;
+  backdrop-filter:blur(10px);
+}
+
+.appearanceSectionHead{
+  margin-bottom:12px;
+}
+
+.appearanceSectionHead b{
+  display:block;
+  margin-bottom:4px;
+  font:900 8px var(--sans);
+  letter-spacing:2.6px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.appearanceSectionHead span{
+  font:italic 14px var(--softserif);
+  color:var(--soft);
+}
+
+.appearanceMoodboard{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.moodItem{
+  transition:.35s ease;
+}
+
+.moodItem:hover{
+  transform:translateY(-3px);
+}
+
+.moodItem img{
+  width:100%;
+  height:165px;
+  object-fit:cover;
+  margin-bottom:8px;
+  border:1px solid var(--lineSoft);
+  filter:contrast(1.08) brightness(.9) saturate(.85);
+  transition:.45s ease;
+}
+
+.moodItem:hover img{
+  transform:scale(1.03);
+  filter:contrast(1.14) brightness(.96) saturate(1);
+}
+
+.moodItem p{
+  margin:0;
+  font:500 13px/1.35 var(--softserif);
+  color:var(--ink);
+}
+
+/* =========================================================
+   RELATIONS PAGE
+========================================================= */
+
+.relationStack{
+  display:grid;
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.relationCard{
+  display:grid;
+  grid-template-columns:118px 1fr;
+  gap:14px;
+  min-height:190px;
+  padding:12px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,var(--white34),var(--white12)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+  position:relative;
+  overflow:hidden;
+  transition:.4s ease;
+}
+
+.relationCard:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:linear-gradient(var(--primary),var(--secondary));
+}
+
+.relationCard:hover{
+  border-color:var(--primaryLine);
+  transform:translateY(-3px);
+  background:
+    linear-gradient(135deg,var(--primaryLight),var(--white25)),
+    var(--white34);
+}
+
+.relationCard img{
+  width:118px;
+  height:166px;
+  object-fit:cover;
+  border:1px solid var(--lineSoft);
+  filter:contrast(1.08) brightness(.9) saturate(.85);
+  transition:.45s ease;
+}
+
+.relationCard:hover img{
+  transform:scale(1.04);
+  filter:contrast(1.14) brightness(.96) saturate(1);
+}
+
+.relationInfo{
+  min-width:0;
+}
+
+.relationInfo b{
+  display:block;
+  margin-bottom:4px;
+  font:900 8px var(--sans);
+  letter-spacing:2.6px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.relationInfo h3{
+  margin:0;
+  font:italic 28px/.95 var(--softserif);
+  color:var(--ink);
+}
+
+.relationInfo blockquote{
+  margin:8px 0 10px;
+  padding:0 0 0 11px;
+  border-left:2px solid var(--primary);
+  font:italic 15px/1.15 var(--softserif);
+  color:var(--soft);
+}
+
+.relationText{
+  max-height:82px;
+  overflow:auto;
+  padding-right:12px;
+  font:400 13px/1.65 var(--sans);
+  text-align:justify;
+  color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
+  scrollbar-width:thin;
+  scrollbar-color:var(--primary) var(--white25);
+}
+
+.relationText::-webkit-scrollbar{width:4px}
+.relationText::-webkit-scrollbar-track{
+  background:var(--white25);
+  border-radius:999px;
+}
+.relationText::-webkit-scrollbar-thumb{
+  background:linear-gradient(var(--primary),var(--secondary));
+  border-radius:999px;
+}
+
+.relationText p{
+  margin:0 0 8px;
+}
+
+/* =========================================================
+   RIGHT NAVIGATION
+========================================================= */
+
+.nav{
+  position:absolute;
+  right:18px;
+  top:74px;
+  bottom:54px;
+  width:58px;
+  z-index:40;
+  display:grid;
+  grid-template-rows:repeat(4,1fr);
+  border-left:1px solid var(--line);
+}
+
+.nav button{
+  border:0;
+  border-bottom:1px solid var(--line);
+  background:var(--transparent);
+  color:var(--ink);
+  cursor:pointer;
+  position:relative;
+  transition:.35s ease;
+  padding:0;
+  overflow:visible;
+}
+
+.nav button:last-child{border-bottom:0}
+
+.nav button span{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) rotate(180deg);
+  writing-mode:vertical-rl;
+  font:800 14px var(--serif);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:.35s ease;
+}
+
+.nav button:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  width:4px;
+  height:0;
+  transform:translateY(-50%);
+  background:var(--primary);
+  border-radius:4px;
+  transition:.35s ease;
+}
+
+.nav button.active:before,
+.nav button:hover:before{
+  height:72px;
+}
+
+.nav button.active,
+.nav button:hover{
+  background:var(--white25);
+}
+
+.nav button.active span,
+.nav button:hover span{
+  color:var(--primary);
+  letter-spacing:3px;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes colorBar{
+  0%,100%{background-position:0 0}
+  50%{background-position:0 100%}
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes mahriBars{
+  0%,100%{transform:scaleY(.45);opacity:.42}
+  50%{transform:scaleY(1);opacity:1}
+}
+  
+    /* =========================
+   CREDIT
+========================= */
+  
+.mahriCredit{
+  text-align:center;
+  color:var(--white);
+  opacity:.42;
+  font-size:10px;
+  letter-spacing:2px;
+  margin: 20px auto;
+  text-transform:uppercase;
+  font-family:'Cormorant Garamond',serif;
+  z-index: 10;
+}
+
+.mahriCredit a{
+  color:var(--soft);
+  text-decoration:none;
+  transition:.35s ease;
+  text-shadow:
+    0 0 10px var(--primary),
+    0 0 18px var(--secondary);
+}
+
+.mahriCredit a:hover{
+  color:#fff3df;
+  letter-spacing:3px;
+  text-shadow:
+    0 0 14px var(--primary),
+    0 0 28px var(--secondary);
+}
+
+/* =========================================================
+   INTERACTIVE RESUME ENHANCEMENTS
+========================================================= */
+
+.imgBox video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.12) brightness(.62) saturate(.9);
+  transition:.8s ease;
+}
+
+.imgSide:hover .imgBox video{
+  transform:scale(1.04);
+  filter:contrast(1.18) brightness(.72) saturate(1);
+}
+
+.actionRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:14px 0 18px;
+}
+
+.actionBtn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 14px;
+  border:1px solid var(--primaryLine);
+  border-radius:999px;
+  background:var(--white25);
+  color:var(--ink);
+  text-decoration:none;
+  font:900 8px var(--sans);
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  transition:.3s ease;
+}
+
+.actionBtn:hover{
+  transform:translateY(-2px);
+  background:var(--primary);
+  color:var(--black);
+}
+
+.projectGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin-bottom:18px;
+}
+
+.projectCard{
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,var(--white34),var(--white12)),
+    var(--white25);
+  backdrop-filter:blur(10px);
+  overflow:hidden;
+  transition:.4s ease;
+}
+
+.projectCard:hover{
+  transform:translateY(-3px);
+  border-color:var(--primaryLine);
+}
+
+.projectMedia{
+  position:relative;
+  height:155px;
+  overflow:hidden;
+  background:#080808;
+}
+
+.projectMedia video,
+.projectMedia img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:contrast(1.08) brightness(.78) saturate(.9);
+  transition:.5s ease;
+}
+
+.projectCard:hover .projectMedia video,
+.projectCard:hover .projectMedia img{
+  transform:scale(1.04);
+  filter:contrast(1.14) brightness(.88) saturate(1);
+}
+
+.projectMedia:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,var(--black62),var(--transparent) 58%);
+  pointer-events:none;
+}
+
+.projectBody{
+  padding:13px 14px 15px;
+}
+
+.projectBody b{
+  display:block;
+  margin-bottom:5px;
+  font:900 8px var(--sans);
+  letter-spacing:2.3px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.projectBody h3{
+  margin:0 0 7px;
+  font:italic 23px/.98 var(--softserif);
+  color:var(--ink);
+}
+
+.projectBody p{
+  margin:0;
+  font:400 12.5px/1.55 var(--sans);
+  color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
+}
+
+.tagRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:10px;
+}
+
+.tag{
+  padding:5px 8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font:800 7px var(--sans);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--soft);
+}
+
+.timeline{
+  display:grid;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.timelineItem{
+  padding:14px 15px;
+  border-left:3px solid var(--primary);
+  background:
+    linear-gradient(90deg,var(--primaryLight),var(--transparent)),
+    var(--white25);
+}
+
+.timelineItem b{
+  display:block;
+  margin-bottom:4px;
+  font:900 8px var(--sans);
+  letter-spacing:2.3px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.timelineItem h3{
+  margin:0 0 6px;
+  font:italic 23px/1 var(--softserif);
+  color:var(--ink);
+}
+
+.timelineItem p{
+  margin:0;
+  font:400 13px/1.65 var(--sans);
+  color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
+}
+
+.contactGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:14px 0 18px;
+}
+
+.contactCard{
+  padding:15px;
+  border:1px solid var(--line);
+  background:
+    linear-gradient(135deg,var(--white34),var(--white12)),
+    var(--white25);
+}
+
+.contactCard b{
+  display:block;
+  margin-bottom:5px;
+  font:900 8px var(--sans);
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+  color:var(--primary);
+}
+
+.contactCard a,
+.contactCard span{
+  color:var(--ink);
+  text-decoration:none;
+  font:600 14px/1.4 var(--softserif);
+}
+
+@media (max-width: 940px){
+  body{margin:0;background:#080808}
+  .bg{
+    width:100%;
+    height:auto;
+    min-height:100vh;
+    border-radius:0;
+  }
+  .bg:after{display:none}
+  .imgSide{
+    position:relative;
+    width:100%;
+    height:42vh;
+    min-height:280px;
+  }
+  .bigTitleBg,.bigTitle,.number{display:none}
+  .content{
+    position:relative;
+    left:auto;
+    right:auto;
+    top:auto;
+    bottom:auto;
+    padding:22px 22px 110px;
+  }
+  .topline{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .quote{
+    max-width:none;
+    text-align:left;
+  }
+  .musicBox{width:100%}
+  .page{
+    position:relative;
+    inset:auto;
+    display:none;
+    margin-top:24px;
+  }
+  .page.active{display:block}
+  .pageScroll{
+    height:auto;
+    overflow:visible;
+    padding-right:0;
+  }
+  .nav{
+    position:fixed;
+    left:10px;
+    right:10px;
+    top:auto;
+    bottom:10px;
+    width:auto;
+    height:62px;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:1fr;
+    border:1px solid var(--lineSoft);
+    border-radius:18px;
+    background:color-mix(in srgb,var(--paper) 92%,var(--transparent));
+    backdrop-filter:blur(18px);
+    overflow:hidden;
+  }
+  .nav button{
+    border-bottom:0;
+    border-right:1px solid var(--line);
+  }
+  .nav button:last-child{border-right:0}
+  .nav button span{
+    writing-mode:horizontal-tb;
+    transform:translate(-50%,-50%);
+    font-size:11px;
+    letter-spacing:1px;
+  }
+  .nav button:before{
+    left:50%;
+    top:auto;
+    bottom:0;
+    width:0;
+    height:3px;
+    transform:translateX(-50%);
+  }
+  .nav button.active:before,
+  .nav button:hover:before{
+    width:54%;
+    height:3px;
+  }
+  .dossier,
+  .projectGrid,
+  .contactGrid{
+    grid-template-columns:1fr;
+  }
+  .personaFeature{
+    grid-template-columns:1fr;
+  }
+  .personaFeature img{height:210px}
+}
+
+@media (max-width: 560px){
+  .content{padding:18px 16px 100px}
+  .page h1{font-size:30px;letter-spacing:2px}
+  .dossierName span{font-size:46px}
+  .dossierMeta p{align-items:flex-start}
+  .projectGrid{grid-template-columns:1fr}
+  .projectMedia{height:190px}
+}
+
+</style>
+  </head>
+
+  <body>
+
+<div class="bg">
+
+  <div class="imgSide">
+    <div class="imgBox">
+      <video autoplay muted loop playsinline poster="">
+        <source src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="sideStar">✦</div>
+    <div class="sideQuote">Build with purpose. Lead with integrity.</div>
+    <div class="sideCaption">
+      <b>Joey</b>
+      <span>Computer Scientist · Builder · Futurist</span>
+    </div>
+  </div>
+
+  <img class="flowerOne" src="https://i1-e.pinimg.com/736x/c2/29/6f/c2296ff6c4ec2fcd68a28acf5a751361.jpg" alt="">
+  <img class="flowerTwo" src="https://i.pinimg.com/736x/f6/9f/18/f69f18507af72445e0cc544f750a8a70.jpg" alt="">
+
+  <div class="bigTitleBg"></div>
+  <div class="bigTitle"><span>JOEY</span></div>
+
+  <div class="number" id="mahriNumber">01</div>
+
+  <div class="content">
+
+    <div class="topline">
+      <div class="musicBox">
+        <button class="musicPlay" onclick="mahriToggleMusic()" aria-label="Play portfolio soundtrack">▶</button>
+
+        <div class="musicInfo">
+          <b>PORTFOLIO SOUNDTRACK</b>
+          <span>Safe and Sound · Capital Cities</span>
+          <div class="musicBars"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <button class="volumeToggle" onclick="mahriToggleVolume()" aria-label="Open volume control">VOL</button>
+
+        <div class="volumePanel">
+          <input id="mahriVolume" type="range" min="0" max="1" step="0.01" value="0.2" aria-label="Volume">
+        </div>
+
+        <audio id="mahriAudio" src="https://www.image2url.com/r2/default/audio/1782843417534-072f0de5-e6f6-44c3-8170-572d2b639fb1.mp3"></audio>
+      </div>
+
+      <div class="quote">“Building technology that improves lives.”</div>
+    </div>
+
+    <!-- PROFILE -->
+    <section class="page active" id="profile">
+      <div class="pageScroll">
+        <h1>Profile</h1>
+        <h2>identity / mission / professional direction</h2>
+
+        <div class="dossier">
+          <div class="dossierName">
+            <b>Full Name</b>
+            <span>Joseph Bolkovatz</span>
+          </div>
+
+          <div class="dossierMeta">
+            <p><b>Degree</b><span>B.S. Computer Science</span></p>
+            <p><b>Graduate Study</b><span>M.S. Computer Science · In Progress</span></p>
+            <p><b>Leadership</b><span>20+ Years Automotive Sales & Management</span></p>
+            <p><b>Founder</b><span>Klean Koalas</span></p>
+            <p><b>Focus</b><span>AI · Software · Systems · Entrepreneurship</span></p>
+            <p><b>Location</b><span>Illinois · Open to Opportunity</span></p>
+            <p><b>Status</b><span>Building the Next Chapter</span></p>
+          </div>
+        </div>
+
+        <div class="introCard">
+          <b>Professional Mission</b>
+          <p>I combine computer science, business leadership, systems thinking, and human-centered innovation to build technology and organizations that improve everyday life.</p>
+        </div>
+
+        <div class="text">
+          <p><b>I am a computer science graduate, entrepreneur, and experienced automotive leader</b> with more than two decades of customer-facing sales and management experience. My work connects technical problem-solving with real-world execution, from designing software and database systems to building Klean Koalas as a service brand from the ground up.</p>
+
+          <p>I am currently pursuing a Master of Science in Computer Science while developing projects across artificial intelligence, systems engineering, databases, digital platforms, and future-facing technologies. I am especially interested in work that improves mobility, dignity, sustainability, education, and access.</p>
+
+          <p>My strongest contribution is the ability to see connections across disciplines, translate an ambitious idea into a practical operating model, and communicate a vision in a way that people can understand and act upon.</p>
+        </div>
+
+        <div class="actionRow">
+          <a class="actionBtn" href="https://github.com/JOEYBAGOFBITCOINS" target="_blank" rel="noopener">GitHub</a>
+          <a class="actionBtn" href="https://kleankoalas.com" target="_blank" rel="noopener">Klean Koalas</a>
+          <a class="actionBtn" href="mailto:joey@kleankoalas.com">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="page" id="experience">
+      <div class="pageScroll">
+        <h1>Experience</h1>
+        <h2>leadership / entrepreneurship / education</h2>
+
+        <div class="personaFeature">
+          <video autoplay muted loop playsinline style="width:100%;height:170px;object-fit:cover;border:1px solid var(--lineSoft);">
+            <source src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4" type="video/mp4">
+          </video>
+          <div>
+            <b>Founder & Operator</b>
+            <h3>Klean Koalas</h3>
+            <p>Built a customer-focused residential bin-cleaning and pressure-washing brand, including service design, pricing, field operations, marketing, customer acquisition, reviews, booking workflows, and the foundation for a scalable training system.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timelineItem">
+            <b>Automotive Leadership · 20+ Years</b>
+            <h3>Sales, Management & Customer Experience</h3>
+            <p>Led teams, managed high-value customer relationships, coached sales professionals, solved operational problems, and worked in fast-paced dealership environments where trust, performance, and communication directly affected results.</p>
+          </div>
+
+          <div class="timelineItem">
+            <b>Colorado Technical University</b>
+            <h3>Master of Science in Computer Science</h3>
+            <p>Graduate work in algorithms, operating systems, networking, cybersecurity, systems engineering, and database systems. Expected completion: April 2027.</p>
+          </div>
+
+        <div class="personaFeature">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    controls
+    style="width:100%;height:170px;object-fit:cover;border:1px solid var(--lineSoft);cursor:pointer;"
+  >
+    <source
+      src="https://assets.codepen.io/10990063/graduation-loop-codepen-audio.mp4"
+      type="video/mp4"
+    >
+  </video>
+
+  <div>
+    <b>Colorado Technical University · 2025</b>
+    <h3>Bachelor of Science in Computer Science</h3>
+    <p>Completed a rigorous computer science degree with a 3.73 GPA while developing software, algorithms, systems, and technical documentation across multiple applied projects.</p>
+  </div>
+</div>
+          <div class="timelineItem">
+            <b>Education & Service</b>
+            <h3>GED Math and Reading Support</h3>
+            <p>Supported learners in developing foundational math and reading skills, strengthening my ability to explain difficult concepts patiently and clearly.</p>
+          </div>
+        </div>
+
+        <div class="personaMeters">
+          <div class="meterItem" style="--level:96%;"><b>Leadership</b><div><span></span></div></div>
+          <div class="meterItem" style="--level:92%;"><b>Communication</b><div><span></span></div></div>
+          <div class="meterItem" style="--level:90%;"><b>Systems Thinking</b><div><span></span></div></div>
+          <div class="meterItem" style="--level:94%;"><b>Customer Experience</b><div><span></span></div></div>
+          <div class="meterItem" style="--level:86%;"><b>Software Development</b><div><span></span></div></div>
+          <div class="meterItem" style="--level:89%;"><b>Entrepreneurship</b><div><span></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="page" id="projects">
+      <div class="pageScroll">
+        <h1>Projects</h1>
+        <h2>interactive demos / systems / ventures</h2>
+
+        <div class="projectGrid">
+
+          <article class="projectCard">
+            <div class="projectMedia">
+              <video autoplay muted loop playsinline>
+                <source src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="projectBody">
+              <b>Founder Project</b>
+              <h3>Klean Koalas</h3>
+              <p>A field-service brand and digital booking experience designed around convenience, customer trust, recurring service, and scalable operating standards.</p>
+              <div class="tagRow">
+                <span class="tag">Brand Strategy</span>
+                <span class="tag">Operations</span>
+                <span class="tag">Web UX</span>
+              </div>
+            </div>
+          </article>
+
+        <article class="projectCard" style="background:#111318;color:#f4f4f4;">
+  <div class="projectMedia">
+    <a
+      href="https://gum-poll-28480100.figma.site/"
+      target="_blank"
+      rel="noopener"
+      aria-label="Open the Lumina LIVE interactive prototype"
+    >
+      <img
+        src="https://assets.codepen.io/10990063/LUMINIA_LOGO.png"
+        alt="Lumina LIVE interactive systems platform"
+        style="width:100%;height:260px;object-fit:contain;background:#08090c;"
+      >
+    </a>
+  </div>
+
+  <div class="projectBody" style="background:#111318;color:#f4f4f4;">
+    <b>Interactive Systems Prototype</b>
+    <h3>Lumina LIVE</h3>
+
+    <p>
+      An interactive evolution of the Lumina Field Services concept,
+      combining systems engineering, database architecture, security,
+      service workflows, and human-centered interface design within a
+      working digital prototype.
+    </p>
+
+    <div class="tagRow">
+      <span class="tag">Systems Design</span>
+      <span class="tag">Database Architecture</span>
+      <span class="tag">UI/UX</span>
+      <span class="tag">Figma</span>
+    </div>
+
+    <div class="actionRow">
+      <a
+        class="actionBtn"
+        href="https://gum-poll-28480100.figma.site/"
+        target="_blank"
+        rel="noopener"
+      >
+        Launch Lumina LIVE
+      </a>
+    </div>
+  </div>
+</article>
+<article class="projectCard" style="background:#111318;color:#f4f4f4;">
+  <div class="projectMedia">
+    <a
+      href="https://backward7evin.streamlit.app/"
+      target="_blank"
+      rel="noopener"
+    >
+      <img
+        src="https://assets.codepen.io/10990063/BACKWARD7_LOGO.png"
+        alt="Backward 7evin financial forecasting platform"
+        style="width:100%;height:260px;object-fit:contain;background:#08090c;"
+      >
+    </a>
+  </div>
+
+  <div class="projectBody" style="background:#111318;color:#f4f4f4;">
+    <b>Machine Learning · Financial Analytics</b>
+    <h3>Backward 7evin</h3>
+
+    <p>
+      An interactive financial forecasting application that analyzes Bitcoin,
+      gold, and the U.S. Dollar Index using ARIMA, Holt-Winters, Random Forest,
+      and ensemble modeling to generate market forecasts and directional signals.
+    </p>
+
+    <div class="tagRow">
+      <span class="tag">Python</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Time-Series Forecasting</span>
+    </div>
+
+    <div class="actionRow">
+      <a
+        class="actionBtn"
+        href="https://backward7evin.streamlit.app/"
+        target="_blank"
+        rel="noopener"
+      >
+        Launch Backward 7evin
+      </a>
+    </div>
+  </div>
+</article>
+          <article class="projectCard">
+            <div class="projectMedia">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Electronic circuit board representing algorithms and computer science work">
+            </div>
+            <div class="projectBody">
+              <b>Computer Science Portfolio</b>
+              <h3>Algorithms & Systems</h3>
+              <p>Applied work in dynamic programming, image comparison, operating systems, networking, databases, and technical problem-solving.</p>
+              <div class="tagRow">
+                <span class="tag">Algorithms</span>
+                <span class="tag">Python</span>
+                <span class="tag">Systems</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="projectCard">
+            <div class="projectMedia">
+              <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=900&q=80" alt="Theatre stage representing the SESHAT stage play">
+            </div>
+            <div class="projectBody">
+              <b>Creative Technology</b>
+              <h3>SESHAT · Stage Play</h3>
+              <p>A stage work exploring companionship, aging, memory, consciousness, and the emotional relationship between a care-facility resident and an AI companion.</p>
+              <div class="tagRow">
+                <span class="tag">Playwriting</span>
+                <span class="tag">AI Ethics</span>
+                <span class="tag">Human Connection</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        
+<div class="introCard personalPrinciples">
+  <b>Principles I try to embody</b>
+
+  <div class="principleQuote">
+    <blockquote>
+      “Inspect what you expect.”
+    </blockquote>
+    <p class="quoteCredit">Leadership maxim</p>
+  </div>
+
+  <div class="principleQuote">
+    <blockquote>
+      “Whatever your life’s work is, do it well.”
+    </blockquote>
+    <p class="quoteCredit">Dr. Martin Luther King Jr.</p>
+  </div>
+</div>
+```
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page" id="contact">
+      <div class="pageScroll">
+        <h1>Contact</h1>
+        <h2>connect / collaborate / build</h2>
+
+        <div class="introCard">
+          <b>Open to Meaningful Work</b>
+          <p>I am interested in software engineering, artificial intelligence, systems design, technical leadership, entrepreneurship, and mission-driven collaboration.</p>
+        </div>
+
+        <div class="contactGrid">
+          <div class="contactCard">
+            <b>Email</b>
+            <a href="mailto:joey@kleankoalas.com">joeyb88@outlook.com</a>
+          </div>
+
+          <div class="contactCard">
+            <b>Phone</b>
+            <a href="tel:+16303135808">(480) 848-0246</a>
+          </div>
+
+          <div class="contactCard">
+            <b>GitHub</b>
+            <a href="https://github.com/JOEYBAGOFBITCOINS" target="_blank" rel="noopener">JOEYBAGOFBITCOINS</a>
+          </div>
+
+          <div class="contactCard">
+            <b>Business</b>
+            <a href="https://kleankoalas.com" target="_blank" rel="noopener">kleankoalas.com</a><br>
+            <a href="https://Joeybagofbitcoins.com" target="_blank" rel="noopener">Joeybagofbitcoins.com</a> 
+          </div>
+        </div>
+
+        <div class="appearanceBlock">
+          <b>What I Bring</b>
+          <p>Technical curiosity, executive-level customer experience, entrepreneurial resilience, strong communication, and a persistent drive to turn ambitious ideas into practical systems.</p>
+        </div>
+
+        <div class="actionRow">
+          <a class="actionBtn" href="mailto:joey@kleankoalas.com?subject=Portfolio%20Inquiry">Start a Conversation</a>
+          <a class="actionBtn" href="https://github.com/JOEYBAGOFBITCOINS" target="_blank" rel="noopener">View GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <nav class="nav" aria-label="Portfolio sections">
+    <button class="active" onclick="mahriChange(event,'profile','01')"><span>Profile</span></button>
+    <button onclick="mahriChange(event,'experience','02')"><span>Experience</span></button>
+    <button onclick="mahriChange(event,'projects','03')"><span>Projects</span></button>
+    <button onclick="mahriChange(event,'contact','04')"><span>Contact</span></button>
+  </nav>
+
+</div>
+
+<div class="mahriCredit">
+  original design coded by
+  <a href="https://codepen.io/mahricodes" target="_blank" rel="noopener">Mahri</a>
+  · portfolio adaptation by Joey Bolkovatz
+</div>
+
+<script>
+function mahriChange(event,pageId,pageNumber){
+  document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  event.currentTarget.classList.add('active');
+  document.getElementById('mahriNumber').textContent = pageNumber;
+
+  const scroller = document.querySelector('#' + pageId + ' .pageScroll');
+  if(scroller) scroller.scrollTop = 0;
+}
+
+const mahriAudio = document.getElementById('mahriAudio');
+const mahriVolume = document.getElementById('mahriVolume');
+const mahriMusicBox = document.querySelector('.musicBox');
+const mahriPlayBtn = document.querySelector('.musicPlay');
+
+mahriAudio.volume = 0.2;
+
+mahriVolume.addEventListener('input', function(){
+  mahriAudio.volume = this.value;
+});
+
+function mahriToggleMusic(){
+  if(mahriAudio.paused){
+    mahriAudio.play().then(() => {
+      mahriMusicBox.classList.add('playing');
+      mahriPlayBtn.textContent = '❚❚';
+    }).catch(() => {
+      mahriPlayBtn.textContent = '▶';
+    });
+  }else{
+    mahriAudio.pause();
+    mahriMusicBox.classList.remove('playing');
+    mahriPlayBtn.textContent = '▶';
+  }
+}
+
+function mahriToggleVolume(){
+  mahriMusicBox.classList.toggle('volumeOpen');
+}
+
+mahriAudio.addEventListener('ended', function(){
+  mahriMusicBox.classList.remove('playing');
+  mahriPlayBtn.textContent = '▶';
+});
+</script>
+    
+  </body>
+  
+</html>
