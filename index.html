@@ -1712,604 +1712,1002 @@ body{
 
 </div>
 </section>
-    <!-- PROJECTS -->
-    <section class="page" id="projects">
-      <div class="pageScroll">
-        <h1>Projects</h1>
-        <h2>interactive demos / systems / ventures</h2>
+<!-- PROJECTS -->
+<section class="page" id="projects">
 
-        <div class="projectGrid">
+  <!-- =========================================================
+       PROJECT CARD VISUAL CONSISTENCY + MOBILE VIDEO FIX
+       ========================================================= -->
+  <style>
 
-        <article class="projectCard">
-  <div class="projectMedia">
-    <video autoplay muted loop playsinline>
-      <source
-        src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4"
-        type="video/mp4"
-      >
-    </video>
-  </div>
+    /*
+      Keeps normal project media at a consistent height.
 
-  <div class="projectBody">
-    <b>Founder Project</b>
-    <h3>Klean Koalas</h3>
+      This is especially important for videos that use height:100%.
+      On mobile, their parent now has an explicit height, preventing
+      the video from collapsing vertically.
 
-    <p>
-      A field-service brand and digital booking experience designed around
-      convenience, customer trust, recurring service, and scalable operating
-      standards.
-    </p>
+      The Enchanted Quill is intentionally excluded because it has
+      its own portrait-oriented responsive media rules.
+    */
 
-    <div class="tagRow">
-      <span class="tag">Brand Strategy</span>
-      <span class="tag">Operations</span>
-      <span class="tag">Web UX</span>
-    </div>
-  </div>
-</article>
+    #projects .projectCard:not(.enchantedQuillCard) .projectMedia {
+      width: 100%;
+      height: 260px;
+      min-height: 260px;
+      overflow: hidden;
+      background: #08090c;
+    }
 
+    #projects .projectCard:not(.enchantedQuillCard) .projectMedia video,
+    #projects .projectCard:not(.enchantedQuillCard) .projectMedia img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
-<!-- LUMINA LIVE -->
-<article class="projectCard" style="background:#111318;color:#f4f4f4;">
+    #projects .projectCard:not(.enchantedQuillCard) .projectMedia video {
+      object-fit: cover;
+      background: #08090c;
+    }
 
-  <div class="projectMedia">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      style="
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        display:block;
-        pointer-events:none;
-        background:#08090c;
-      "
-    >
-      <source
-        src="lunina_video_seamless_loop.mp4"
-        type="video/mp4"
-      >
-    </video>
-  </div>
+    /*
+      Standard dark project-card treatment.
+      Matches Lumina LIVE.
+    */
 
-  <div class="projectBody" style="background:#111318;color:#f4f4f4;">
-    <b>Interactive Systems Prototype</b>
-    <h3>Lumina LIVE</h3>
+    #projects .darkProjectCard {
+      background: #111318;
+      color: #f4f4f4;
+    }
 
-    <p>
-      An interactive evolution of the Lumina Field Services concept,
-      combining systems engineering, database architecture, security,
-      service workflows, and human-centered interface design within a
-      working digital prototype.
-    </p>
+    #projects .darkProjectCard .projectBody {
+      background: #111318;
+      color: #f4f4f4;
+    }
 
-    <div class="tagRow">
-      <span class="tag">Systems Design</span>
-      <span class="tag">Database Architecture</span>
-      <span class="tag">UI/UX</span>
-      <span class="tag">Figma</span>
-    </div>
+    #projects .darkProjectCard .projectBody b,
+    #projects .darkProjectCard .projectBody h3 {
+      color: #f4f4f4;
+    }
 
-    <div class="actionRow">
-      <a
-        class="actionBtn"
-        href="https://gum-poll-28480100.figma.site/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Launch Lumina LIVE
-      </a>
-    </div>
+    #projects .darkProjectCard .projectBody p {
+      color: rgba(244, 244, 244, 0.88);
+    }
 
-  </div>
-</article>
+    /*
+      Principles card gets the same dark visual language
+      as Lumina LIVE.
+    */
+
+    #projects .personalPrinciples.darkPrinciples {
+      background: #111318;
+      color: #f4f4f4;
+    }
+
+    #projects .personalPrinciples.darkPrinciples > b {
+      color: #f4f4f4;
+    }
+
+    #projects .personalPrinciples.darkPrinciples blockquote {
+      color: #f4f4f4;
+    }
+
+    #projects .personalPrinciples.darkPrinciples .quoteCredit {
+      color: rgba(244, 244, 244, 0.68);
+    }
 
 
-<!-- BACKWARD 7EVIN -->
-<article class="projectCard" style="background:#111318;color:#f4f4f4;">
-  <div class="projectMedia">
-    <a
-      href="https://backward7evin.streamlit.app/"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Launch Backward 7evin financial forecasting platform"
-    >
-      <img
-        src="https://assets.codepen.io/10990063/BACKWARD7_LOGO.png"
-        alt="Backward 7evin financial forecasting platform"
-        style="width:100%;height:260px;object-fit:contain;background:#08090c;"
-      >
-    </a>
-  </div>
+    /*
+      MOBILE
 
-  <div class="projectBody" style="background:#111318;color:#f4f4f4;">
-    <b>Machine Learning · Financial Analytics</b>
-    <h3>Backward 7evin</h3>
+      Give video/image cards additional vertical presence instead
+      of allowing them to become shallow landscape strips.
 
-    <p>
-      An interactive financial forecasting application that analyzes Bitcoin,
-      gold, and the U.S. Dollar Index using ARIMA, Holt-Winters, Random Forest,
-      and ensemble modeling to generate market forecasts and directional signals.
-    </p>
+      280px gives them an app-like visual presence while preserving
+      the existing card/grid architecture.
+    */
 
-    <div class="tagRow">
-      <span class="tag">Python</span>
-      <span class="tag">Streamlit</span>
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Time-Series Forecasting</span>
-    </div>
+    @media (max-width: 680px) {
 
-    <div class="actionRow">
-      <a
-        class="actionBtn"
-        href="https://backward7evin.streamlit.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Launch Backward 7evin
-      </a>
-    </div>
-  </div>
-</article>
+      #projects .projectCard:not(.enchantedQuillCard) .projectMedia {
+        height: 280px;
+        min-height: 280px;
+      }
+
+      #projects .projectCard:not(.enchantedQuillCard) .projectMedia video,
+      #projects .projectCard:not(.enchantedQuillCard) .projectMedia img {
+        width: 100%;
+        height: 100%;
+      }
+
+    }
+
+  </style>
 
 
-<!-- SESHAT ONE LIVE -->
-<article class="projectCard" style="background:#111318;color:#f4f4f4;">
+  <div class="pageScroll">
 
-  <div class="projectMedia">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      style="
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        display:block;
-        pointer-events:none;
-        background:#08090c;
-      "
-    >
-      <source
-        src="seshat_one_seamless_loop.mp4"
-        type="video/mp4"
-      >
-    </video>
-  </div>
+    <h1>Projects</h1>
 
-  <div class="projectBody" style="background:#111318;color:#f4f4f4;">
-    <b>AI Systems Prototype</b>
-    <h3>Seshat One</h3>
+    <h2>interactive demos / systems / ventures</h2>
 
-    <p>
-      A human-centered AI experience exploring intelligent interaction,
-      thoughtful interface design, conversational systems, and the evolving
-      relationship between people and artificial intelligence.
-    </p>
 
-    <div class="tagRow">
-      <span class="tag">Artificial Intelligence</span>
-      <span class="tag">UI/UX</span>
-      <span class="tag">Human-Centered Design</span>
-      <span class="tag">Figma</span>
-    </div>
+    <div class="projectGrid">
 
-  </div>
-</article>
-          
-<!-- ALGORITHMS & SYSTEMS -->
-<article class="projectCard">
-  <div class="projectMedia">
-    <img
-      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-      alt="Electronic circuit board representing algorithms and computer science work"
-    >
-  </div>
 
-  <div class="projectBody">
-    <b>Computer Science Portfolio</b>
-    <h3>Algorithms & Systems</h3>
+      <!-- =========================================================
+           KLEAN KOALAS
+           ========================================================= -->
 
-    <p>
-      Applied work in dynamic programming, image comparison, operating systems,
-      networking, databases, and technical problem-solving.
-    </p>
+      <article class="projectCard darkProjectCard">
 
-    <div class="tagRow">
-      <span class="tag">Algorithms</span>
-      <span class="tag">Python</span>
-      <span class="tag">Systems</span>
-    </div>
-  </div>
-</article>
+        <div class="projectMedia">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          >
+            <source
+              src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4"
+              type="video/mp4"
+            >
+          </video>
+
+        </div>
+
+
+        <div class="projectBody">
+
+          <b>Founder Project</b>
+
+          <h3>Klean Koalas</h3>
+
+          <p>
+            A field-service brand and digital booking experience designed around
+            convenience, customer trust, recurring service, and scalable operating
+            standards.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">Brand Strategy</span>
+
+            <span class="tag">Operations</span>
+
+            <span class="tag">Web UX</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           LUMINA LIVE
+           ========================================================= -->
 
       <article
-  class="projectCard"
-  style="
-    background:#0b0d10;
-    color:#f4f4f4;
-    border:1px solid rgba(255,255,255,.16);
-    overflow:hidden;
-  "
->
-
-  <div
-    class="projectMedia"
-    style="
-      width:100%;
-      aspect-ratio:16 / 9;
-      background:#000;
-      overflow:hidden;
-    "
-  >
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      style="
-        width:100%;
-        height:100%;
-        object-fit:contain;
-        display:block;
-        background:#000;
-      "
-    >
-      <source src="seshat-theatre-loop.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div
-    class="projectBody"
-    style="
-      background:#0b0d10;
-      color:#f4f4f4;
-    "
-  >
-    <b style="color:#f4f4f4;">
-      Creative Technology
-    </b>
-
-    <h3 style="color:#ffffff;">
-      SESHAT · Stage Play
-    </h3>
-
-    <p style="color:rgba(255,255,255,.88);">
-      In my spare time, I am developing an original stage play exploring
-      artificial intelligence, companionship, aging, memory, consciousness,
-      mortality, and the emotional relationship between an older care-facility
-      resident and an AI companion.
-    </p>
-
-    <div class="tagRow">
-      <span class="tag">Playwriting</span>
-      <span class="tag">AI Ethics</span>
-      <span class="tag">Human Connection</span>
-    </div>
-  </div>
-
-</article>
-          
-<!-- SUDOKU AI SOLVER -->
-<article class="projectCard">
-
-  <div class="projectMedia">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      style="width:100%;height:260px;object-fit:cover;display:block;"
-    >
-      <source src="sudoku-ai-solver-loop-optimized.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="projectBody">
-    <b>Artificial Intelligence · Algorithms</b>
-
-    <h3>AI Sudoku Solver</h3>
-
-    <p>
-      Developed a C++ Sudoku solver using recursive backtracking and the
-      Minimum Remaining Values heuristic to efficiently navigate the puzzle's
-      search space and satisfy Sudoku constraints.
-    </p>
-
-    <div class="tagRow">
-      <span class="tag">C++</span>
-      <span class="tag">AI</span>
-      <span class="tag">Backtracking</span>
-      <span class="tag">Heuristics</span>
-    </div>
-  </div>
-
-</article>
-
-       <!-- =========================================================
-     THE ENCHANTED QUILL
-     Paste immediately after the Lumina project card
-     ========================================================= -->
-
-<style>
-  /* Scoped styles affecting only The Enchanted Quill card */
-
-  .enchantedQuillCard {
-    min-width: 0;
-    color: #f4f4f4;
-    background: #000000 !important;
-  }
-
-  .enchantedQuillCard .projectMedia {
-    overflow: hidden;
-    background: #000000;
-  }
-
-  .enchantedQuillCard .projectMedia video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 280px;
-    object-fit: cover;
-    background: #000000;
-  }
-
-  .enchantedQuillCard .projectBody {
-    width: 100%;
-    min-width: 0;
-    overflow: visible;
-  }
-
-  .enchantedQuillCard .projectBody > b {
-    color: #d7b866;
-  }
-
-  .enchantedQuillCard .projectBody > p {
-    overflow-wrap: break-word;
-    word-break: normal;
-  }
-
-  .enchantedQuillCard .tagRow {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .enchantedQuillCard .tag {
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-break: normal;
-    text-align: center;
-  }
-
-  .enchantedProjectDetails {
-    width: 100%;
-    min-width: 0;
-    margin-top: 1rem;
-  }
-
-  .enchantedProjectDetails summary {
-    width: fit-content;
-    max-width: 100%;
-    color: #d7b866;
-    font-size: 0.82rem;
-    font-weight: 700;
-    cursor: pointer;
-    list-style: none;
-    overflow-wrap: break-word;
-    text-decoration: underline;
-    text-decoration-color: rgba(215, 184, 102, 0.45);
-    text-underline-offset: 5px;
-  }
-
-  .enchantedProjectDetails summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .enchantedProjectDetails summary::after {
-    content: " +";
-  }
-
-  .enchantedProjectDetails[open] summary::after {
-    content: " −";
-  }
-
-  .enchantedProjectDetails summary:hover,
-  .enchantedProjectDetails summary:focus-visible {
-    color: #f1d98f;
-  }
-
-  .enchantedDetailsPanel {
-    display: grid;
-    gap: 0.9rem;
-    width: 100%;
-    min-width: 0;
-    margin-top: 0.9rem;
-    padding: 1rem;
-    overflow: visible;
-    color: #bbb7c0;
-    font-size: 0.86rem;
-    line-height: 1.55;
-    border-left: 2px solid #c9a956;
-    border-radius: 0 12px 12px 0;
-    background: rgba(255, 255, 255, 0.045);
-  }
-
-  .enchantedDetailItem {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-    width: 100%;
-    min-width: 0;
-  }
-
-  .enchantedDetailItem strong,
-  .enchantedDetailItem span {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-break: normal;
-  }
-
-  .enchantedDetailItem strong {
-    color: #f1e2b9;
-  }
-
-  .enchantedActionRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 1.25rem;
-    text-align: center;
-  }
-
-  .enchantedLaunchBtn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    max-width: 100%;
-    min-height: 46px;
-    padding: 0.7rem 1.25rem;
-    color: #090909 !important;
-    font-weight: 800;
-    line-height: 1.2;
-    text-align: center;
-    white-space: normal;
-    border-color: transparent;
-    background: linear-gradient(135deg, #efd58e, #bd8e39);
-  }
-
-  .enchantedLaunchBtn:hover,
-  .enchantedLaunchBtn:focus-visible {
-    color: #090909 !important;
-    filter: brightness(1.08);
-  }
-
-  @media (max-width: 680px) {
-    .enchantedQuillCard .projectMedia video {
-      min-height: auto;
-      aspect-ratio: 720 / 1060;
-    }
-
-    .enchantedDetailsPanel {
-      padding: 0.9rem;
-      font-size: 0.84rem;
-    }
-  }
-</style>
-
-<article class="projectCard enchantedQuillCard">
-  <div class="projectMedia">
-    <video
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-      aria-label="Animated emblem for The Enchanted Quill"
-    >
-      <source
-        src="enchanted-quill-loop.mp4"
-        type="video/mp4"
+        class="projectCard"
+        style="
+          background:#111318;
+          color:#f4f4f4;
+        "
       >
-      Your browser does not support embedded video.
-    </video>
-  </div>
 
-  <div class="projectBody">
-    <b>AI-Powered Literary Experience</b>
+        <div class="projectMedia">
 
-    <h3>The Enchanted Quill</h3>
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            style="
+              width:100%;
+              height:100%;
+              object-fit:cover;
+              display:block;
+              pointer-events:none;
+              background:#08090c;
+            "
+          >
 
-    <p>
-      An intelligent literary marketplace where Seshat, Mistress of the
-      House of Books, connects readers with the knowledge, personality,
-      and history contained within extraordinary books.
-    </p>
+            <source
+              src="lunina_video_seamless_loop.mp4"
+              type="video/mp4"
+            >
 
-    <div class="tagRow">
-      <span class="tag">AI Dialogue</span>
-      <span class="tag">Rare Books</span>
-      <span class="tag">Digital Trust</span>
-      <span class="tag">Figma</span>
-    </div>
+          </video>
 
-    <details class="enchantedProjectDetails">
-      <summary>Behind the Experience</summary>
-
-      <div class="enchantedDetailsPanel">
-        <div class="enchantedDetailItem">
-          <strong>Seshat</strong>
-          <span>
-            Connected through the OpenAI API, Seshat can respond as a
-            literary expert or speak from the perspective of a selected book.
-          </span>
         </div>
 
-        <div class="enchantedDetailItem">
-          <strong>Collector Protection</strong>
-          <span>
-            Escrow and insurance concepts help protect rare books, buyers,
-            sellers, and funds throughout high-value transactions.
-          </span>
+
+        <div
+          class="projectBody"
+          style="
+            background:#111318;
+            color:#f4f4f4;
+          "
+        >
+
+          <b>Interactive Systems Prototype</b>
+
+          <h3>Lumina LIVE</h3>
+
+
+          <p>
+            An interactive evolution of the Lumina Field Services concept,
+            combining systems engineering, database architecture, security,
+            service workflows, and human-centered interface design within a
+            working digital prototype.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">Systems Design</span>
+
+            <span class="tag">Database Architecture</span>
+
+            <span class="tag">UI/UX</span>
+
+            <span class="tag">Figma</span>
+
+          </div>
+
+
+          <div class="actionRow">
+
+            <a
+              class="actionBtn"
+              href="https://gum-poll-28480100.figma.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Launch Lumina LIVE
+            </a>
+
+          </div>
+
         </div>
 
-        <div class="enchantedDetailItem">
-          <strong>Technical Foundation</strong>
-          <span>
-            The experience combines a Figma-designed interface with Flask,
-            SQLite, RESTful services, and AI integration.
-          </span>
+      </article>
+
+
+
+      <!-- =========================================================
+           BACKWARD 7EVIN
+           ========================================================= -->
+
+      <article
+        class="projectCard"
+        style="
+          background:#111318;
+          color:#f4f4f4;
+        "
+      >
+
+        <div class="projectMedia">
+
+          <a
+            href="https://backward7evin.streamlit.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Launch Backward 7evin financial forecasting platform"
+            style="
+              display:block;
+              width:100%;
+              height:100%;
+            "
+          >
+
+            <img
+              src="https://assets.codepen.io/10990063/BACKWARD7_LOGO.png"
+              alt="Backward 7evin financial forecasting platform"
+              style="
+                width:100%;
+                height:100%;
+                object-fit:contain;
+                background:#08090c;
+              "
+            >
+
+          </a>
+
         </div>
+
+
+        <div
+          class="projectBody"
+          style="
+            background:#111318;
+            color:#f4f4f4;
+          "
+        >
+
+          <b>Machine Learning · Financial Analytics</b>
+
+          <h3>Backward 7evin</h3>
+
+
+          <p>
+            An interactive financial forecasting application that analyzes Bitcoin,
+            gold, and the U.S. Dollar Index using ARIMA, Holt-Winters, Random Forest,
+            and ensemble modeling to generate market forecasts and directional signals.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">Python</span>
+
+            <span class="tag">Streamlit</span>
+
+            <span class="tag">Machine Learning</span>
+
+            <span class="tag">Time-Series Forecasting</span>
+
+          </div>
+
+
+          <div class="actionRow">
+
+            <a
+              class="actionBtn"
+              href="https://backward7evin.streamlit.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Launch Backward 7evin
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           SESHAT ONE LIVE
+           ========================================================= -->
+
+      <article
+        class="projectCard"
+        style="
+          background:#111318;
+          color:#f4f4f4;
+        "
+      >
+
+        <div class="projectMedia">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            style="
+              width:100%;
+              height:100%;
+              object-fit:cover;
+              display:block;
+              pointer-events:none;
+              background:#08090c;
+            "
+          >
+
+            <source
+              src="seshat_one_seamless_loop.mp4"
+              type="video/mp4"
+            >
+
+          </video>
+
+        </div>
+
+
+        <div
+          class="projectBody"
+          style="
+            background:#111318;
+            color:#f4f4f4;
+          "
+        >
+
+          <b>AI Systems Prototype</b>
+
+          <h3>Seshat One</h3>
+
+
+          <p>
+            A human-centered AI experience exploring intelligent interaction,
+            thoughtful interface design, conversational systems, and the evolving
+            relationship between people and artificial intelligence.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">Artificial Intelligence</span>
+
+            <span class="tag">UI/UX</span>
+
+            <span class="tag">Human-Centered Design</span>
+
+            <span class="tag">Figma</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           ALGORITHMS & SYSTEMS
+           ========================================================= -->
+
+      <article class="projectCard darkProjectCard">
+
+        <div class="projectMedia">
+
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+            alt="Electronic circuit board representing algorithms and computer science work"
+            style="
+              object-fit:cover;
+            "
+          >
+
+        </div>
+
+
+        <div class="projectBody">
+
+          <b>Computer Science Portfolio</b>
+
+          <h3>Algorithms & Systems</h3>
+
+
+          <p>
+            Applied work in dynamic programming, image comparison, operating systems,
+            networking, databases, and technical problem-solving.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">Algorithms</span>
+
+            <span class="tag">Python</span>
+
+            <span class="tag">Systems</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           SESHAT STAGE PLAY
+           ========================================================= -->
+
+      <article
+        class="projectCard"
+        style="
+          background:#0b0d10;
+          color:#f4f4f4;
+          border:1px solid rgba(255,255,255,.16);
+          overflow:hidden;
+        "
+      >
+
+        <div
+          class="projectMedia"
+          style="
+            width:100%;
+            background:#000;
+            overflow:hidden;
+          "
+        >
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            style="
+              width:100%;
+              height:100%;
+              object-fit:contain;
+              display:block;
+              background:#000;
+            "
+          >
+
+            <source
+              src="seshat-theatre-loop.mp4"
+              type="video/mp4"
+            >
+
+          </video>
+
+        </div>
+
+
+        <div
+          class="projectBody"
+          style="
+            background:#0b0d10;
+            color:#f4f4f4;
+          "
+        >
+
+          <b style="color:#f4f4f4;">
+            Creative Technology
+          </b>
+
+
+          <h3 style="color:#ffffff;">
+            SESHAT · Stage Play
+          </h3>
+
+
+          <p style="color:rgba(255,255,255,.88);">
+            In my spare time, I am developing an original stage play exploring
+            artificial intelligence, companionship, aging, memory, consciousness,
+            mortality, and the emotional relationship between an older care-facility
+            resident and an AI companion.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">Playwriting</span>
+
+            <span class="tag">AI Ethics</span>
+
+            <span class="tag">Human Connection</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           AI SUDOKU SOLVER
+           ========================================================= -->
+
+      <article class="projectCard darkProjectCard">
+
+        <div class="projectMedia">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          >
+
+            <source
+              src="sudoku-ai-solver-loop-optimized.mp4"
+              type="video/mp4"
+            >
+
+          </video>
+
+        </div>
+
+
+        <div class="projectBody">
+
+          <b>Artificial Intelligence · Algorithms</b>
+
+          <h3>AI Sudoku Solver</h3>
+
+
+          <p>
+            Developed a C++ Sudoku solver using recursive backtracking and the
+            Minimum Remaining Values heuristic to efficiently navigate the puzzle's
+            search space and satisfy Sudoku constraints.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">C++</span>
+
+            <span class="tag">AI</span>
+
+            <span class="tag">Backtracking</span>
+
+            <span class="tag">Heuristics</span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           THE ENCHANTED QUILL
+           ========================================================= -->
+
+      <style>
+
+        /*
+          Scoped styles affecting only
+          The Enchanted Quill card.
+        */
+
+        .enchantedQuillCard {
+          min-width: 0;
+          color: #f4f4f4;
+          background: #000000 !important;
+        }
+
+        .enchantedQuillCard .projectMedia {
+          overflow: hidden;
+          background: #000000;
+        }
+
+        .enchantedQuillCard .projectMedia video {
+          display: block;
+          width: 100%;
+          height: 100%;
+          min-height: 280px;
+          object-fit: cover;
+          background: #000000;
+        }
+
+        .enchantedQuillCard .projectBody {
+          width: 100%;
+          min-width: 0;
+          overflow: visible;
+        }
+
+        .enchantedQuillCard .projectBody > b {
+          color: #d7b866;
+        }
+
+        .enchantedQuillCard .projectBody > p {
+          overflow-wrap: break-word;
+          word-break: normal;
+        }
+
+        .enchantedQuillCard .tagRow {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .enchantedQuillCard .tag {
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: normal;
+          text-align: center;
+        }
+
+        .enchantedProjectDetails {
+          width: 100%;
+          min-width: 0;
+          margin-top: 1rem;
+        }
+
+        .enchantedProjectDetails summary {
+          width: fit-content;
+          max-width: 100%;
+          color: #d7b866;
+          font-size: 0.82rem;
+          font-weight: 700;
+          cursor: pointer;
+          list-style: none;
+          overflow-wrap: break-word;
+          text-decoration: underline;
+          text-decoration-color: rgba(215, 184, 102, 0.45);
+          text-underline-offset: 5px;
+        }
+
+        .enchantedProjectDetails summary::-webkit-details-marker {
+          display: none;
+        }
+
+        .enchantedProjectDetails summary::after {
+          content: " +";
+        }
+
+        .enchantedProjectDetails[open] summary::after {
+          content: " −";
+        }
+
+        .enchantedProjectDetails summary:hover,
+        .enchantedProjectDetails summary:focus-visible {
+          color: #f1d98f;
+        }
+
+        .enchantedDetailsPanel {
+          display: grid;
+          gap: 0.9rem;
+          width: 100%;
+          min-width: 0;
+          margin-top: 0.9rem;
+          padding: 1rem;
+          overflow: visible;
+          color: #bbb7c0;
+          font-size: 0.86rem;
+          line-height: 1.55;
+          border-left: 2px solid #c9a956;
+          border-radius: 0 12px 12px 0;
+          background: rgba(255, 255, 255, 0.045);
+        }
+
+        .enchantedDetailItem {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 0.2rem;
+          width: 100%;
+          min-width: 0;
+        }
+
+        .enchantedDetailItem strong,
+        .enchantedDetailItem span {
+          display: block;
+          width: 100%;
+          min-width: 0;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: normal;
+        }
+
+        .enchantedDetailItem strong {
+          color: #f1e2b9;
+        }
+
+        .enchantedActionRow {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          margin-top: 1.25rem;
+          text-align: center;
+        }
+
+        .enchantedLaunchBtn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: fit-content;
+          max-width: 100%;
+          min-height: 46px;
+          padding: 0.7rem 1.25rem;
+          color: #090909 !important;
+          font-weight: 800;
+          line-height: 1.2;
+          text-align: center;
+          white-space: normal;
+          border-color: transparent;
+          background: linear-gradient(
+            135deg,
+            #efd58e,
+            #bd8e39
+          );
+        }
+
+        .enchantedLaunchBtn:hover,
+        .enchantedLaunchBtn:focus-visible {
+          color: #090909 !important;
+          filter: brightness(1.08);
+        }
+
+
+        @media (max-width: 680px) {
+
+          .enchantedQuillCard .projectMedia video {
+            min-height: auto;
+            aspect-ratio: 720 / 1060;
+          }
+
+          .enchantedDetailsPanel {
+            padding: 0.9rem;
+            font-size: 0.84rem;
+          }
+
+        }
+
+      </style>
+
+
+      <article class="projectCard enchantedQuillCard">
+
+        <div class="projectMedia">
+
+          <video
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Animated emblem for The Enchanted Quill"
+          >
+
+            <source
+              src="enchanted-quill-loop.mp4"
+              type="video/mp4"
+            >
+
+            Your browser does not support embedded video.
+
+          </video>
+
+        </div>
+
+
+        <div class="projectBody">
+
+          <b>AI-Powered Literary Experience</b>
+
+          <h3>The Enchanted Quill</h3>
+
+
+          <p>
+            An intelligent literary marketplace where Seshat, Mistress of the
+            House of Books, connects readers with the knowledge, personality,
+            and history contained within extraordinary books.
+          </p>
+
+
+          <div class="tagRow">
+
+            <span class="tag">AI Dialogue</span>
+
+            <span class="tag">Rare Books</span>
+
+            <span class="tag">Digital Trust</span>
+
+            <span class="tag">Figma</span>
+
+          </div>
+
+
+          <details class="enchantedProjectDetails">
+
+            <summary>
+              Behind the Experience
+            </summary>
+
+
+            <div class="enchantedDetailsPanel">
+
+
+              <div class="enchantedDetailItem">
+
+                <strong>Seshat</strong>
+
+                <span>
+                  Connected through the OpenAI API, Seshat can respond as a
+                  literary expert or speak from the perspective of a selected book.
+                </span>
+
+              </div>
+
+
+              <div class="enchantedDetailItem">
+
+                <strong>Collector Protection</strong>
+
+                <span>
+                  Escrow and insurance concepts help protect rare books, buyers,
+                  sellers, and funds throughout high-value transactions.
+                </span>
+
+              </div>
+
+
+              <div class="enchantedDetailItem">
+
+                <strong>Technical Foundation</strong>
+
+                <span>
+                  The experience combines a Figma-designed interface with Flask,
+                  SQLite, RESTful services, and AI integration.
+                </span>
+
+              </div>
+
+
+            </div>
+
+          </details>
+
+
+          <div class="actionRow enchantedActionRow">
+
+            <a
+              class="actionBtn enchantedLaunchBtn"
+              href="https://secure-trunk-42112473.figma.site/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open The Enchanted Quill interactive experience"
+            >
+              Enter the House of Books
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- =========================================================
+           PRINCIPLES
+           ========================================================= -->
+
+      <div class="introCard personalPrinciples darkPrinciples">
+
+        <b>
+          Principles I try to embody
+        </b>
+
+
+        <div class="principleQuote">
+
+          <blockquote>
+            “Inspect what you expect.”
+          </blockquote>
+
+          <p class="quoteCredit">
+            Leadership maxim
+          </p>
+
+        </div>
+
+
+        <div class="principleQuote">
+
+          <blockquote>
+            “Whatever your life’s work is, do it well.”
+          </blockquote>
+
+          <p class="quoteCredit">
+            Dr. Martin Luther King Jr.
+          </p>
+
+        </div>
+
       </div>
-    </details>
 
-    <div class="actionRow enchantedActionRow">
-      <a
-        class="actionBtn enchantedLaunchBtn"
-        href="https://secure-trunk-42112473.figma.site/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Open The Enchanted Quill interactive experience"
-      >
-        Enter the House of Books
-      </a>
+
     </div>
-  </div>
-</article>
-        
-<div class="introCard personalPrinciples">
-  <b>Principles I try to embody</b>
 
-  <div class="principleQuote">
-    <blockquote>
-      “Inspect what you expect.”
-    </blockquote>
-    <p class="quoteCredit">Leadership maxim</p>
   </div>
 
-  <div class="principleQuote">
-    <blockquote>
-      “Whatever your life’s work is, do it well.”
-    </blockquote>
-    <p class="quoteCredit">Dr. Martin Luther King Jr.</p>
-  </div>
-</div>
-```
-
-    </section>
+</section>
 
     <!-- CONTACT -->
     <section class="page" id="contact">
