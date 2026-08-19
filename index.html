@@ -1633,84 +1633,295 @@ body{
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section class="page" id="experience">
-      <div class="pageScroll">
-        <h1>Experience</h1>
-        <h2>leadership / entrepreneurship / education</h2>
+   <!-- =========================================================
+     EXPERIENCE
+     ========================================================= -->
 
-        <div class="personaFeature">
-          <video autoplay muted loop playsinline style="width:100%;height:170px;object-fit:cover;border:1px solid var(--lineSoft);">
-            <source src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4" type="video/mp4">
-          </video>
-          <div>
-            <b>Founder & Operator</b>
-            <h3>Klean Koalas</h3>
-            <p>Built a customer-focused residential bin-cleaning and pressure-washing brand, including service design, pricing, field operations, marketing, customer acquisition, reviews, booking workflows, and the foundation for a scalable training system.</p>
-          </div>
-        </div>
+<section class="page" id="experience">
 
-        <div class="personaFeature" style="display:block;">
-  <img
-    src="TEAM_CURRIE.png"
-    alt="Automotive leadership team celebrating dealership performance awards"
-    style="width:100%;height:auto;display:block;object-fit:contain;border:1px solid var(--lineSoft);margin-bottom:14px;"
-  >
+  <!-- =========================================================
+       EXPERIENCE VIDEO HEIGHT FIX
+       Scoped ONLY to the Experience section
+       ========================================================= -->
 
-  <div>
-    <b>Automotive Leadership · 20+ Years</b>
-    <h3>Sales, Management & Customer Experience</h3>
-    <p>
-      Led and developed high-performing automotive teams, coached sales
-      professionals, managed complex customer relationships, and built a
-      culture of accountability, recognition, and consistent performance.
-    </p>
-  </div>
-</div>
-          <div class="timelineItem">
-            <b>Colorado Technical University</b>
-            <h3>Master of Science in Computer Science</h3>
-            <p>Graduate work in algorithms, operating systems, networking, cybersecurity, systems engineering, and database systems. Expected completion: April 2027.</p>
-          </div>
+  <style>
 
-        <div class="personaFeature">
-  <video
-    autoplay
-    muted
-    loop
-    playsinline
-    controls
-    style="width:100%;height:170px;object-fit:cover;border:1px solid var(--lineSoft);cursor:pointer;"
-  >
-    <source
-      src="https://assets.codepen.io/10990063/graduation-loop-codepen-audio.mp4"
-      type="video/mp4"
+    /*
+      Give Experience videos a reliable explicit height.
+
+      This prevents mobile browsers from collapsing the
+      video into a shallow strip.
+    */
+
+    #experience .personaFeature video {
+      display: block;
+      width: 100%;
+      height: 260px;
+      min-height: 260px;
+      object-fit: cover;
+      background: #08090c;
+      border: 1px solid var(--lineSoft);
+    }
+
+
+    /*
+      Mobile:
+      Give the videos slightly more vertical presence
+      so they retain the cinematic/project-card feel.
+    */
+
+    @media (max-width: 680px) {
+
+      #experience .personaFeature video {
+        width: 100%;
+        height: 280px;
+        min-height: 280px;
+        object-fit: cover;
+      }
+
+    }
+
+  </style>
+
+
+  <div class="pageScroll">
+
+    <h1>Experience</h1>
+
+    <h2>leadership / entrepreneurship / education</h2>
+
+
+
+    <!-- =========================================================
+         KLEAN KOALAS
+         ========================================================= -->
+
+    <div class="personaFeature">
+
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+
+        <source
+          src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+
+      <div>
+
+        <b>Founder & Operator</b>
+
+        <h3>Klean Koalas</h3>
+
+        <p>
+          Built a customer-focused residential bin-cleaning and
+          pressure-washing brand, including service design, pricing,
+          field operations, marketing, customer acquisition, reviews,
+          booking workflows, and the foundation for a scalable
+          training system.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         AUTOMOTIVE LEADERSHIP
+         ========================================================= -->
+
+    <div
+      class="personaFeature"
+      style="display:block;"
     >
-  </video>
 
-<div>
-  <b>Colorado Technical University · 2025</b>
-  <h3>Bachelor of Science in Computer Science</h3>
-  <p>Completed a rigorous computer science degree with a 3.73 GPA while developing software, algorithms, systems, and technical documentation across multiple applied projects.</p>
-</div>
-</div>
+      <img
+        src="TEAM_CURRIE.png"
+        alt="Automotive leadership team celebrating dealership performance awards"
+        style="
+          width:100%;
+          height:auto;
+          display:block;
+          object-fit:contain;
+          border:1px solid var(--lineSoft);
+          margin-bottom:14px;
+        "
+      >
 
-<div class="timelineItem">
-  <b>Education & Service</b>
-  <h3>GED Math and Reading Support</h3>
-  <p>Supported learners in developing foundational math and reading skills, strengthening my ability to explain difficult concepts patiently and clearly.</p>
-</div>
 
-<div class="personaMeters">
-  <div class="meterItem" style="--level:96%;"><b>Leadership</b><div><span></span></div></div>
-  <div class="meterItem" style="--level:92%;"><b>Communication</b><div><span></span></div></div>
-  <div class="meterItem" style="--level:90%;"><b>Systems Thinking</b><div><span></span></div></div>
-  <div class="meterItem" style="--level:94%;"><b>Customer Experience</b><div><span></span></div></div>
-  <div class="meterItem" style="--level:86%;"><b>Software Development</b><div><span></span></div></div>
-  <div class="meterItem" style="--level:89%;"><b>Entrepreneurship</b><div><span></span></div></div>
-</div>
+      <div>
 
-</div>
+        <b>Automotive Leadership · 20+ Years</b>
+
+        <h3>Sales, Management & Customer Experience</h3>
+
+        <p>
+          Led and developed high-performing automotive teams,
+          coached sales professionals, managed complex customer
+          relationships, and built a culture of accountability,
+          recognition, and consistent performance.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MASTER OF SCIENCE
+         ========================================================= -->
+
+    <div class="timelineItem">
+
+      <b>Colorado Technical University</b>
+
+      <h3>Master of Science in Computer Science</h3>
+
+      <p>
+        Graduate work in algorithms, operating systems, networking,
+        cybersecurity, systems engineering, and database systems.
+        Expected completion: April 2027.
+      </p>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         BACHELOR OF SCIENCE / GRADUATION VIDEO
+         ========================================================= -->
+
+    <div class="personaFeature">
+
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        controls
+        style="cursor:pointer;"
+      >
+
+        <source
+          src="https://assets.codepen.io/10990063/graduation-loop-codepen-audio.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+
+      <div>
+
+        <b>Colorado Technical University · 2025</b>
+
+        <h3>Bachelor of Science in Computer Science</h3>
+
+        <p>
+          Completed a rigorous computer science degree with a
+          3.73 GPA while developing software, algorithms, systems,
+          and technical documentation across multiple applied projects.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         EDUCATION & SERVICE
+         ========================================================= -->
+
+    <div class="timelineItem">
+
+      <b>Education & Service</b>
+
+      <h3>GED Math and Reading Support</h3>
+
+      <p>
+        Supported learners in developing foundational math and
+        reading skills, strengthening my ability to explain
+        difficult concepts patiently and clearly.
+      </p>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         EXPERIENCE METERS
+         ========================================================= -->
+
+    <div class="personaMeters">
+
+      <div
+        class="meterItem"
+        style="--level:96%;"
+      >
+        <b>Leadership</b>
+        <div><span></span></div>
+      </div>
+
+
+      <div
+        class="meterItem"
+        style="--level:92%;"
+      >
+        <b>Communication</b>
+        <div><span></span></div>
+      </div>
+
+
+      <div
+        class="meterItem"
+        style="--level:90%;"
+      >
+        <b>Systems Thinking</b>
+        <div><span></span></div>
+      </div>
+
+
+      <div
+        class="meterItem"
+        style="--level:94%;"
+      >
+        <b>Customer Experience</b>
+        <div><span></span></div>
+      </div>
+
+
+      <div
+        class="meterItem"
+        style="--level:86%;"
+      >
+        <b>Software Development</b>
+        <div><span></span></div>
+      </div>
+
+
+      <div
+        class="meterItem"
+        style="--level:89%;"
+      >
+        <b>Entrepreneurship</b>
+        <div><span></span></div>
+      </div>
+
+    </div>
+
+
+  </div>
+
 </section>
 <!-- PROJECTS -->
 <section class="page" id="projects">
