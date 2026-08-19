@@ -1715,21 +1715,7 @@ body{
 <!-- PROJECTS -->
 <section class="page" id="projects">
 
-  <!-- =========================================================
-       PROJECT CARD VISUAL CONSISTENCY + MOBILE VIDEO FIX
-       ========================================================= -->
   <style>
-
-    /*
-      Keeps normal project media at a consistent height.
-
-      This is especially important for videos that use height:100%.
-      On mobile, their parent now has an explicit height, preventing
-      the video from collapsing vertically.
-
-      The Enchanted Quill is intentionally excluded because it has
-      its own portrait-oriented responsive media rules.
-    */
 
     #projects .projectCard:not(.enchantedQuillCard) .projectMedia {
       width: 100%;
@@ -1751,10 +1737,6 @@ body{
       background: #08090c;
     }
 
-    /*
-      Standard dark project-card treatment.
-      Matches Lumina LIVE.
-    */
 
     #projects .darkProjectCard {
       background: #111318;
@@ -1775,10 +1757,6 @@ body{
       color: rgba(244, 244, 244, 0.88);
     }
 
-    /*
-      Principles card gets the same dark visual language
-      as Lumina LIVE.
-    */
 
     #projects .personalPrinciples.darkPrinciples {
       background: #111318;
@@ -1797,16 +1775,6 @@ body{
       color: rgba(244, 244, 244, 0.68);
     }
 
-
-    /*
-      MOBILE
-
-      Give video/image cards additional vertical presence instead
-      of allowing them to become shallow landscape strips.
-
-      280px gives them an app-like visual presence while preserving
-      the existing card/grid architecture.
-    */
 
     @media (max-width: 680px) {
 
@@ -2076,82 +2044,95 @@ body{
 
 
 
-      <!-- =========================================================
-           SESHAT ONE LIVE
-           ========================================================= -->
+     <!-- =========================================================
+     SESHAT ONE LIVE
+     ========================================================= -->
 
-      <article
-        class="projectCard"
-        style="
-          background:#111318;
-          color:#f4f4f4;
-        "
+<article
+  class="projectCard"
+  style="
+    background:#111318;
+    color:#f4f4f4;
+  "
+>
+
+  <div class="projectMedia">
+
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      style="
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+        pointer-events:none;
+        background:#08090c;
+      "
+    >
+
+      <source
+        src="seshat_one_seamless_loop.mp4"
+        type="video/mp4"
       >
 
-        <div class="projectMedia">
+    </video>
 
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            style="
-              width:100%;
-              height:100%;
-              object-fit:cover;
-              display:block;
-              pointer-events:none;
-              background:#08090c;
-            "
-          >
-
-            <source
-              src="seshat_one_seamless_loop.mp4"
-              type="video/mp4"
-            >
-
-          </video>
-
-        </div>
+  </div>
 
 
-        <div
-          class="projectBody"
-          style="
-            background:#111318;
-            color:#f4f4f4;
-          "
-        >
+  <div
+    class="projectBody"
+    style="
+      background:#111318;
+      color:#f4f4f4;
+    "
+  >
 
-          <b>AI Systems Prototype</b>
+    <b>AI Systems Prototype</b>
 
-          <h3>Seshat One</h3>
-
-
-          <p>
-            A human-centered AI experience exploring intelligent interaction,
-            thoughtful interface design, conversational systems, and the evolving
-            relationship between people and artificial intelligence.
-          </p>
+    <h3>Seshat One</h3>
 
 
-          <div class="tagRow">
+    <p>
+      A human-centered AI experience exploring intelligent interaction,
+      thoughtful interface design, conversational systems, and the evolving
+      relationship between people and artificial intelligence.
+    </p>
 
-            <span class="tag">Artificial Intelligence</span>
 
-            <span class="tag">UI/UX</span>
+    <div class="tagRow">
 
-            <span class="tag">Human-Centered Design</span>
+      <span class="tag">Artificial Intelligence</span>
 
-            <span class="tag">Figma</span>
+      <span class="tag">UI/UX</span>
 
-          </div>
+      <span class="tag">Human-Centered Design</span>
 
-        </div>
+      <span class="tag">Figma</span>
 
-      </article>
+    </div>
 
+
+    <div class="actionRow">
+
+      <a
+        class="actionBtn"
+        href="https://seshat-one.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Launch Seshat One
+      </a>
+
+    </div>
+
+  </div>
+
+</article>
 
 
       <!-- =========================================================
