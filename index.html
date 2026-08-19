@@ -1639,19 +1639,8 @@ body{
 
 <section class="page" id="experience">
 
-  <!-- =========================================================
-       EXPERIENCE VIDEO HEIGHT FIX
-       Scoped ONLY to the Experience section
-       ========================================================= -->
 
   <style>
-
-    /*
-      Give Experience videos a reliable explicit height.
-
-      This prevents mobile browsers from collapsing the
-      video into a shallow strip.
-    */
 
     #experience .personaFeature video {
       display: block;
@@ -1662,13 +1651,6 @@ body{
       background: #08090c;
       border: 1px solid var(--lineSoft);
     }
-
-
-    /*
-      Mobile:
-      Give the videos slightly more vertical presence
-      so they retain the cinematic/project-card feel.
-    */
 
     @media (max-width: 680px) {
 
@@ -1800,42 +1782,36 @@ body{
          BACHELOR OF SCIENCE / GRADUATION VIDEO
          ========================================================= -->
 
-    <div class="personaFeature">
+    <div class="personaFeature graduationFeature">
 
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        controls
-        style="cursor:pointer;"
-      >
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    controls
+    style="cursor:pointer;"
+  >
+    <source
+      src="https://assets.codepen.io/10990063/graduation-loop-codepen-audio.mp4"
+      type="video/mp4"
+    >
+  </video>
 
-        <source
-          src="https://assets.codepen.io/10990063/graduation-loop-codepen-audio.mp4"
-          type="video/mp4"
-        >
+  <div>
+    <b>Colorado Technical University · 2025</b>
 
-      </video>
+    <h3>Bachelor of Science in Computer Science</h3>
 
+    <p>
+      Completed a rigorous computer science degree with a
+      3.73 GPA while developing software, algorithms, systems,
+      and technical documentation across multiple applied projects.
+    </p>
+  </div>
 
-      <div>
-
-        <b>Colorado Technical University · 2025</b>
-
-        <h3>Bachelor of Science in Computer Science</h3>
-
-        <p>
-          Completed a rigorous computer science degree with a
-          3.73 GPA while developing software, algorithms, systems,
-          and technical documentation across multiple applied projects.
-        </p>
-
-      </div>
-
-    </div>
-
+</div>
 
 
     <!-- =========================================================
