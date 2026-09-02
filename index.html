@@ -11,7 +11,6 @@
     
   
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/brittany-signature" rel="stylesheet">
 
 <style>
 
@@ -278,6 +277,7 @@ body{
   right:92px;
   top:32px;
   bottom:24px;
+  min-width:0;
   z-index:15;
 }
 
@@ -470,6 +470,7 @@ body{
   display:none;
   position:absolute;
   inset:98px 0 0 0;
+  min-width:0;
   animation:fade .55s ease;
 }
 
@@ -493,7 +494,8 @@ body{
 
 .pageScroll{
   height:565px;
-  overflow:auto;
+  overflow-y:auto;
+  overflow-x:hidden;
   padding-right:22px;
   scrollbar-width:thin;
   scrollbar-color:var(--primary) var(--white25);
@@ -516,8 +518,10 @@ body{
 
 .dossier{
   display:grid;
-  grid-template-columns:1.08fr 1fr;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:18px;
+  width:100%;
+  min-width:0;
   margin:0 0 18px;
   padding:17px 0 18px;
   border-top:1px solid var(--line);
@@ -526,6 +530,7 @@ body{
 
 .dossierName{
   position:relative;
+  min-width:0;
   padding:8px 0 0;
   display:flex;
   flex-direction:column;
@@ -541,40 +546,30 @@ body{
   color:var(--primary);
 }
 
-.dossierName b{margin-bottom:50px}
+.dossierName b{margin-bottom:16px}
 
-.dossierName span{
-  position:relative;
-  z-index:2;
+.dossierFullName{
   display:block;
-  font-family:'Brittany Signature',cursive;
-  font-size:62px;
-  line-height:.72;
-  font-weight:400;
-  color:color-mix(in srgb,var(--ink) 88%,var(--primary));
-  text-shadow:
-    0 2px 0 var(--cream),
-    0 10px 22px var(--primaryLight);
-  transform:rotate(-3deg);
-  transition:.45s ease;
-}
-
-.dossierName span:hover{
-  transform:rotate(-4deg) translateY(-2px) scale(1.01);
-  color:var(--primary);
+  max-width:100%;
+  font:700 28px/1.05 var(--softserif);
+  color:var(--ink);
+  letter-spacing:.5px;
+  overflow-wrap:break-word;
 }
 
 .dossierMeta{
   display:grid;
   gap:6px;
+  width:100%;
+  min-width:0;
 }
 
 .dossierMeta p{
   margin:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:flex-end;
-  gap:12px;
+  display:grid;
+  grid-template-columns:90px minmax(0,1fr);
+  align-items:start;
+  gap:10px;
   border-bottom:1px solid var(--line);
   padding-bottom:5px;
 }
@@ -582,9 +577,12 @@ body{
 .dossierMeta p:hover{border-color:var(--primaryLine)}
 
 .dossierMeta span{
-  font:600 13px var(--softserif);
+  min-width:0;
+  font:600 13px/1.25 var(--softserif);
   color:var(--ink);
   text-align:right;
+  white-space:normal;
+  overflow-wrap:break-word;
 }
 
 .introCard{
@@ -1473,7 +1471,8 @@ body{
   .page.active{display:block}
   .pageScroll{
     height:auto;
-    overflow:visible;
+    overflow-y:visible;
+    overflow-x:hidden;
     padding-right:0;
   }
   .nav{
@@ -1530,8 +1529,8 @@ body{
 @media (max-width: 560px){
   .content{padding:18px 16px 100px}
   .page h1{font-size:30px;letter-spacing:2px}
-  .dossierName span{font-size:46px}
-  .dossierMeta p{align-items:flex-start}
+  .dossierFullName{font-size:24px}
+  .dossierMeta p{grid-template-columns:82px minmax(0,1fr)}
   .projectGrid{grid-template-columns:1fr}
   .projectMedia{height:190px}
 }
@@ -1598,7 +1597,7 @@ body{
         <div class="dossier">
           <div class="dossierName">
             <b>Full Name</b>
-            <span>Joseph Bolkovatz</span>
+            <div class="dossierFullName">Joseph Bolkovatz</div>
           </div>
 
           <div class="dossierMeta">
