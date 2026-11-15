@@ -1,0 +1,29 @@
+/* A slate canvas separates the graphite panels without changing the layout. */
+:root { --bg: #263b47; }
+html { background: #263b47; }
+body {
+  min-height: 100vh;
+  background-color: #263b47;
+  background-image:
+    radial-gradient(ellipse 1000px 680px at 85% 0%, #52788d24, transparent 75%),
+    linear-gradient(145deg, #293e4a 0%, #263b47 48%, #223640 100%);
+}
+
+.rail { background: #101c23; border-color: #425a68; }
+.topbar { background: #1b2a34; border-bottom-color: #49616f; }
+.page-heading p { color: #b7c7ce; }
+.section-title .eyebrow, .section-title .tiny-label { color: #bdd0d6; }
+
+.map-card, .mission-card, .dispatch-panel, .fleet-card,
+.content-card, .stats, .drone-showcase {
+  border-color: #49616e;
+  box-shadow: 0 8px 24px #07101724, inset 0 1px 0 #ffffff05;
+}
+
+.workflow-card, .concept-route, .demo-card { border-color: #506b78; }
+.workflow-card { box-shadow: 0 12px 30px #07101726; }
+.site-header, .section-heading, .demo-section,
+.footer, .site-footer { border-color: #536a77; }
+.footer, .site-footer { color: #b7c7ce; }
+.footer .text-button { color: #c0d1d9; }
+.footer-divider { color: #a8bcc7; }
