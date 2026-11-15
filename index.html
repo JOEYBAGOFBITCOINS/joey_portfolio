@@ -518,8 +518,8 @@ body{
 
 .dossier{
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:18px;
+  grid-template-columns:minmax(0,1fr);
+  gap:16px;
   width:100%;
   min-width:0;
   margin:0 0 18px;
@@ -531,10 +531,10 @@ body{
 .dossierName{
   position:relative;
   min-width:0;
-  padding:8px 0 0;
+  padding:0;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-start;
 }
 
 .dossierName b,
@@ -546,12 +546,12 @@ body{
   color:var(--primary);
 }
 
-.dossierName b{margin-bottom:16px}
+.dossierName b{margin-bottom:8px}
 
 .dossierFullName{
   display:block;
   max-width:100%;
-  font:700 28px/1.05 var(--softserif);
+  font:700 28px/1.15 var(--softserif);
   color:var(--ink);
   letter-spacing:.5px;
   overflow-wrap:break-word;
@@ -559,7 +559,7 @@ body{
 
 .dossierMeta{
   display:grid;
-  gap:6px;
+  gap:9px;
   width:100%;
   min-width:0;
 }
@@ -567,22 +567,22 @@ body{
 .dossierMeta p{
   margin:0;
   display:grid;
-  grid-template-columns:90px minmax(0,1fr);
+  grid-template-columns:104px minmax(0,1fr);
   align-items:start;
   gap:10px;
   border-bottom:1px solid var(--line);
-  padding-bottom:5px;
+  padding-bottom:9px;
 }
 
 .dossierMeta p:hover{border-color:var(--primaryLine)}
 
 .dossierMeta span{
   min-width:0;
-  font:600 13px/1.25 var(--softserif);
+  font:600 15px/1.45 var(--softserif);
   color:var(--ink);
-  text-align:right;
+  text-align:left;
   white-space:normal;
-  overflow-wrap:break-word;
+  overflow-wrap:anywhere;
 }
 
 .introCard{
