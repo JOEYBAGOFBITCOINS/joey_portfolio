@@ -1562,6 +1562,13 @@ body{
 #projects .skyrxCard .projectMedia:after{background:linear-gradient(to top,rgba(10,15,17,.72),transparent 40%)}
 .skyrxMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:#f4f4f4;pointer-events:none}
 #projects .skyrxCard .projectMedia:focus-visible{outline:3px solid #dcd9ff;outline-offset:-3px}
+.imgBox .projectArtwork[data-project="swimsignal"]{background:#13252a}
+.imgBox .projectArtwork[data-project="swimsignal"] video{filter:none;transform:none}
+#projects .swimsignalCard .projectMedia{display:block;background:#13252a}
+#projects .swimsignalCard .projectMedia video{filter:none;transform:none}
+#projects .swimsignalCard .projectMedia:after{background:linear-gradient(to top,rgba(10,15,17,.72),transparent 40%)}
+#projects .swimsignalCard .projectMedia:focus-visible{outline:3px solid #dcd9ff;outline-offset:-3px}
+.swimsignalMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:#f4f4f4;pointer-events:none}
 .projectArtworkFallback{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;color:#f4f4f4;background:radial-gradient(ellipse at center,#252937,#08090c 75%)}
 .imgSide.is-project-view .sideCaption{right:28px}
 .imgSide.is-project-view .sideCaption b{font-size:36px;line-height:1.05;overflow-wrap:break-word;color:#f4f4f4}
@@ -2088,6 +2095,30 @@ body{
           <div class="actionRow">
             <a class="actionBtn" href="skyrx.html">Explore the build</a>
             <a class="actionBtn" href="skyrx/" target="_blank" rel="noopener noreferrer" aria-label="Open the SkyRx simulation in a new tab">Try the simulation ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article data-project="swimsignal" class="projectCard darkProjectCard swimsignalCard">
+        <a class="projectMedia" href="https://joeybagofbitcoins.github.io/swimsignal/" target="_blank" rel="noopener noreferrer" aria-label="Explore SwimSignal in a new tab">
+          <video muted loop playsinline preload="none" poster="assets/swimsignal-race-start-poster.jpg" width="1280" height="720" aria-hidden="true">
+            <source src="assets/swimsignal-race-start-loop.mp4" type="video/mp4">
+          </video>
+          <span class="swimsignalMediaLabel">Open-water racing / illustrative footage</span>
+        </a>
+        <div class="projectBody">
+          <b>Open-water safety research prototype</b>
+          <h3>SwimSignal</h3>
+          <p>Exploring how wearable signals, drone coverage, and human rescue teams might work together to watch over swimmers. An interactive Lake Woodlands simulation with satellite maps, synthetic race data, and modeled drone handoffs.</p>
+          <div class="tagRow" aria-label="Selected technologies">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Leaflet</span>
+            <span class="tag">Simulation</span>
+            <span class="tag">Geospatial data</span>
+          </div>
+          <div class="actionRow">
+            <a class="actionBtn" href="https://joeybagofbitcoins.github.io/swimsignal/" target="_blank" rel="noopener noreferrer">Explore SwimSignal ↗</a>
+            <a class="actionBtn" href="https://github.com/JOEYBAGOFBITCOINS/swimsignal" target="_blank" rel="noopener noreferrer">View source ↗</a>
           </div>
         </div>
       </article>
