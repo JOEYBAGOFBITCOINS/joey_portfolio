@@ -1554,7 +1554,8 @@ body{
 #projects .motionPreviewCard .projectMedia video{filter:none;transform:none}
 #projects .motionPreviewCard .projectMedia:after{display:none}
 .imgBox .projectArtwork[data-project="hotdog-or-not"] video,
-.imgBox .projectArtwork[data-project="algorithms-systems"] video{filter:none}
+.imgBox .projectArtwork[data-project="algorithms-systems"] video,
+.imgBox .projectArtwork[data-project="backward-7evin"] video{filter:none}
 #projects .actionBtn{min-height:42px;font-size:9px;letter-spacing:1px}
 #projects .projectCard.is-viewed{border-color:rgba(181,178,239,.65)}
 #projects .projectCard .actionBtn:focus-visible{outline:3px solid #dcd9ff;outline-offset:3px}
@@ -2277,7 +2278,7 @@ body{
      BACKWARD 7EVIN
      ========================================================= -->
 
-<article data-project="backward-7evin"   class="projectCard"
+<article data-project="backward-7evin"   class="projectCard motionPreviewCard"
   style="
     background:#111318;
     color:#f4f4f4;
@@ -2298,26 +2299,8 @@ body{
       "
     >
 
-      <video
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        style="
-          width:100%;
-          height:100%;
-          object-fit:cover;
-          display:block;
-          pointer-events:none;
-          background:#08090c;
-        "
-      >
-
-        <source
-          src="7_video.mp4"
-          type="video/mp4"
-        >
-
+      <video muted loop playsinline preload="none" poster="assets/backward-7evin-candles-poster.jpg" width="1280" height="800" aria-hidden="true">
+        <source src="assets/backward-7evin-candles-loop.mp4" type="video/mp4">
       </video>
 
     </a>
