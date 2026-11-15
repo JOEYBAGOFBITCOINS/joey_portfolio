@@ -1555,6 +1555,13 @@ body{
 .projectArtwork.is-current{opacity:1}
 .imgBox .projectArtwork video,.imgBox .projectArtwork img{display:block;width:100%;height:100%;object-fit:contain;filter:brightness(.86);transform:none}
 .imgBox .projectArtwork[data-project="tilly-tunes"] video{object-fit:cover;object-position:50% 30%}
+.imgBox .projectArtwork[data-project="skyrx"]{background:#101619}
+.imgBox .projectArtwork[data-project="skyrx"] video{object-fit:contain;filter:none;transform:none}
+#projects .skyrxCard .projectMedia{display:block;background:#101619}
+#projects .skyrxCard .projectMedia video{filter:none;transform:none}
+#projects .skyrxCard .projectMedia:after{background:linear-gradient(to top,rgba(10,15,17,.72),transparent 40%)}
+.skyrxMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:#f4f4f4;pointer-events:none}
+#projects .skyrxCard .projectMedia:focus-visible{outline:3px solid #dcd9ff;outline-offset:-3px}
 .projectArtworkFallback{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;color:#f4f4f4;background:radial-gradient(ellipse at center,#252937,#08090c 75%)}
 .imgSide.is-project-view .sideCaption{right:28px}
 .imgSide.is-project-view .sideCaption b{font-size:36px;line-height:1.05;overflow-wrap:break-word;color:#f4f4f4}
@@ -2059,6 +2066,30 @@ body{
         </div>
       </article>
 
+
+
+      <article data-project="skyrx" class="projectCard darkProjectCard skyrxCard">
+        <a class="projectMedia" href="skyrx.html" aria-label="Explore the SkyRx project">
+          <video muted loop playsinline preload="none" poster="assets/skyrx-drone-poster.jpg" width="960" height="600" aria-hidden="true">
+            <source src="assets/skyrx-drone-loop.mp4" type="video/mp4">
+          </video>
+          <span class="skyrxMediaLabel">SkyRx concept aircraft</span>
+        </a>
+        <div class="projectBody">
+          <b>Emergency response simulation</b>
+          <h3>SkyRx</h3>
+          <p>A medical-drone dispatch simulator set on a real Phoenix map. Explore operator approval, modeled delivery routes, telemetry failures, and recovery through an inspectable mission timeline.</p>
+          <div class="tagRow" aria-label="Selected technologies">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Leaflet</span>
+            <span class="tag">State machines</span>
+            <span class="tag">Geospatial data</span>
+          </div>
+          <div class="actionRow">
+            <a class="actionBtn" href="skyrx.html">Explore the build</a>
+          </div>
+        </div>
+      </article>
 
       <!-- =========================================================
            KLEAN KOALAS
@@ -3144,4 +3175,5 @@ mahriAudio.addEventListener('ended', function(){
   </body>
   
 </html>
+
 
