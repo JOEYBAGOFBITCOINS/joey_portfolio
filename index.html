@@ -1271,12 +1271,15 @@ body{
 
 .projectGrid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:13px;
+  grid-template-columns:minmax(0,1fr);
+  gap:20px;
   margin-bottom:18px;
 }
 
 .projectCard{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
   border:1px solid var(--line);
   background:
     linear-gradient(135deg,var(--white34),var(--white12)),
@@ -1293,13 +1296,21 @@ body{
 
 .projectMedia{
   position:relative;
-  height:155px;
+  width:100%;
+  height:auto;
+  min-height:0;
+  aspect-ratio:16 / 10;
   overflow:hidden;
   background:#080808;
 }
 
+.projectMedia > a{display:block;position:absolute;inset:0}
+
 .projectMedia video,
 .projectMedia img{
+  position:absolute;
+  inset:0;
+  display:block;
   width:100%;
   height:100%;
   object-fit:cover;
@@ -1322,27 +1333,27 @@ body{
 }
 
 .projectBody{
-  padding:13px 14px 15px;
+  padding:19px 20px 21px;
 }
 
 .projectBody b{
   display:block;
   margin-bottom:5px;
-  font:900 8px var(--sans);
+  font:900 9px/1.6 var(--sans);
   letter-spacing:2.3px;
   text-transform:uppercase;
   color:var(--primary);
 }
 
 .projectBody h3{
-  margin:0 0 7px;
-  font:italic 23px/.98 var(--softserif);
+  margin:7px 0 10px;
+  font:italic 32px/1.1 var(--softserif);
   color:var(--ink);
 }
 
 .projectBody p{
   margin:0;
-  font:400 12.5px/1.55 var(--sans);
+  font:400 13px/1.75 var(--sans);
   color:color-mix(in srgb,var(--ink) 78%,var(--transparent));
 }
 
@@ -1532,10 +1543,27 @@ body{
   .dossierFullName{font-size:24px}
   .dossierMeta p{grid-template-columns:82px minmax(0,1fr)}
   .projectGrid{grid-template-columns:1fr}
-  .projectMedia{height:190px}
 }
 
-/* Tilly Tunes: featured live product, within the existing portfolio grid. */
+/* One shared scale for the project gallery. Text can grow without clipping. */
+#projects .tag{font-size:9px;letter-spacing:.5px;color:#c5c5cc}
+#projects .projectMedia video{object-fit:contain!important}
+#projects .actionBtn{min-height:42px;font-size:9px;letter-spacing:1px}
+#projects .projectCard.is-viewed{border-color:rgba(181,178,239,.65)}
+#projects .projectCard .actionBtn:focus-visible{outline:3px solid #dcd9ff;outline-offset:3px}
+.projectArtwork{position:absolute;inset:0;z-index:1;background:#08090c;opacity:0;transition:opacity .3s ease;pointer-events:none}
+.projectArtwork.is-current{opacity:1}
+.imgBox .projectArtwork video,.imgBox .projectArtwork img{display:block;width:100%;height:100%;object-fit:contain;filter:brightness(.86);transform:none}
+.imgBox .projectArtwork[data-project="tilly-tunes"] video{object-fit:cover;object-position:50% 30%}
+.projectArtworkFallback{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;color:#f4f4f4;background:radial-gradient(ellipse at center,#252937,#08090c 75%)}
+.imgSide.is-project-view .sideCaption{right:28px}
+.imgSide.is-project-view .sideCaption b{font-size:36px;line-height:1.05;overflow-wrap:break-word;color:#f4f4f4}
+.imgSide.is-project-view .sideCaption span{line-height:1.7;letter-spacing:2px;color:rgba(244,244,244,.72)}
+@media(prefers-reduced-motion:reduce){
+  .projectArtwork,#projects .projectCard,#projects .actionBtn,#projects .projectMedia video,#projects .projectMedia img{transition:none;transform:none}
+}
+
+/* Tilly Tunes keeps its featured accent and portrait framing. */
 #projects .tillyFeatureCard{
   grid-column:1 / -1;
   border-color:rgba(181,178,239,.46);
@@ -1596,7 +1624,7 @@ body{
 
   <div class="imgSide">
     <div class="imgBox">
-      <video autoplay muted loop playsinline poster="">
+      <video muted loop playsinline preload="metadata" poster="">
         <source src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4" type="video/mp4">
       </video>
     </div>
@@ -1955,27 +1983,6 @@ body{
 
   <style>
 
-    #projects .projectCard:not(.enchantedQuillCard) .projectMedia {
-      width: 100%;
-      height: 260px;
-      min-height: 260px;
-      overflow: hidden;
-      background: #08090c;
-    }
-
-    #projects .projectCard:not(.enchantedQuillCard) .projectMedia video,
-    #projects .projectCard:not(.enchantedQuillCard) .projectMedia img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    #projects .projectCard:not(.enchantedQuillCard) .projectMedia video {
-      object-fit: cover;
-      background: #08090c;
-    }
-
-
     #projects .darkProjectCard {
       background: #111318;
       color: #f4f4f4;
@@ -2014,20 +2021,6 @@ body{
     }
 
 
-    @media (max-width: 680px) {
-
-      #projects .projectCard:not(.enchantedQuillCard) .projectMedia {
-        height: 280px;
-        min-height: 280px;
-      }
-
-      #projects .projectCard:not(.enchantedQuillCard) .projectMedia video,
-      #projects .projectCard:not(.enchantedQuillCard) .projectMedia img {
-        width: 100%;
-        height: 100%;
-      }
-
-    }
 
   </style>
 
@@ -2041,7 +2034,7 @@ body{
 
     <div class="projectGrid">
 
-      <article class="projectCard darkProjectCard tillyFeatureCard">
+      <article data-project="tilly-tunes" class="projectCard darkProjectCard tillyFeatureCard">
         <a class="tillyFeatureMedia" href="tilly-tunes.html" aria-label="Explore the Tilly Tunes case study">
           <video id="tillyCardPreview" muted loop playsinline preload="none" poster="assets/tilly-video-poster.jpg" width="720" height="1280" aria-hidden="true">
             <source src="https://tillytunes.app/media/tilly-music-video.mp4" type="video/mp4">
@@ -2071,16 +2064,15 @@ body{
            KLEAN KOALAS
            ========================================================= -->
 
-      <article class="projectCard darkProjectCard">
+      <article data-project="klean-koalas" class="projectCard darkProjectCard">
 
         <div class="projectMedia">
 
           <video
-            autoplay
             muted
             loop
             playsinline
-            preload="auto"
+            preload="metadata"
           >
             <source
               src="https://assets.codepen.io/10990063/Klean_Koala_Water_Splash.mp4"
@@ -2124,8 +2116,7 @@ body{
            LUMINA LIVE
            ========================================================= -->
 
-      <article
-        class="projectCard"
+      <article data-project="lumina-live"         class="projectCard"
         style="
           background:#111318;
           color:#f4f4f4;
@@ -2135,11 +2126,10 @@ body{
         <div class="projectMedia">
 
           <video
-            autoplay
             muted
             loop
             playsinline
-            preload="auto"
+            preload="metadata"
             style="
               width:100%;
               height:100%;
@@ -2217,8 +2207,7 @@ body{
      BACKWARD 7EVIN
      ========================================================= -->
 
-<article
-  class="projectCard"
+<article data-project="backward-7evin"   class="projectCard"
   style="
     background:#111318;
     color:#f4f4f4;
@@ -2240,11 +2229,10 @@ body{
     >
 
       <video
-        autoplay
         muted
         loop
         playsinline
-        preload="auto"
+        preload="metadata"
         style="
           width:100%;
           height:100%;
@@ -2322,8 +2310,7 @@ body{
      SESHAT ONE LIVE
      ========================================================= -->
 
-<article
-  class="projectCard"
+<article data-project="seshat-one"   class="projectCard"
   style="
     background:#111318;
     color:#f4f4f4;
@@ -2333,11 +2320,10 @@ body{
   <div class="projectMedia">
 
     <video
-      autoplay
       muted
       loop
       playsinline
-      preload="auto"
+      preload="metadata"
       style="
         width:100%;
         height:100%;
@@ -2412,7 +2398,7 @@ body{
      HOTDOG OR NOT
      ========================================================= -->
 
-<article class="projectCard darkProjectCard">
+<article data-project="hotdog-or-not" class="projectCard darkProjectCard">
 
   <div
     class="projectMedia"
@@ -2485,7 +2471,7 @@ body{
            ALGORITHMS & SYSTEMS
            ========================================================= -->
 
-      <article class="projectCard darkProjectCard">
+      <article data-project="algorithms-systems" class="projectCard darkProjectCard">
 
         <div class="projectMedia">
 
@@ -2533,8 +2519,7 @@ body{
            SESHAT STAGE PLAY
            ========================================================= -->
 
-      <article
-        class="projectCard"
+      <article data-project="seshat-stage-play"         class="projectCard"
         style="
           background:#0b0d10;
           color:#f4f4f4;
@@ -2553,11 +2538,10 @@ body{
         >
 
           <video
-            autoplay
             muted
             loop
             playsinline
-            preload="auto"
+            preload="metadata"
             style="
               width:100%;
               height:100%;
@@ -2623,16 +2607,15 @@ body{
            AI SUDOKU SOLVER
            ========================================================= -->
 
-      <article class="projectCard darkProjectCard">
+      <article data-project="ai-sudoku-solver" class="projectCard darkProjectCard">
 
         <div class="projectMedia">
 
           <video
-            autoplay
             muted
             loop
             playsinline
-            preload="auto"
+            preload="metadata"
           >
 
             <source
@@ -2703,7 +2686,6 @@ body{
           display: block;
           width: 100%;
           height: 100%;
-          min-height: 280px;
           object-fit: cover;
           background: #000000;
         }
@@ -2853,10 +2835,6 @@ body{
 
         @media (max-width: 680px) {
 
-          .enchantedQuillCard .projectMedia video {
-            min-height: auto;
-            aspect-ratio: 720 / 1060;
-          }
 
           .enchantedDetailsPanel {
             padding: 0.9rem;
@@ -2868,12 +2846,11 @@ body{
       </style>
 
 
-      <article class="projectCard enchantedQuillCard">
+      <article data-project="enchanted-quill" class="projectCard enchantedQuillCard">
 
         <div class="projectMedia">
 
           <video
-            autoplay
             muted
             loop
             playsinline
@@ -3107,6 +3084,7 @@ function mahriSelectPage(pageId,pageNumber,button){
 
   const scroller = document.querySelector('#' + pageId + ' .pageScroll');
   if(scroller) scroller.scrollTop = 0;
+  document.dispatchEvent(new Event('portfolio:sectionchange'));
 }
 
 function mahriChange(event,pageId,pageNumber){
@@ -3125,26 +3103,6 @@ function mahriReadSectionLink(){
 }
 mahriReadSectionLink();
 window.addEventListener('hashchange',mahriReadSectionLink);
-
-// The featured preview moves only while visible and respects reduced motion.
-const tillyPreview=document.getElementById('tillyCardPreview');
-const tillyMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
-let tillyPreviewVisible=false;
-function tillySyncPreview(){
-  if(tillyPreviewVisible && !document.hidden && !tillyMotion.matches){
-    tillyPreview.muted=true;
-    tillyPreview.play().catch(()=>{});
-  }else{
-    tillyPreview.pause();
-  }
-}
-const tillyPreviewObserver=new IntersectionObserver(entries=>{
-  tillyPreviewVisible=entries[0].isIntersecting;
-  tillySyncPreview();
-},{threshold:0.15});
-tillyPreviewObserver.observe(tillyPreview);
-tillyMotion.addEventListener('change',tillySyncPreview);
-document.addEventListener('visibilitychange',tillySyncPreview);
 
 const mahriAudio = document.getElementById('mahriAudio');
 const mahriVolume = document.getElementById('mahriVolume');
@@ -3181,6 +3139,7 @@ mahriAudio.addEventListener('ended', function(){
   mahriPlayBtn.textContent = '▶';
 });
 </script>
+<script src="portfolio-projects.js"></script>
     
   </body>
   
