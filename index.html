@@ -1535,6 +1535,58 @@ body{
   .projectMedia{height:190px}
 }
 
+/* Tilly Tunes: featured live product, within the existing portfolio grid. */
+#projects .tillyFeatureCard{
+  grid-column:1 / -1;
+  border-color:rgba(181,178,239,.46);
+  box-shadow:0 8px 28px rgba(0,0,0,.22);
+}
+.tillyFeatureMedia{
+  display:block;
+  position:relative;
+  aspect-ratio:16 / 10;
+  overflow:hidden;
+  background:#191a29;
+  color:#fff;
+}
+.tillyFeatureMedia video{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 30%;
+}
+.tillyFeatureMedia::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent 58%,rgba(10,10,17,.8));
+  pointer-events:none;
+}
+.tillyFeatureMedia span{
+  position:absolute;
+  z-index:1;
+  left:16px;
+  right:16px;
+  bottom:14px;
+  font:800 10px/1.5 var(--sans);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+#projects .tillyFeatureCard .projectBody{padding:19px 20px 21px}
+#projects .tillyFeatureCard .projectBody > b{color:#c8c5f6;font-size:9px;line-height:1.6}
+#projects .tillyFeatureCard .projectBody h3{font-size:32px;line-height:1.1;margin:7px 0 10px}
+#projects .tillyFeatureCard .projectBody p{font-size:13px;line-height:1.75}
+#projects .tillyFeatureCard .tag{font-size:9px;letter-spacing:.5px;color:#c5c5cc}
+#projects .tillyFeatureCard .actionBtn{min-height:42px;font-size:9px;letter-spacing:1px}
+#projects .tillyFeatureCard .tillyCaseLink{background:#c8c5f6;color:#16151e;border-color:#c8c5f6}
+.tillyFeatureMedia:focus-visible,
+#projects .tillyFeatureCard .actionBtn:focus-visible{outline:3px solid #dcd9ff;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){
+  #projects .tillyFeatureCard,
+  #projects .tillyFeatureCard .actionBtn{transition:none;transform:none}
+}
+
 </style>
   </head>
 
@@ -1988,6 +2040,31 @@ body{
 
 
     <div class="projectGrid">
+
+      <article class="projectCard darkProjectCard tillyFeatureCard">
+        <a class="tillyFeatureMedia" href="tilly-tunes.html" aria-label="Explore the Tilly Tunes case study">
+          <video id="tillyCardPreview" muted loop playsinline preload="none" poster="assets/tilly-video-poster.jpg" width="720" height="1280" aria-hidden="true">
+            <source src="https://tillytunes.app/media/tilly-music-video.mp4" type="video/mp4">
+          </video>
+          <span>Actual Tilly Tunes video output</span>
+        </a>
+        <div class="projectBody">
+          <b>Featured live product</b>
+          <h3>Tilly Tunes</h3>
+          <p>Turn pet stories into personalized songs and short videos. A live, AI-assisted full-stack project connecting generation, payments, private media, and sharing.</p>
+          <div class="tagRow" aria-label="Selected technologies">
+            <span class="tag">Next.js</span>
+            <span class="tag">Python</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">Stripe</span>
+            <span class="tag">Google AI</span>
+          </div>
+          <div class="actionRow">
+            <a class="actionBtn tillyCaseLink" href="tilly-tunes.html">Explore the build</a>
+            <a class="actionBtn" href="https://tillytunes.app/" target="_blank" rel="noopener noreferrer">Try Tilly Tunes ↗</a>
+          </div>
+        </div>
+      </article>
 
 
       <!-- =========================================================
@@ -3017,16 +3094,57 @@ body{
 </div>
 
     <script>
-function mahriChange(event,pageId,pageNumber){
+function mahriSelectPage(pageId,pageNumber,button){
   document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-  document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(btn => {
+    btn.classList.remove('active');
+    btn.setAttribute('aria-pressed','false');
+  });
   document.getElementById(pageId).classList.add('active');
-  event.currentTarget.classList.add('active');
+  button.classList.add('active');
+  button.setAttribute('aria-pressed','true');
   document.getElementById('mahriNumber').textContent = pageNumber;
 
   const scroller = document.querySelector('#' + pageId + ' .pageScroll');
   if(scroller) scroller.scrollTop = 0;
 }
+
+function mahriChange(event,pageId,pageNumber){
+  mahriSelectPage(pageId,pageNumber,event.currentTarget);
+  history.replaceState(null,'','#'+pageId);
+}
+
+// Direct links from a case study return to the intended portfolio section.
+function mahriReadSectionLink(){
+  const pages=['profile','experience','projects','contact'];
+  const pageId=location.hash.slice(1) || 'profile';
+  const index=pages.indexOf(pageId);
+  if(index<0) return;
+  const button=document.querySelectorAll('.nav button')[index];
+  mahriSelectPage(pageId,String(index+1).padStart(2,'0'),button);
+}
+mahriReadSectionLink();
+window.addEventListener('hashchange',mahriReadSectionLink);
+
+// The featured preview moves only while visible and respects reduced motion.
+const tillyPreview=document.getElementById('tillyCardPreview');
+const tillyMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+let tillyPreviewVisible=false;
+function tillySyncPreview(){
+  if(tillyPreviewVisible && !document.hidden && !tillyMotion.matches){
+    tillyPreview.muted=true;
+    tillyPreview.play().catch(()=>{});
+  }else{
+    tillyPreview.pause();
+  }
+}
+const tillyPreviewObserver=new IntersectionObserver(entries=>{
+  tillyPreviewVisible=entries[0].isIntersecting;
+  tillySyncPreview();
+},{threshold:0.15});
+tillyPreviewObserver.observe(tillyPreview);
+tillyMotion.addEventListener('change',tillySyncPreview);
+document.addEventListener('visibilitychange',tillySyncPreview);
 
 const mahriAudio = document.getElementById('mahriAudio');
 const mahriVolume = document.getElementById('mahriVolume');
@@ -3067,3 +3185,4 @@ mahriAudio.addEventListener('ended', function(){
   </body>
   
 </html>
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tilly Tunes: a live music and pet-video application. A case study in product design, AI-assisted full-stack development, payments, and reliable media delivery by Joseph Bolkovatz.">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Tilly Tunes — A Product Case Study | Joseph Bolkovatz">
+  <meta property="og:description" content="From a pet’s story to songs and video. Explore the product, the architecture, and the decisions behind a live application.">
+  <meta property="og:image" content="https://joeybagofbitcoins.github.io/joey_portfolio/assets/tilly-video-poster.jpg">
+  <link rel="canonical" href="https://joeybagofbitcoins.github.io/joey_portfolio/tilly-tunes.html">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <title>Tilly Tunes — Case Study | Joseph Bolkovatz</title>
+  <style>
+    :root{--bg:#0d0d0d;--paper:#161616;--ink:#f2f2f2;--soft:#b8b8b8;--line:rgba(242,242,242,.17);--lavender:#bfc0f5;--serif:'Playfair Display',Georgia,serif;--softserif:'Cormorant Garamond',Georgia,serif;--sans:'Nunito',Arial,sans-serif}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:24px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65}
+    a{color:inherit;text-underline-offset:5px}
+    a:focus-visible,summary:focus-visible,video:focus-visible{outline:2px solid var(--lavender);outline-offset:6px}
+    .skip{position:absolute;left:18px;top:-100px;z-index:10;padding:10px 18px;background:var(--ink);color:var(--bg)}
+    .skip:focus{top:14px}
+    .shell{width:min(1120px,calc(100% - 64px));margin:0 auto}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:29px 0 24px;border-bottom:1px solid var(--line)}
+    .signature{font:600 25px/1 var(--softserif);text-decoration:none;letter-spacing:.3px}
+    .back{font-size:12px;font-weight:800;letter-spacing:1px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px}
+    .back span{font-size:19px;color:var(--lavender)}
+    .eyebrow,.sectionLabel,.captionLabel{font-size:10px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--lavender);margin:0 0 28px}
+    .statusDot{width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:var(--lavender)}
+    .hero{display:grid;grid-template-columns:1.13fr .87fr;gap:70px;align-items:center;padding:65px 0 62px}
+    h1,h2,h3,p{margin-top:0}
+    h1{font:700 clamp(60px,6.8vw,88px)/1.05 var(--serif);letter-spacing:-3px;margin-bottom:15px}
+    .subtitle{font:500 italic clamp(31px,3.1vw,41px)/1.13 var(--softserif);color:var(--lavender);max-width:480px;margin-bottom:25px}
+    .lede{max-width:500px;color:var(--soft);font-size:15px;line-height:1.85;margin-bottom:29px}
+    .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+    .button{display:inline-flex;justify-content:center;align-items:center;gap:14px;min-height:47px;padding:11px 19px;border:1px solid rgba(242,242,242,.38);font:800 11px/1.4 var(--sans);letter-spacing:1.1px;text-transform:uppercase;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
+    .button.primary{background:var(--lavender);color:#14141c;border-color:var(--lavender)}
+    .button:hover{background:#25252c;border-color:var(--lavender);transform:translateY(-2px)}
+    .button.primary:hover{background:#d1d2ff;color:#14141c}
+    .dossier{margin:32px 0 0;padding:17px 0 0;border-top:1px solid var(--line);display:grid;gap:9px}
+    .dossier div{display:grid;grid-template-columns:76px 1fr;gap:12px}
+    .dossier dt{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft)}
+    .dossier dd{margin:0;font-size:12px;line-height:1.6}
+    .heroVisual{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;padding:12px 22px 13px}
+    .heroVisual:before{content:"";position:absolute;inset:14% -5% 8%;background:radial-gradient(ellipse,rgba(169,170,225,.14),transparent 68%);pointer-events:none}
+    .heroVisual:after{content:"";position:absolute;inset:42px 0;border:1px solid var(--line);pointer-events:none}
+    .device{position:relative;z-index:1;width:min(100%,250px);margin:0;border:7px solid #25252b;border-radius:27px;background:#171a2d;box-shadow:0 24px 70px rgba(0,0,0,.6);overflow:hidden}
+    .device img{display:block;width:100%;height:auto}
+    .visualNote{position:relative;z-index:2;margin-top:18px;max-width:100%;padding:12px 22px;border:1px solid rgba(191,192,245,.3);background:#17171d;text-align:center}
+    .visualNote b{display:block;font:600 italic 23px/1.1 var(--softserif);margin-bottom:6px}
+    .visualNote span{font-size:10px;color:var(--soft);line-height:1.5;display:block}
+    .chapter{padding:58px 0;border-top:1px solid var(--line)}
+    .chapterHead{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;margin-bottom:30px}
+    .sectionLabel{color:var(--lavender);margin-bottom:9px}
+    h2{font:600 37px/1.16 var(--serif);letter-spacing:-.6px;margin-bottom:0}
+    .sectionIntro{max-width:350px;color:var(--soft);font-size:13px;line-height:1.8;padding-top:18px;margin-bottom:0}
+    .productGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center}
+    .film{margin:0;min-width:0}
+    .filmFrame{width:min(100%,310px);margin:0 auto;background:#08090c;border:1px solid var(--line);padding:8px}
+    .film video{display:block;width:100%;aspect-ratio:9/16;object-fit:contain;background:#08090c}
+    .film figcaption{font-size:12px;line-height:1.7;color:var(--soft);margin-top:15px}
+    .captionLabel{display:block;color:var(--ink);margin-bottom:4px;font-size:9px;letter-spacing:1.8px}
+    .film details{margin-top:10px;color:var(--soft);font-size:12px}
+    .film summary{cursor:pointer;display:list-item;width:fit-content}
+    .film details p{margin:9px 0 0}
+    .journey{list-style:none;counter-reset:steps;padding:0;margin:0}
+    .journey li{counter-increment:steps;display:grid;grid-template-columns:27px 1fr;gap:14px;padding:0 0 17px;margin-bottom:17px;border-bottom:1px solid var(--line)}
+    .journey li:last-child{margin-bottom:0;padding-bottom:0;border-bottom:0}
+    .journey li:before{content:"0" counter(steps);font:600 italic 24px/1.3 var(--softserif);color:var(--lavender)}
+    .journey h3{font:700 15px/1.4 var(--sans);margin:0 0 4px}
+    .journey p{font-size:12px;line-height:1.7;color:var(--soft);margin:0}
+    .decisions{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+    .decision{padding:27px 29px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(135deg,rgba(255,255,255,.025),transparent)}
+    .decision .index{font:500 italic 20px/1 var(--softserif);color:var(--lavender);display:block;margin-bottom:18px}
+    .decision h3{font:600 25px/1.15 var(--softserif);margin-bottom:10px}
+    .decision p{font-size:13px;color:var(--soft);line-height:1.8;margin:0}
+    .architecture{margin:0;border:1px solid var(--line);padding:28px;background:var(--paper)}
+    .architecture figcaption{font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--soft);margin-bottom:23px}
+    .stack{display:flex;align-items:stretch;justify-content:center;gap:20px}
+    .stackNode{flex:1;max-width:340px;padding:17px 20px;border:1px solid rgba(191,192,245,.3);text-align:center;background:rgba(191,192,245,.035)}
+    .stackNode strong{display:block;font:600 25px/1.2 var(--softserif);margin-bottom:5px}
+    .stackNode span{font-size:12px;color:var(--soft)}
+    .stackArrow{align-self:center;color:var(--lavender);font-size:25px}
+    .connections{text-align:center;color:var(--soft);font-size:11px;letter-spacing:.4px;margin:16px 0}
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0;margin:0;list-style:none}
+    .services li{border:1px solid var(--line);padding:17px 14px;text-align:center}
+    .services strong{display:block;font-size:12px;font-weight:800;margin-bottom:5px}
+    .services span{font-size:11px;line-height:1.65;color:var(--soft);display:block}
+    .architectureNote{font-size:11px;color:var(--soft);line-height:1.75;margin:20px 0 0;text-align:center}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;list-style:none;margin:20px 0 0}
+    .tags li{font-size:10px;font-weight:700;letter-spacing:.3px;border:1px solid var(--line);padding:6px 11px;border-radius:999px;color:var(--soft)}
+    .delivery{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+    .delivery h3{font:600 27px/1.2 var(--softserif);margin-bottom:13px}
+    .delivery p,.delivery li{font-size:13px;line-height:1.85;color:var(--soft)}
+    .delivery p:last-child{margin-bottom:0}
+    .evidence{padding-left:18px;margin:0}
+    .evidence li{padding-left:6px;margin-bottom:10px}
+    .stage{border-left:2px solid var(--lavender);padding:13px 18px;margin-top:20px;background:rgba(191,192,245,.04);font-size:12px;color:var(--soft)}
+    .stage strong{color:var(--ink)}
+    .closing{padding:42px 0 29px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:25px}
+    .closing p{font:500 italic 28px/1.2 var(--softserif);margin:0}
+    .footer{display:flex;justify-content:space-between;gap:20px;font-size:10px;letter-spacing:.4px;color:var(--soft);padding:22px 0 30px}
+    @media(max-width:900px){.hero{gap:32px}.heroVisual{padding:12px}.productGrid{gap:28px;grid-template-columns:1fr 1fr}.services{grid-template-columns:1fr 1fr}}
+    @media(max-width:680px){.shell{width:calc(100% - 36px)}.masthead{padding:19px 0 16px}.signature{font-size:22px}.back{font-size:10px;letter-spacing:.4px}.hero{grid-template-columns:1fr;padding:38px 0 39px;gap:30px}.eyebrow{font-size:9px;letter-spacing:1.8px;margin-bottom:19px}h1{font-size:57px;letter-spacing:-2px}.subtitle{font-size:33px}.lede{font-size:14px;margin-bottom:23px}.heroVisual{width:min(100%,355px);margin:auto;padding:16px 38px}.device{width:225px}.visualNote b{font-size:21px}.chapter{padding:37px 0}.chapterHead{display:block;margin-bottom:24px}h2{font-size:29px}.sectionIntro{padding-top:13px;max-width:100%}.productGrid,.decisions,.delivery{grid-template-columns:1fr}.productGrid{gap:29px}.decision{padding:23px}.decision .index{margin-bottom:12px}.architecture{padding:19px 14px}.stack{flex-direction:column;gap:10px}.stackNode{max-width:none;padding:15px}.stackArrow{transform:rotate(90deg);line-height:1}.services{gap:9px}.services li{padding:14px 9px}.architectureNote{text-align:left}.delivery{gap:30px}.closing{align-items:flex-start;flex-direction:column;padding-top:32px}.closing p{font-size:27px}.footer{padding-top:16px;flex-wrap:wrap;gap:7px}.button{padding:11px 14px;font-size:10px}.actions{gap:10px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#case-study">Skip to case study</a>
+  <div class="shell">
+    <header class="masthead">
+      <a class="signature" href="index.html">Joseph Bolkovatz</a>
+      <nav aria-label="Portfolio"><a class="back" href="index.html#projects"><span aria-hidden="true">←</span> Back to projects</a></nav>
+    </header>
+    <main id="case-study">
+      <section class="hero" aria-labelledby="project-title">
+        <div>
+          <p class="eyebrow"><span class="statusDot" aria-hidden="true"></span> Live product · Independent project · 2026</p>
+          <h1 id="project-title">Tilly Tunes</h1>
+          <p class="subtitle">From a pet’s story<br>to songs &amp; video.</p>
+          <p class="lede">A personal story becomes editable lyrics, a chosen sound, and a song to keep. A favorite pet photo becomes a short music video. I brought those moments together in a live application, from the first idea through delivery.</p>
+          <div class="actions">
+            <a class="button primary" href="https://tillytunes.app/" target="_blank" rel="noopener noreferrer">Try Tilly Tunes <span aria-hidden="true">↗</span></a>
+            <a class="button" href="#product-demo">See the result <span aria-hidden="true">↓</span></a>
+          </div>
+          <dl class="dossier">
+            <div><dt>Role</dt><dd>Founder &amp; Product Lead</dd></div>
+            <div><dt>Approach</dt><dd>AI-assisted full-stack development</dd></div>
+            <div><dt>Scope</dt><dd>Product direction · Interface design · Integration · Testing · Launch</dd></div>
+          </dl>
+        </div>
+        <div class="heroVisual">
+          <figure class="device"><img src="assets/tilly-home-mobile.png" width="375" height="811" alt="Tilly Tunes mobile homepage showing the song-and-video offer and Tilly’s animated video example" fetchpriority="high"></figure>
+          <div class="visualNote"><b>Their story.<br>Their soundtrack.</b><span>Actual mobile interface</span></div>
+        </div>
+      </section>
+
+      <section class="chapter" id="product-demo" aria-labelledby="experience-title">
+        <div class="chapterHead">
+          <div><p class="sectionLabel">01 / The experience</p><h2 id="experience-title">Make something personal.</h2></div>
+          <p class="sectionIntro">A guided creative flow that gives people room to shape the result, then makes it easy to listen, download, and share.</p>
+        </div>
+        <div class="productGrid">
+          <figure class="film">
+            <div class="filmFrame"><video controls playsinline preload="none" poster="assets/tilly-video-poster.jpg" aria-label="Play a 15-second Tilly Tunes pet music video example"><source src="https://tillytunes.app/media/tilly-music-video.mp4" type="video/mp4">Your browser does not support embedded video. <a href="https://tillytunes.app/media/tilly-music-video.mp4">Open the video example.</a></video></div>
+            <figcaption><span class="captionLabel">Created with Tilly Tunes / 15-second example</span>A generated pet video paired with a song from the app. Playback starts only when you choose it.</figcaption>
+            <details><summary>About this example</summary><p>The video shows an animated version of Tilly wearing purple headphones in a colorful musical setting. It demonstrates the image-to-video result; the steps at right describe the creation flow.</p></details>
+          </figure>
+          <ol class="journey">
+            <li><div><h3>Start with a story.</h3><p>Capture a nickname, a favorite memory, or a pet’s little quirks. Review and edit the lyrics.</p></div></li>
+            <li><div><h3>Make the sound yours.</h3><p>Choose a genre and preferred instruments before generating a recording.</p></div></li>
+            <li><div><h3>Bring a photo to life.</h3><p>Approve a styled image preview before the app creates the short video.</p></div></li>
+            <li><div><h3>Keep the result.</h3><p>Return to the saved recording, play it, download the media, and share deliberately.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="chapter" aria-labelledby="decisions-title">
+        <div class="chapterHead">
+          <div><p class="sectionLabel">02 / Engineering decisions</p><h2 id="decisions-title">The work behind the moment.</h2></div>
+          <p class="sectionIntro">Generating a result is one part of the product. Accounting for credits, long-running jobs, and delivery makes the experience usable.</p>
+        </div>
+        <div class="decisions">
+          <article class="decision"><span class="index" aria-hidden="true">01</span><h3>Generation that can continue.</h3><p>Persisted jobs track work beyond the browser session. Recovery checks accepted provider operations before considering another submission, reducing the risk of duplicate generation costs.</p></article>
+          <article class="decision"><span class="index" aria-hidden="true">02</span><h3>Credits with an audit trail.</h3><p>Verified payment events connect checkout to entitlements. Separate handling for paid packs and promotional gifts keeps account balances and fulfillment understandable.</p></article>
+          <article class="decision"><span class="index" aria-hidden="true">03</span><h3>Media access by design.</h3><p>Customer media uses private storage and authenticated access. Short-lived download links and explicit sharing keep delivery separate from automatic public exposure.</p></article>
+          <article class="decision"><span class="index" aria-hidden="true">04</span><h3>Providers behind one experience.</h3><p>Server-side integrations keep provider credentials out of the interface. Music, image, and video services support one customer flow while provider choices can evolve behind it.</p></article>
+        </div>
+      </section>
+
+      <section class="chapter" aria-labelledby="architecture-title">
+        <div class="chapterHead">
+          <div><p class="sectionLabel">03 / Technical foundation</p><h2 id="architecture-title">One product. Connected systems.</h2></div>
+          <p class="sectionIntro">A responsive interface, a Python service layer, and managed services for identity, payments, generation, and delivery.</p>
+        </div>
+        <figure class="architecture">
+          <figcaption>Simplified application architecture</figcaption>
+          <div class="stack"><div class="stackNode"><strong>Customer experience</strong><span>Next.js · React · TypeScript</span></div><span class="stackArrow" aria-hidden="true">→</span><div class="stackNode"><strong>Application &amp; jobs</strong><span>FastAPI · Python · SQLAlchemy</span></div></div>
+          <p class="connections">The application coordinates these services:</p>
+          <ul class="services">
+            <li><strong>Supabase</strong><span>PostgreSQL<br>Authentication &amp; private storage</span></li>
+            <li><strong>Stripe</strong><span>Checkout<br>Verified payment events</span></li>
+            <li><strong>Google AI</strong><span>Music, images<br>&amp; video generation</span></li>
+            <li><strong>Resend</strong><span>Transactional email<br>&amp; delivery notices</span></li>
+          </ul>
+          <p class="architectureNote">Deployed on Vercel, with operational checks through GitHub Actions. This view shows responsibilities and omits credentials, customer records, and internal account details.</p>
+        </figure>
+        <ul class="tags" aria-label="Technology stack"><li>Next.js</li><li>React</li><li>TypeScript</li><li>Python</li><li>FastAPI</li><li>PostgreSQL</li><li>Supabase</li><li>Stripe</li><li>Google AI</li><li>Resend</li><li>Vercel</li></ul>
+      </section>
+
+      <section class="chapter" aria-labelledby="delivery-title">
+        <div class="chapterHead"><div><p class="sectionLabel">04 / Delivery &amp; learning</p><h2 id="delivery-title">From an idea to a working product.</h2></div></div>
+        <div class="delivery">
+          <div><h3>My contribution</h3><p>I led the product direction, interface decisions, provider evaluation, and launch. Through an AI-assisted development workflow, I translated feedback into changes across genres, instrument choices, sharing, and the song-and-video experience.</p><p>The project connected my customer-facing business experience with practical software delivery: deciding what the customer needs, testing the complete flow, and refining what happens when a service takes time or fails.</p></div>
+          <div><h3>What was verified</h3><ul class="evidence"><li>Real image and video generation, followed by playback and downloaded-file checks.</li><li>Mobile and desktop layouts, the creation call to action, and media playback behavior.</li><li>Payment, credit, promotional-access, and recovery paths through focused tests.</li><li>Customer-facing playback, downloads, and sharing, with feedback informing revisions.</li></ul></div>
+        </div>
+        <p class="stage"><strong>Current stage:</strong> live launch and continued iteration. This case study presents the delivered product and engineering work; commercial validation is ongoing.</p>
+      </section>
+      <div class="closing"><p>Built with purpose.<br>Made to mean something.</p><div class="actions"><a class="button" href="index.html#projects">More projects <span aria-hidden="true">←</span></a><a class="button primary" href="https://tillytunes.app/" target="_blank" rel="noopener noreferrer">Try Tilly Tunes <span aria-hidden="true">↗</span></a></div></div>
+    </main>
+    <footer class="footer"><span>Joseph Bolkovatz · Computer Scientist · Builder</span><span>Product case study · November 2026</span></footer>
+  </div>
+</body>
+</html>
