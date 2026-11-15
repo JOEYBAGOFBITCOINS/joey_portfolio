@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101619">
+  <meta name="description" content="Explore the SkyRx concept: station-based drone deployment, human-confirmed handoffs, and responder recovery. Preview a fictional municipal onboarding flow.">
+  <title>How SkyRx works · A response concept</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c8f46b'/%3E%3Cpath d='M14 32h10l5-13 7 26 5-13h9' fill='none' stroke='%23101619' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./how-it-works.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="SkyRx dispatch simulator"><span class="brand-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 16h7l3-9 5 18 3-9h6"/></svg></span>SkyRx</a>
+      <nav aria-label="Page navigation"><a href="#workflow">How it works</a><a class="header-action" href="./index.html">Open simulator <span aria-hidden="true">↗</span></a></nav>
+    </header>
+
+    <main id="content">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow"><span class="signal" aria-hidden="true"></span> THE SKYRX CONCEPT</p>
+          <h1 id="page-title">A closer<br>starting point.</h1>
+          <p class="intro-lede">What if a fire station could become the starting point for a medical supply response by air?</p>
+          <p class="intro-detail">Explore a proposed journey from a protected station case to a confirmed handoff. The software prototype makes each decision visible, with people in control.</p>
+          <div class="actions"><a class="button primary" href="#municipal-demo">Preview municipal onboarding <span aria-hidden="true">↗</span></a><a class="button secondary" href="./index.html">Open dispatch simulator</a></div>
+        </div>
+        <aside class="concept-route" aria-label="Concept overview">
+          <div class="route-topline"><span>THE RESPONSE JOURNEY</span><span class="concept-pill">CONCEPT</span></div>
+          <ol><li><span class="route-node">01</span><div><strong>Prepare & deploy</strong><span>A station case. An approved exercise.</span></div></li><li><span class="route-node">02</span><div><strong>Confirm the handoff</strong><span>A candidate site. A responder's confirmation.</span></div></li><li><span class="route-node">03</span><div><strong>Recover & review</strong><span>An aircraft accounted for. A complete record.</span></div></li></ol>
+          <p>Real Phoenix geography in the simulator.<br>Illustrative aircraft, equipment, and missions.</p>
+        </aside>
+      </section>
+
+      <div class="concept-notice"><span class="notice-icon" aria-hidden="true">i</span><p>This is an independent software concept, not an operating drone service. The animations illustrate proposed equipment and workflows; no live dispatch connection or municipal deployment is represented.</p></div>
+
+      <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-heading"><div><p class="eyebrow">FROM CASE TO CONFIRMATION</p><h2 id="workflow-title">Follow the response.</h2></div><p>Three moments. A person accountable at every step.</p></div>
+
+        <article class="workflow-card" aria-labelledby="deploy-title">
+          <figure class="workflow-film">
+            <video class="concept-video" muted loop playsinline preload="none" poster="./media/skyrx-station-deployment-poster.jpg" width="960" height="600" aria-hidden="true"><source src="./media/skyrx-station-deployment.mp4" type="video/mp4"></video>
+            <figcaption><span>01 / STATION DEPLOYMENT</span><span>Concept animation</span></figcaption>
+          </figure>
+          <div class="workflow-copy"><span class="step-number" aria-hidden="true">01</span><p class="eyebrow">PREPARE & DEPLOY</p><h3 id="deploy-title">Ready at the station.</h3><p>A proposed protective case keeps the aircraft at its starting point. The case opens and the drone lifts out after an operator has reviewed the exercise.</p><ul><li>Review the request and select a modeled payload.</li><li>Check the aircraft, battery reserve, and candidate site.</li><li>Approve the simulated launch.</li></ul><p class="step-note">The simulator models this approval workflow. The physical case and aircraft shown here are concept artwork.</p></div>
+        </article>
+
+        <article class="workflow-card reverse" aria-labelledby="handoff-title">
+          <figure class="workflow-film">
+            <video class="concept-video" muted loop playsinline preload="none" poster="./media/skyrx-handoff-poster.jpg" width="960" height="600" aria-hidden="true"><source src="./media/skyrx-handoff.mp4" type="video/mp4"></video>
+            <figcaption><span>02 / RESPONDER HANDOFF</span><span>Concept animation</span></figcaption>
+          </figure>
+          <div class="workflow-copy"><span class="step-number" aria-hidden="true">02</span><p class="eyebrow">ARRIVE & CONFIRM</p><h3 id="handoff-title">Arrival is only one step.</h3><p>The proposed delivery goes to a site selected for the exercise. A responder confirms receipt before the software records the handoff.</p><ul><li>Inspect the proposed route and transfer distance.</li><li>Hold or replan if the candidate site is blocked.</li><li>Record a human confirmation of the payload receipt.</li></ul><p class="step-note">Map markers are candidate locations, not approved landing zones. Real operations would need site assessment and authorization.</p></div>
+        </article>
+
+        <article class="workflow-card" aria-labelledby="recover-title">
+          <figure class="workflow-film">
+            <video class="concept-video" muted loop playsinline preload="none" poster="./media/skyrx-recovery-poster.jpg" width="960" height="600" aria-hidden="true"><source src="./media/skyrx-recovery.mp4" type="video/mp4"></video>
+            <figcaption><span>03 / RECOVERY & REVIEW</span><span>Concept animation</span></figcaption>
+          </figure>
+          <div class="workflow-copy"><span class="step-number" aria-hidden="true">03</span><p class="eyebrow">RECOVER & LEARN</p><h3 id="recover-title">Close the loop.</h3><p>The aircraft must be accounted for, whether it returns to its modeled station or a responder confirms recovery. The event record preserves what happened.</p><ul><li>Confirm recovery when an exercise requires it.</li><li>Keep a completed handoff recorded after a later disruption.</li><li>Replay the decisions or export the mission log.</li></ul><p class="step-note">Lost-link and battery scenarios are training behaviors, not certified aircraft failsafes.</p></div>
+        </article>
+      </section>
+
+      <section class="demo-section" id="municipal-demo" aria-labelledby="demo-title">
+        <div class="demo-intro"><p class="eyebrow">FOR MUNICIPAL TEAMS / INTERFACE PREVIEW</p><h2 id="demo-title">Imagine your team's<br>first conversation.</h2><p>Try a fictional onboarding flow to see how a municipality could explore the concept. Use the sample choices below. There is no real registration, email, or data submission.</p><a class="text-link" href="./index.html">Explore the working simulator <span aria-hidden="true">↗</span></a></div>
+        <div class="demo-card">
+          <div class="demo-card-heading"><span class="concept-pill">LOCAL DEMO</span><span id="demo-progress">Step 1 of 3</span></div>
+          <noscript><p class="inline-notice">JavaScript is required for the interactive preview. This demonstration does not submit information or create an account.</p></noscript>
+          <form id="municipal-form" novalidate>
+            <fieldset data-step="0" disabled><legend>Choose a fictional team.</legend><label for="demo-city">Sample municipality</label><select id="demo-city" name="city"><option value="Juniper Crossing">Juniper Crossing (fictional)</option><option value="Mesa Grove">Mesa Grove (fictional)</option><option value="Copper Valley">Copper Valley (fictional)</option></select><label for="demo-role">Team perspective</label><select id="demo-role" name="role"><option>Fire service operations</option><option>Emergency management</option><option>Municipal technology team</option></select><p class="form-help">These selections only shape this on-screen preview.</p></fieldset>
+            <fieldset data-step="1" hidden><legend>What would you explore?</legend><p class="form-help">Choose one or more areas for the fictional discussion.</p><label class="choice"><input type="checkbox" name="interest" value="Station and candidate-site planning" checked><span>Station and candidate-site planning</span></label><label class="choice"><input type="checkbox" name="interest" value="Operator approval and mission visibility"><span>Operator approval and mission visibility</span></label><label class="choice"><input type="checkbox" name="interest" value="Responder handoffs and recovery"><span>Responder handoffs and recovery</span></label></fieldset>
+            <fieldset data-step="2" hidden><legend>Review the example.</legend><dl class="review"><div><dt>Fictional municipality</dt><dd id="review-city"></dd></div><div><dt>Team perspective</dt><dd id="review-role"></dd></div><div><dt>Discussion areas</dt><dd id="review-interests"></dd></div></dl><label class="choice acknowledgment"><input type="checkbox" id="demo-confirm"><span>I understand this is a demonstration. It creates no registration and sends nothing.</span></label></fieldset>
+            <p class="form-error" id="demo-error" role="alert" hidden></p>
+            <div class="form-actions"><button class="button secondary" id="demo-back" type="button" hidden>Back</button><button class="button primary" id="demo-next" type="button" disabled>Continue <span aria-hidden="true">→</span></button></div>
+          </form>
+          <div class="demo-complete" id="demo-complete" hidden tabindex="-1"><span class="complete-mark" aria-hidden="true">✓</span><h3>Demo complete.<br>No registration was created.</h3><p>Nothing was sent or saved. This is a preview of how a future municipal conversation could begin.</p><div class="actions"><a class="button primary" href="./index.html">Try a simulated mission</a><button class="button secondary" id="demo-restart" type="button">Start again</button></div></div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><p>SkyRx · An independent concept by Joseph Bolkovatz.</p><a href="./index.html">Back to the simulator <span aria-hidden="true">↗</span></a></footer>
+  </div>
+  <script type="module" src="./how-it-works.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101619"><meta name="description" content="SkyRx: an independent emergency drone response simulator, set on a real Phoenix map. Explore dispatch decisions, simulated flights, and resilient recovery.">
+  <title>SkyRx · Phoenix Dispatch Lab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23c8f46b'/%3E%3Cpath d='M14 32h10l5-13 7 26 5-13h9' fill='none' stroke='%23101619' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./vendor/leaflet.css"><link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./responsive.css"><link rel="stylesheet" href="./drone.css">
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to dispatch workspace</a>
+  <aside class="rail" aria-label="Application navigation">
+    <a class="brand-mark" href="#" aria-label="SkyRx home"><svg viewBox="0 0 32 32"><path d="M4 16h7l3-9 5 18 3-9h6"/></svg></a>
+    <nav id="navigation"></nav>
+    <div class="rail-bottom"><button id="about-button" class="rail-button" title="About this simulation" aria-label="About this simulation"></button><span class="avatar" title="Local demonstration session">JB</span></div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="wordmark">SkyRx<span class="wordmark-divider"></span><span class="wordmark-sub">DISPATCH LAB</span></div>
+      <div class="top-meta"><span class="live-dot"></span><span>PHOENIX, AZ</span><span class="simulation-badge">SIMULATION</span></div>
+    </header>
+    <main id="workspace" tabindex="-1">
+      <div class="page-heading has-drone"><div class="heading-copy"><div class="eyebrow">EMERGENCY RESPONSE / OPERATIONS</div><h1 id="page-title">Closer when it counts.</h1><p id="page-subtitle">Real Phoenix geography. A simulated path from dispatch to delivery.</p></div><div class="heading-actions"><button class="button primary" id="new-incident"></button><a class="button ghost" href="./how-it-works.html">How SkyRx works ↗</a></div><figure class="drone-showcase" id="drone-showcase"><video id="skyrx-drone-film" muted loop playsinline preload="none" poster="./media/skyrx-drone-poster.jpg" width="960" height="600" aria-hidden="true"><source src="./media/skyrx-drone-loop.mp4" type="video/mp4"></video><figcaption>SkyRx concept aircraft</figcaption></figure></div>
+      <div class="stats" id="stats"></div>
+      <section id="dispatch-view" class="view">
+        <div class="operations-layout">
+          <div class="map-stack">
+            <section class="map-card" aria-label="Phoenix operation map">
+              <div class="map-toolbar"><div class="map-toolbar-title"><span class="live-dot"></span><strong>West & central Phoenix</strong></div><div class="map-toolbar-controls"><div class="basemap-switch" role="group" aria-label="Map imagery"><button class="basemap-button selected" data-basemap="satellite" aria-pressed="true" title="USGS historical aerial imagery">Satellite</button><button class="basemap-button" data-basemap="street" aria-pressed="false" title="OpenStreetMap streets">Street</button></div><button class="button small ghost" id="fit-map" title="Fit all stations and incidents">Recenter</button></div></div>
+              <div class="map-view-note"><span id="basemap-note">Historical aerial imagery · not live</span><span>Scroll, pinch or use + / − to zoom</span></div>
+              <div id="map" role="region" aria-label="Interactive real street map of Phoenix. Station and incident details also available in the panels."></div>
+              <div class="map-status"><span id="map-status-text">Select a request to plan a response.</span><span class="map-coordinate">33.45° N &nbsp;112.11° W</span></div>
+              <div class="map-legend"><span><i class="legend-symbol station"></i>Fire station</span><span><i class="legend-symbol incident"></i>Simulated call</span><span><i class="legend-symbol zone"></i>Candidate handoff</span></div>
+              <div id="tile-fallback" hidden>Map imagery is unavailable. Try switching the map view. Geographic markers and mission controls remain usable.</div>
+            </section>
+            <section class="mission-card" aria-label="Mission progress"><div id="mission-content"></div></section>
+          </div>
+          <aside class="dispatch-panel" aria-label="Dispatch controls">
+            <div class="panel-heading"><h2>Response queue <span id="queue-count" class="count-badge">3</span></h2><span class="tiny-label">SYNTHETIC CALLS</span></div>
+            <div id="incident-list"></div>
+            <div id="planning-panel"></div>
+          </aside>
+        </div>
+        <div class="section-title"><div><span class="eyebrow">STATION READINESS</span><h2>A network ready to respond.</h2></div><span class="tiny-label">AIRCRAFT & STOCK ARE SIMULATED</span></div>
+        <div id="fleet-strip" class="fleet-grid"></div>
+      </section>
+      <section id="fleet-view" class="view" hidden></section>
+      <section id="log-view" class="view" hidden></section>
+      <section id="evidence-view" class="view" hidden></section>
+      <footer class="footer"><span>Designed & built by Joseph Bolkovatz <span class="footer-divider">/</span> Independent portfolio project</span><button class="text-button" id="assumptions-button">Model & data notes ↗</button></footer>
+    </main>
+  </div>
+  <dialog id="incident-dialog"><form id="incident-form"><div class="dialog-heading"><div><div class="eyebrow">TRAINING INTAKE</div><h2>Create a simulated call</h2></div><button type="button" class="icon-button close-dialog" aria-label="Close">×</button></div><p class="muted">Choose a public area for the exercise. No real caller or patient information.</p><label>Request title<input name="title" maxlength="100" required value="Responder naloxone supply request"></label><label>Exercise location<select name="location" id="location-select"></select></label><div class="form-row"><label>Payload<select name="payload"><option>Naloxone kit</option><option>AED</option><option>Epinephrine kit</option></select></label><label>Priority<select name="priority"><option value="urgent">Urgent</option><option value="priority">Priority</option><option value="routine">Routine</option></select></label></div><div class="note">The payload is selected by the operator. This simulation does not diagnose a patient or recommend treatment.</div><button class="button primary full" type="submit">Add to response queue</button></form></dialog>
+  <dialog id="about-dialog"><div class="dialog-heading"><div><div class="eyebrow">BEHIND THE SIMULATION</div><h2>Real places. Transparent assumptions.</h2></div><button class="icon-button close-dialog" aria-label="Close">×</button></div><div id="about-content"></div></dialog>
+  <dialog id="reset-dialog"><div class="dialog-heading"><h2>Start a fresh exercise?</h2><button class="icon-button close-dialog" aria-label="Close">×</button></div><p>This clears this browser’s simulated missions and events. Export your mission log first if you want to keep it.</p><div class="form-row"><button class="button secondary close-dialog">Keep session</button><button class="button primary" id="confirm-reset">Reset exercise</button></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="./vendor/leaflet.js"></script><script type="module" src="./app.js"></script><script type="module" src="./drone-motion.js"></script>
+</body>
+</html>
