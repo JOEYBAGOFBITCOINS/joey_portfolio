@@ -1548,6 +1548,13 @@ body{
 /* One shared scale for the project gallery. Text can grow without clipping. */
 #projects .tag{font-size:9px;letter-spacing:.5px;color:#c5c5cc}
 #projects .projectMedia video{object-fit:contain!important}
+/* Bring Lumina's portrait source closer inside its landscape card only. */
+#projects [data-project="lumina-live"] .projectMedia video{object-fit:cover!important;object-position:center}
+#projects .motionPreviewCard .projectMedia{background:#0b0f18}
+#projects .motionPreviewCard .projectMedia video{filter:none;transform:none}
+#projects .motionPreviewCard .projectMedia:after{display:none}
+.imgBox .projectArtwork[data-project="hotdog-or-not"] video,
+.imgBox .projectArtwork[data-project="algorithms-systems"] video{filter:none}
 #projects .actionBtn{min-height:42px;font-size:9px;letter-spacing:1px}
 #projects .projectCard.is-viewed{border-color:rgba(181,178,239,.65)}
 #projects .projectCard .actionBtn:focus-visible{outline:3px solid #dcd9ff;outline-offset:3px}
@@ -2461,26 +2468,12 @@ body{
      HOTDOG OR NOT
      ========================================================= -->
 
-<article data-project="hotdog-or-not" class="projectCard darkProjectCard">
+<article data-project="hotdog-or-not" class="projectCard darkProjectCard motionPreviewCard">
 
-  <div
-    class="projectMedia"
-    style="
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      background:#0b0d10;
-      color:#f4f4f4;
-      text-align:center;
-      padding:20px;
-    "
-  >
-    <span style="font-size:76px;line-height:1;" aria-hidden="true">🌭</span>
-    <span style="font:900 10px var(--sans);letter-spacing:3px;">
-      HOTDOG? / NOT HOTDOG?
-    </span>
+  <div class="projectMedia">
+    <video muted loop playsinline preload="none" poster="assets/hotdog-vision-poster.jpg" width="1280" height="800" aria-hidden="true">
+      <source src="assets/hotdog-vision-loop.mp4" type="video/mp4">
+    </video>
   </div>
 
   <div class="projectBody">
@@ -2534,17 +2527,13 @@ body{
            ALGORITHMS & SYSTEMS
            ========================================================= -->
 
-      <article data-project="algorithms-systems" class="projectCard darkProjectCard">
+      <article data-project="algorithms-systems" class="projectCard darkProjectCard motionPreviewCard">
 
         <div class="projectMedia">
 
-          <img
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
-            alt="Electronic circuit board representing algorithms and computer science work"
-            style="
-              object-fit:cover;
-            "
-          >
+          <video muted loop playsinline preload="none" poster="assets/algorithms-systems-poster.jpg" width="1280" height="800" aria-hidden="true">
+            <source src="assets/algorithms-systems-loop.mp4" type="video/mp4">
+          </video>
 
         </div>
 
