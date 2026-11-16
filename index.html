@@ -1786,6 +1786,15 @@ body{
 
     }
 
+    /* Preserve the full graduation frame on narrow windows and phones. */
+    #experience .personaFeature.graduationFeature video {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      max-height: min(65svh, 520px);
+      object-fit: contain;
+    }
+
   </style>
 
 
