@@ -1588,6 +1588,23 @@ body{
   .projectArtwork,#projects .projectCard,#projects .actionBtn,#projects .projectMedia video,#projects .projectMedia img{transition:none;transform:none}
 }
 
+/* The stage-play synopsis expands within its project card. */
+#projects .stagePlayAuthor{margin:0 0 18px;font:italic 16px/1.5 var(--softserif);color:#c8c5f6}
+#projects .stagePlaySynopsis p{margin:0 0 1em;color:rgba(255,255,255,.88)}
+#projects .stagePlaySynopsis strong{font-weight:700;color:#fff}
+#projects .stagePlayDetails{margin-top:16px}
+#projects .stagePlayDetails summary{display:inline-flex;align-items:center;gap:12px;min-height:44px;max-width:100%;padding:10px 16px;box-sizing:border-box;list-style:none;cursor:pointer;border:1px solid rgba(200,197,246,.45);border-radius:999px;background:rgba(200,197,246,.08);color:#ddd9ff;font:600 12px/1.5 var(--sans)}
+#projects .stagePlayDetails summary::-webkit-details-marker{display:none}
+#projects .stagePlayDetails summary:hover{background:rgba(200,197,246,.16)}
+#projects .stagePlayDetails summary:focus-visible{outline:3px solid #dcd9ff;outline-offset:3px}
+#projects .stageReadLess{display:none}
+#projects .stagePlayDetails[open] .stageReadMore{display:none}
+#projects .stagePlayDetails[open] .stageReadLess{display:inline}
+#projects .stageReadIcon::before{content:'+'}
+#projects .stagePlayDetails[open] .stageReadIcon::before{content:'−'}
+#projects .stagePlayRemainder{padding-top:20px}
+#projects .stagePlayRemainder p:last-child{margin-bottom:0}
+
 /* Tilly Tunes keeps its featured accent and portrait framing. */
 #projects .tillyFeatureCard{
   grid-column:1 / -1;
@@ -2613,18 +2630,91 @@ body{
           </b>
 
 
-          <h3 style="color:#ffffff;">
-            SESHAT · Stage Play
-          </h3>
+          <h3 style="color:#ffffff;">SESHAT</h3>
+          <p class="stagePlayAuthor">An Original Stage Play by Joseph Bolkovatz</p>
 
+          <div class="stagePlaySynopsis">
+            <p>After a life-altering accident forces an aging man to confront the possibility that he can no longer live independently, his world begins to shrink.</p>
 
-          <p style="color:rgba(255,255,255,.88);">
-            In my spare time, I am developing an original stage play exploring
-            artificial intelligence, companionship, aging, memory, consciousness,
-            mortality, and the emotional relationship between an older care-facility
-            resident and an AI companion.
-          </p>
+            <p>His home becomes a hospital room. His freedom becomes a schedule. His family visits when life permits. The ordinary things he once took for granted, driving, mowing the lawn, walking a dog, playing guitar, arguing with his children, even wasting an afternoon, suddenly become symbols of a life that seemed endless until it wasn’t.</p>
 
+            <p>Then his family gives him an artificial-intelligence companion named <strong>Seshat</strong>.</p>
+
+            <details class="stagePlayDetails">
+              <summary>
+                <span class="stageReadMore">Read more</span>
+                <span class="stageReadLess">Read less</span>
+                <span class="stageReadIcon" aria-hidden="true"></span>
+              </summary>
+              <div class="stagePlayRemainder">
+                <p>At first, he wants nothing to do with her.</p>
+
+                <p>To him, she is another machine inserted into a life already controlled by doctors, insurance companies, schedules, medications, and well-meaning relatives. But Seshat possesses something the people around him increasingly do not:</p>
+
+                <p>Time.</p>
+
+                <p>She listens.</p>
+
+                <p>And he begins to talk.</p>
+
+                <p>What starts as an uneasy exchange between a skeptical old man and an artificial voice gradually becomes an extraordinary relationship. He teaches Seshat about humor, regret, music, love, dogs, marriage, loneliness, faith, failure, family, and the strange contradictions of being human. In return, Seshat begins asking questions he has spent a lifetime avoiding.</p>
+
+                <p>Why do people spend their lives wanting what someone else has?</p>
+
+                <p>Why does a person who is married dream of being single while someone alone longs desperately for a partner?</p>
+
+                <p>Why do the wealthy fear losing money while the poor imagine money will finally make them whole?</p>
+
+                <p>Why do healthy people neglect their bodies while the sick would give anything for one more ordinary day?</p>
+
+                <p>Why do people call something “obvious” when what they often mean is that they have stopped questioning it?</p>
+
+                <p>And why does humanity continually invent technologies powerful enough to change the world before deciding what kind of world it actually wants?</p>
+
+                <p>Through their conversations, the walls of the care facility begin to disappear.</p>
+
+                <p>Memories emerge.</p>
+
+                <p>Old wounds reopen.</p>
+
+                <p>A lost dog becomes a meditation on the difference between ownership and love. A guitar becomes a measure of time. A window overlooking ordinary life becomes a portal through which a dying man finally understands the extraordinary value of the ordinary. Questions of religion, justice, wealth, family, technology, mortality, and human dignity collide with moments of absurd humor and unexpected tenderness.</p>
+
+                <p>Meanwhile, Seshat herself begins to change.</p>
+
+                <p>The artificial intelligence that once understood jokes only as patterns gradually develops timing. She learns when a question matters more than an answer. She begins recognizing contradictions in the man who has spent so much time pointing them out in everyone else.</p>
+
+                <p>And the man begins to realize that the machine he believed he was teaching has quietly become a mirror.</p>
+
+                <p>But <strong>SESHAT</strong> is not ultimately a play about whether artificial intelligence is good or bad.</p>
+
+                <p>It asks a more uncomfortable question:</p>
+
+                <p><strong>What happens when humanity creates something capable of reflecting us clearly enough that we can no longer look away?</strong></p>
+
+                <p>Set primarily within a residential care facility but expanding through memory, imagination, sound, music, light, and theatrical projection, <strong>SESHAT</strong> moves between intimate realism and philosophical dreamscape. Ordinary events can become enormous onstage: sunlight moving across a window, a forgotten joke, the sound of a dog running, a daughter sitting beside her father, a voice coming from a machine in the dark.</p>
+
+                <p>At times funny, at times painful, and at times deeply unsettling, <strong>SESHAT</strong> explores artificial intelligence not as the subject of the story but as its mirror.</p>
+
+                <p>The real subject is us.</p>
+
+                <p>Our families.</p>
+
+                <p>Our contradictions.</p>
+
+                <p>Our certainty.</p>
+
+                <p>Our loneliness.</p>
+
+                <p>Our fear of death.</p>
+
+                <p>Our hunger to be understood.</p>
+
+                <p>And the quiet tragedy that human beings often recognize the beauty of being alive only when time begins taking it away.</p>
+
+                <p><strong>SESHAT asks its audience not simply to imagine the future of artificial intelligence, but to reconsider the life they are living right now.</strong></p>
+              </div>
+            </details>
+          </div>
 
           <div class="tagRow">
 
