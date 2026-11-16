@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Tilly Tunes: a live music and pet-video application. A case study in product design, AI-assisted full-stack development, payments, and reliable media delivery by Joseph Bolkovatz.">
-  <meta name="theme-color" content="#0d0d0d">
+  <meta name="theme-color" content="#0a1020">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Tilly Tunes — A Product Case Study | Joseph Bolkovatz">
   <meta property="og:description" content="From a pet’s story to songs and video. Explore the product, the architecture, and the decisions behind a live application.">
@@ -13,7 +13,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <title>Tilly Tunes — Case Study | Joseph Bolkovatz</title>
   <style>
-    :root{--bg:#0d0d0d;--paper:#161616;--ink:#f2f2f2;--soft:#b8b8b8;--line:rgba(242,242,242,.17);--lavender:#bfc0f5;--serif:'Playfair Display',Georgia,serif;--softserif:'Cormorant Garamond',Georgia,serif;--sans:'Nunito',Arial,sans-serif}
+    :root{--bg:#0a1020;--paper:#151e33;--ink:#f6f0e5;--soft:#c6cde0;--line:rgba(242,242,242,.17);--lavender:#d1c8f0;--serif:'Playfair Display',Georgia,serif;--softserif:'Cormorant Garamond',Georgia,serif;--sans:'Nunito',Arial,sans-serif}
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:24px}
     body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65}
@@ -37,7 +37,7 @@
     .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
     .button{display:inline-flex;justify-content:center;align-items:center;gap:14px;min-height:47px;padding:11px 19px;border:1px solid rgba(242,242,242,.38);font:800 11px/1.4 var(--sans);letter-spacing:1.1px;text-transform:uppercase;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
     .button.primary{background:var(--lavender);color:#14141c;border-color:var(--lavender)}
-    .button:hover{background:#25252c;border-color:var(--lavender);transform:translateY(-2px)}
+    .button:hover{background:#25304c;border-color:var(--lavender);transform:translateY(-2px)}
     .button.primary:hover{background:#d1d2ff;color:#14141c}
     .dossier{margin:32px 0 0;padding:17px 0 0;border-top:1px solid var(--line);display:grid;gap:9px}
     .dossier div{display:grid;grid-template-columns:76px 1fr;gap:12px}
@@ -46,9 +46,9 @@
     .heroVisual{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-width:0;padding:12px 22px 13px}
     .heroVisual:before{content:"";position:absolute;inset:14% -5% 8%;background:radial-gradient(ellipse,rgba(169,170,225,.14),transparent 68%);pointer-events:none}
     .heroVisual:after{content:"";position:absolute;inset:42px 0;border:1px solid var(--line);pointer-events:none}
-    .device{position:relative;z-index:1;width:min(100%,250px);margin:0;border:7px solid #25252b;border-radius:27px;background:#171a2d;box-shadow:0 24px 70px rgba(0,0,0,.6);overflow:hidden}
+    .device{position:relative;z-index:1;width:min(100%,250px);margin:0;border:7px solid #2c3551;border-radius:27px;background:#171a2d;box-shadow:0 24px 70px rgba(0,0,0,.6);overflow:hidden}
     .device img{display:block;width:100%;height:auto}
-    .visualNote{position:relative;z-index:2;margin-top:18px;max-width:100%;padding:12px 22px;border:1px solid rgba(191,192,245,.3);background:#17171d;text-align:center}
+    .visualNote{position:relative;z-index:2;margin-top:18px;max-width:100%;padding:12px 22px;border:1px solid rgba(191,192,245,.3);background:#19253d;text-align:center}
     .visualNote b{display:block;font:600 italic 23px/1.1 var(--softserif);margin-bottom:6px}
     .visualNote span{font-size:10px;color:var(--soft);line-height:1.5;display:block}
     .chapter{padding:58px 0;border-top:1px solid var(--line)}
@@ -105,6 +105,11 @@
     @media(max-width:900px){.hero{gap:32px}.heroVisual{padding:12px}.productGrid{gap:28px;grid-template-columns:1fr 1fr}.services{grid-template-columns:1fr 1fr}}
     @media(max-width:680px){.shell{width:calc(100% - 36px)}.masthead{padding:19px 0 16px}.signature{font-size:22px}.back{font-size:10px;letter-spacing:.4px}.hero{grid-template-columns:1fr;padding:38px 0 39px;gap:30px}.eyebrow{font-size:9px;letter-spacing:1.8px;margin-bottom:19px}h1{font-size:57px;letter-spacing:-2px}.subtitle{font-size:33px}.lede{font-size:14px;margin-bottom:23px}.heroVisual{width:min(100%,355px);margin:auto;padding:16px 38px}.device{width:225px}.visualNote b{font-size:21px}.chapter{padding:37px 0}.chapterHead{display:block;margin-bottom:24px}h2{font-size:29px}.sectionIntro{padding-top:13px;max-width:100%}.productGrid,.decisions,.delivery{grid-template-columns:1fr}.productGrid{gap:29px}.decision{padding:23px}.decision .index{margin-bottom:12px}.architecture{padding:19px 14px}.stack{flex-direction:column;gap:10px}.stackNode{max-width:none;padding:15px}.stackArrow{transform:rotate(90deg);line-height:1}.services{gap:9px}.services li{padding:14px 9px}.architectureNote{text-align:left}.delivery{gap:30px}.closing{align-items:flex-start;flex-direction:column;padding-top:32px}.closing p{font-size:27px}.footer{padding-top:16px;flex-wrap:wrap;gap:7px}.button{padding:11px 14px;font-size:10px}.actions{gap:10px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
+      /* Shared portfolio palette, retaining each project's own media. */
+    html{color-scheme:dark}
+    body{background:radial-gradient(ellipse at 100% 0%,rgba(137,117,198,.12),transparent 45%),var(--bg)}
+    .eyebrow,.sectionLabel,.tags li{color:#e9c98f}
+    .masthead{border-bottom-color:rgba(233,201,143,.25)}
   </style>
 </head>
 <body>

@@ -15,19 +15,20 @@
 <style>
 
 :root{
-    --bg:#0d0d0d;
-  --paper:#161616;
-  --ink:#f2f2f2;
-  --soft:#b8b8b8;
-  --muted:#6f6f6f;
-  --cream:#1f1f1f;
+    --bg:#0a1020;
+  --paper:#151e33;
+  --ink:#f6f0e5;
+  --soft:#c6cde0;
+  --muted:#9daac6;
+  --cream:#1c2842;
+  --card:#172239;
   --white:#ffffff;
   --black:#000000;
 
-  --primary:#d9d9d9; /* to make it pop */ 
-  --secondary:#7d7d7d;
-  --gold:#b8b8b8;
-  --sideBg:#111111;
+  --primary:#e9c98f; 
+  --secondary:#a89cdd;
+  --gold:#e9c98f;
+  --sideBg:#0b1325;
   --transparent:transparent;
   
   
@@ -1571,7 +1572,7 @@ body{
 #projects .skyrxCard .projectMedia{display:block;background:#101619}
 #projects .skyrxCard .projectMedia video{filter:none;transform:none}
 #projects .skyrxCard .projectMedia:after{background:linear-gradient(to top,rgba(10,15,17,.72),transparent 40%)}
-.skyrxMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:#f4f4f4;pointer-events:none}
+.skyrxMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:var(--ink);pointer-events:none}
 #projects .skyrxCard .projectMedia:focus-visible{outline:3px solid #dcd9ff;outline-offset:-3px}
 .imgBox .projectArtwork[data-project="swimsignal"]{background:#13252a}
 .imgBox .projectArtwork[data-project="swimsignal"] video{filter:none;transform:none}
@@ -1579,10 +1580,10 @@ body{
 #projects .swimsignalCard .projectMedia video{object-fit:cover!important;object-position:center;filter:none;transform:none}
 #projects .swimsignalCard .projectMedia:after{background:linear-gradient(to top,rgba(10,15,17,.72),transparent 40%)}
 #projects .swimsignalCard .projectMedia:focus-visible{outline:3px solid #dcd9ff;outline-offset:-3px}
-.swimsignalMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:#f4f4f4;pointer-events:none}
-.projectArtworkFallback{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;color:#f4f4f4;background:radial-gradient(ellipse at center,#252937,#08090c 75%)}
+.swimsignalMediaLabel{position:absolute;left:16px;right:16px;bottom:13px;z-index:1;font:800 9px/1.6 var(--sans);letter-spacing:1.3px;text-transform:uppercase;color:var(--ink);pointer-events:none}
+.projectArtworkFallback{display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;text-align:center;color:var(--ink);background:radial-gradient(ellipse at center,#252937,#08090c 75%)}
 .imgSide.is-project-view .sideCaption{right:28px}
-.imgSide.is-project-view .sideCaption b{font-size:36px;line-height:1.05;overflow-wrap:break-word;color:#f4f4f4}
+.imgSide.is-project-view .sideCaption b{font-size:36px;line-height:1.05;overflow-wrap:break-word;color:var(--ink)}
 .imgSide.is-project-view .sideCaption span{line-height:1.7;letter-spacing:2px;color:rgba(244,244,244,.72)}
 @media(prefers-reduced-motion:reduce){
   .projectArtwork,#projects .projectCard,#projects .actionBtn,#projects .projectMedia video,#projects .projectMedia img{transition:none;transform:none}
@@ -1658,6 +1659,7 @@ body{
 }
 
 </style>
+<link rel="stylesheet" href="portfolio-theme.css?v=20261115">
   </head>
 
   <body>
@@ -1735,7 +1737,7 @@ body{
 
         <div class="introCard">
           <b>Professional Mission</b>
-          <p>I combine computer science, business leadership, systems thinking, and human-centered innovation to build technology and organizations that improve everyday life.</p>
+          <p class="missionText"><span class="missionStatic">I combine computer science, business leadership, systems thinking, and human-centered innovation to build technology and organizations that improve everyday life.</span><span class="missionAnimated" aria-hidden="true"><span class="missionTyped"></span><span class="missionCaret"></span></span></p>
         </div>
 
         <div class="text">
@@ -2026,18 +2028,18 @@ body{
   <style>
 
     #projects .darkProjectCard {
-      background: #111318;
-      color: #f4f4f4;
+      background: var(--card);
+      color: var(--ink);
     }
 
     #projects .darkProjectCard .projectBody {
-      background: #111318;
-      color: #f4f4f4;
+      background: var(--card);
+      color: var(--ink);
     }
 
     #projects .darkProjectCard .projectBody b,
     #projects .darkProjectCard .projectBody h3 {
-      color: #f4f4f4;
+      color: var(--ink);
     }
 
     #projects .darkProjectCard .projectBody p {
@@ -2046,16 +2048,16 @@ body{
 
 
     #projects .personalPrinciples.darkPrinciples {
-      background: #111318;
-      color: #f4f4f4;
+      background: var(--card);
+      color: var(--ink);
     }
 
     #projects .personalPrinciples.darkPrinciples > b {
-      color: #f4f4f4;
+      color: var(--ink);
     }
 
     #projects .personalPrinciples.darkPrinciples blockquote {
-      color: #f4f4f4;
+      color: var(--ink);
     }
 
     #projects .personalPrinciples.darkPrinciples .quoteCredit {
@@ -2209,8 +2211,8 @@ body{
 
       <article data-project="lumina-live"         class="projectCard"
         style="
-          background:#111318;
-          color:#f4f4f4;
+          background:var(--card);
+          color:var(--ink);
         "
       >
 
@@ -2244,8 +2246,8 @@ body{
         <div
           class="projectBody"
           style="
-            background:#111318;
-            color:#f4f4f4;
+            background:var(--card);
+            color:var(--ink);
           "
         >
 
@@ -2300,8 +2302,8 @@ body{
 
 <article data-project="backward-7evin"   class="projectCard motionPreviewCard"
   style="
-    background:#111318;
-    color:#f4f4f4;
+    background:var(--card);
+    color:var(--ink);
   "
 >
 
@@ -2331,8 +2333,8 @@ body{
   <div
     class="projectBody"
     style="
-      background:#111318;
-      color:#f4f4f4;
+      background:var(--card);
+      color:var(--ink);
     "
   >
 
@@ -2385,8 +2387,8 @@ body{
 
 <article data-project="seshat-one"   class="projectCard motionPreviewCard"
   style="
-    background:#111318;
-    color:#f4f4f4;
+    background:var(--card);
+    color:var(--ink);
   "
 >
 
@@ -2421,8 +2423,8 @@ body{
   <div
     class="projectBody"
     style="
-      background:#111318;
-      color:#f4f4f4;
+      background:var(--card);
+      color:var(--ink);
     "
   >
 
@@ -2577,8 +2579,8 @@ body{
 
       <article data-project="seshat-stage-play"         class="projectCard"
         style="
-          background:#0b0d10;
-          color:#f4f4f4;
+          background:var(--card);
+          color:var(--ink);
           border:1px solid rgba(255,255,255,.16);
           overflow:hidden;
         "
@@ -2620,12 +2622,12 @@ body{
         <div
           class="projectBody"
           style="
-            background:#0b0d10;
-            color:#f4f4f4;
+            background:var(--card);
+            color:var(--ink);
           "
         >
 
-          <b style="color:#f4f4f4;">
+          <b style="color:var(--ink);">
             Creative Technology
           </b>
 
@@ -2802,7 +2804,7 @@ body{
 
         .enchantedQuillCard {
           min-width: 0;
-          color: #f4f4f4;
+          color: var(--ink);
           background: #000000 !important;
         }
 
@@ -3269,6 +3271,7 @@ mahriAudio.addEventListener('ended', function(){
 });
 </script>
 <script src="portfolio-projects.js"></script>
+<script src="portfolio-mission.js?v=20261115"></script>
     
   </body>
   

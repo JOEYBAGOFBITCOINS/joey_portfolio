@@ -1,0 +1,93 @@
+/* Midnight blue, warm ivory, champagne gold, and soft lavender. */
+html{color-scheme:dark;background:radial-gradient(ellipse at 22% 10%,#222b48 0%,#10192c 44%,#080e1b 85%);background-attachment:fixed;min-height:100%}
+body{background:transparent}
+.bg{
+  background:radial-gradient(ellipse at 100% 0%,rgba(137,117,198,.17),transparent 52%),
+    radial-gradient(ellipse at 55% 100%,rgba(74,111,166,.18),transparent 48%),
+    linear-gradient(145deg,#18223a,#0d1628);
+  border-color:rgba(233,201,143,.36);
+  box-shadow:0 28px 90px rgba(0,4,15,.62);
+}
+.bg:after{border-color:rgba(233,201,143,.28)}
+.bigTitle span{-webkit-text-stroke-color:rgba(233,201,143,.44)}
+.sideCaption span{color:var(--soft)}
+.topline{border-bottom-color:rgba(233,201,143,.25)}
+.page h1{color:var(--ink)}
+.page h2{color:var(--muted);line-height:1.7}
+.pageScroll{scrollbar-color:var(--secondary) rgba(168,156,221,.08)}
+.pageScroll::-webkit-scrollbar-track{background:rgba(168,156,221,.08)}
+.pageScroll::-webkit-scrollbar-thumb{background:linear-gradient(var(--secondary),#6f7fa4);border-color:transparent}
+.text,.personaFeature p,.personaTextCard p{color:var(--soft);text-align:left}
+.text b{color:var(--ink)}
+.musicBox{
+  background:linear-gradient(120deg,rgba(168,156,221,.16),rgba(233,201,143,.05)),#18233a;
+  border-color:rgba(168,156,221,.4);
+  box-shadow:0 8px 24px rgba(0,5,20,.22),inset 0 1px rgba(255,255,255,.05);
+}
+.musicBox:hover,.musicBox.playing{
+  background:linear-gradient(120deg,rgba(168,156,221,.22),rgba(233,201,143,.08)),#18233a;
+  box-shadow:0 12px 28px rgba(0,5,20,.3),inset 0 1px rgba(255,255,255,.07);
+}
+.musicPlay{background:var(--primary);color:#10192c}
+.volumeToggle{background:rgba(168,156,221,.14);border-color:rgba(168,156,221,.4);color:var(--ink)}
+.introCard,.personaTextCard,.timelineItem,.appearanceBlock,.personalPrinciples{
+  background:linear-gradient(115deg,rgba(168,156,221,.11),rgba(233,201,143,.035)),#19253d;
+  border-left-color:var(--primary);
+}
+.introCard{border-radius:0 12px 12px 0;padding:20px 22px}
+.introCard p{color:var(--ink);font-size:21px;line-height:1.45}
+.introCard b{font-size:9px;line-height:1.7;margin-bottom:12px}
+.personaTextCard:hover{background:#25304c}
+.personaFeature,.contactCard{
+  background:linear-gradient(130deg,rgba(168,156,221,.07),transparent),#172239;
+  border-color:rgba(168,156,221,.24);
+}
+.timelineItem p,.appearanceBlock p,.personalPrinciples p{color:var(--soft)}
+.contactCard{min-width:0;border-radius:10px;padding:18px}
+.contactCard a{overflow-wrap:anywhere}
+.contactCard a:hover{color:var(--primary)}
+.actionBtn{min-height:44px;background:rgba(168,156,221,.10);border-color:rgba(168,156,221,.4);color:var(--ink)}
+.actionBtn:hover{background:var(--primary);border-color:var(--primary);color:#10192c}
+.actionBtn:focus-visible,.contactCard a:focus-visible,.nav button:focus-visible,.musicPlay:focus-visible,.volumeToggle:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.nav{background:rgba(10,19,36,.95)}
+.nav button{color:var(--soft)}
+.nav button.active,.nav button:hover{background:linear-gradient(145deg,rgba(168,156,221,.2),rgba(168,156,221,.08))}
+.nav button.active span,.nav button:hover span{color:var(--primary)}
+.nav button:before{background:var(--primary)}
+#projects .projectCard,#projects .projectCard.darkProjectCard{
+  background:#172239;border-color:rgba(168,156,221,.25);
+  box-shadow:0 8px 24px rgba(0,6,19,.16);
+}
+#projects .projectGrid .projectCard .projectBody{background:linear-gradient(120deg,rgba(168,156,221,.05),transparent),#172239;color:var(--ink)}
+#projects .projectGrid .projectCard .projectBody b{color:var(--primary)}
+#projects .projectGrid .projectCard .projectBody h3{color:var(--ink)}
+#projects .projectGrid .projectCard .projectBody p{color:var(--soft)}
+#projects .projectCard.is-viewed,#projects .projectCard:hover{border-color:rgba(233,201,143,.62)}
+#projects .projectCard .tag{color:#d1c8f0;border-color:rgba(168,156,221,.3);background:rgba(168,156,221,.06)}
+#projects .projectCard .tillyCaseLink{background:#d1c8f0;color:#131d31;border-color:#d1c8f0}
+#projects .projectCard .tillyCaseLink:hover{background:var(--primary);border-color:var(--primary)}
+#projects .introCard.personalPrinciples.darkPrinciples{background:#19253d;color:var(--ink)}
+#projects .introCard.personalPrinciples.darkPrinciples > b{color:var(--primary)}
+#projects .introCard.personalPrinciples.darkPrinciples blockquote{color:var(--ink)}
+#projects .introCard.personalPrinciples.darkPrinciples .quoteCredit{color:var(--soft)}
+#projects .projectGrid .projectCard .projectBody .stagePlayAuthor{color:#d1c8f0}
+#projects .projectCard .stagePlaySynopsis strong{color:var(--ink)}
+
+/* Full copy reserves the final height and stays available to assistive tech. */
+.missionText{position:relative}
+.missionAnimated{display:none;position:absolute;inset:0;pointer-events:none;user-select:none}
+.missionText[data-typing] .missionStatic{opacity:0}
+.missionText[data-typing] .missionAnimated{display:block}
+.missionCaret{display:inline-block;width:2px;height:.9em;margin-left:2px;margin-right:-4px;background:var(--primary);vertical-align:-.05em}
+@media(max-width:940px){
+  body{background:#0d1628}
+  .nav{border-color:rgba(233,201,143,.35);background:rgba(12,22,41,.96);box-shadow:0 -5px 28px rgba(3,9,20,.28)}
+}
+@media(max-width:560px){
+  .introCard{padding:18px 20px}
+  .introCard p{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .missionText[data-typing] .missionStatic{opacity:1}
+  .missionText[data-typing] .missionAnimated{display:none}
+}
