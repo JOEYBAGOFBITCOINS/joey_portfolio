@@ -1593,6 +1593,14 @@ body{
 .imgSide.is-project-view .sideCaption{right:28px}
 .imgSide.is-project-view .sideCaption b{font-size:36px;line-height:1.05;overflow-wrap:break-word;color:var(--ink)}
 .imgSide.is-project-view .sideCaption span{line-height:1.7;letter-spacing:2px;color:rgba(244,244,244,.72)}
+/* The shared artwork becomes a short banner on narrow screens. */
+.sideQuote{white-space:nowrap}
+@media(max-width:940px){
+  .imgSide .sideQuote{display:none}
+  .imgSide .sideCaption{left:24px;right:24px;bottom:24px;max-width:calc(100% - 48px)}
+  .imgSide .sideCaption b{line-height:1.05}
+  .imgSide .sideCaption span{font-size:10px;line-height:1.7;letter-spacing:2px;overflow-wrap:anywhere}
+}
 @media(prefers-reduced-motion:reduce){
   .projectArtwork,#projects .projectCard,#projects .actionBtn,#projects .projectMedia video,#projects .projectMedia img{transition:none;transform:none}
 }
