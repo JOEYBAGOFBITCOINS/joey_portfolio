@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0e0f10">
+  <meta name="description" content="Introducing B7 Financial. A portfolio concept for digital ownership of allocated physical gold, proposed Swiss custody, and a path from token to physical redemption.">
+  <title>B7 Financial | Digital gold. Tangible ownership.</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="gold-story.css">
+  <link rel="stylesheet" href="legacy-opening.css">
+  <link rel="stylesheet" href="immersive.css?v=20261118-6">
+  <link rel="stylesheet" href="immersive-workspace.css?v=20261123-1">
+  <script type="module" src="immersive-motion.js?v=20261118-6"></script>
+  <script type="module" src="app.js?v=20261123-1"></script>
+  <script type="module" src="hero-motion.js"></script>
+  <script type="module" src="wallet-ui.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a href="#home" class="brand" aria-label="B7 Financial home"><span class="brand-mark supplied-mark"><img src="assets/b7-moon-logo-original.jpg" alt="B7 moon emblem" width="2048" height="2048"></span><span>FINANCIAL<small>VALUE, REIMAGINED.</small></span></a>
+    <nav aria-label="Main navigation"><a href="#ownership">Ownership</a><a href="#custody">Swiss custody</a><a href="#origin">Our origin</a><a href="#build">The build</a></nav>
+    <div class="header-actions"><a href="#dashboard" class="button header-cta">Explore B7 <span>↗</span></a><button type="button" class="button wallet-trigger" id="open-wallet" aria-haspopup="dialog">Connect wallet</button></div>
+  </header>
+  <dialog id="wallet-dialog" class="wallet-dialog" aria-labelledby="wallet-title">
+    <div class="wallet-dialog-head"><p class="eyebrow">B7 / TESTNET WALLET</p><button class="wallet-close" id="close-wallet" type="button" aria-label="Close wallet">×</button></div>
+    <h2 id="wallet-title">Your wallet.<br><em>Your connection.</em></h2>
+    <p class="wallet-intro">Connect to BSC Testnet. Wallet balances stay separate from the demo.</p>
+    <div id="wallet-status" class="wallet-status" role="status" aria-live="polite">Choose how to connect.</div>
+    <div id="wallet-choices">
+      <div class="wallet-choice-grid" aria-label="Popular wallets">
+        <button type="button" class="wallet-choice" data-wallet-brand="metamask"><span class="wallet-symbol metamask-symbol" aria-hidden="true">M</span><span><strong>MetaMask</strong><small>Wallet options</small></span></button>
+        <button type="button" class="wallet-choice" data-wallet-brand="trust"><span class="wallet-symbol trust-symbol" aria-hidden="true">T</span><span><strong>Trust Wallet</strong><small>Wallet options</small></span></button>
+        <button type="button" class="wallet-choice" data-wallet-brand="coinbase"><span class="wallet-symbol coinbase-symbol" aria-hidden="true">C</span><span><strong>Coinbase Wallet</strong><small>Wallet options</small></span></button>
+        <button type="button" class="wallet-choice" data-wallet-brand="rabby"><span class="wallet-symbol rabby-symbol" aria-hidden="true">R</span><span><strong>Rabby</strong><small>Wallet options</small></span></button>
+        <button type="button" class="wallet-choice" data-wallet-brand="okx"><span class="wallet-symbol okx-symbol" aria-hidden="true">O</span><span><strong>OKX Wallet</strong><small>Wallet options</small></span></button>
+        <button type="button" class="wallet-choice" id="walletconnect-picker"><span class="wallet-symbol wc-symbol" aria-hidden="true">↔</span><span><strong>WalletConnect</strong><small>Phone / QR code</small></span></button>
+      </div>
+      <div id="additional-wallets" class="additional-wallets"></div>
+      <button class="text-button" id="browse-all-wallets" type="button">Browse all supported wallets ↗</button>
+      <p class="wallet-small" id="wallet-picker-help"></p>
+    </div>
+    <div id="wallet-account" hidden>
+      <dl class="wallet-facts"><div><dt>Connected account</dt><dd id="wallet-address"></dd></div><div><dt>Network</dt><dd id="wallet-network"></dd></div><div><dt>Test BNB balance</dt><dd id="wallet-balance"></dd></div><div><dt>B7 test contract</dt><dd id="wallet-contract">Not deployed</dd></div><div id="wallet-b7-row" hidden><dt>B7 test tokens</dt><dd id="wallet-b7-balance"></dd></div></dl>
+      <button class="button primary full" id="switch-testnet" type="button" hidden>Switch to BSC Testnet</button>
+      <div class="wallet-links"><button class="text-button" id="refresh-wallet" type="button">Refresh balance</button><a class="text-link" id="wallet-explorer" target="_blank" rel="noopener noreferrer" hidden>View on explorer ↗</a><button class="text-button" id="disconnect-wallet" type="button">Disconnect this page</button></div>
+      <p class="wallet-small">Disconnecting this page does not revoke permissions saved in a browser wallet. Manage those in your wallet.</p>
+    </div>
+    <details id="deployment-tools" hidden><summary>Administrator / testnet setup</summary><p class="wallet-small">Create the reviewed B7 demo contract on BSC Testnet, with your connected account as administrator. Deployment creates no tokens and grants no operational roles.</p><div id="deployment-state" role="status" aria-live="polite"></div><button class="button full" id="prepare-deployment" type="button">Review testnet deployment</button><div id="deployment-review" hidden><dl class="wallet-facts"><div><dt>Network</dt><dd>BSC Testnet · chain 97</dd></div><div><dt>Administrator</dt><dd id="deployment-admin"></dd></div><div><dt>Value sent</dt><dd>0 tBNB</dd></div><div><dt>Estimated network fee</dt><dd id="deployment-gas"></dd></div></dl><p class="wallet-small">Your wallet shows the final gas fee. This action is restricted to testnet. Review the contract deployment in your wallet before approving.</p><button class="button primary full" id="send-deployment" type="button">Review in wallet <span>↗</span></button></div><button class="text-button" id="check-deployment" type="button" hidden>Check deployment confirmation</button><a class="text-link" id="deployment-explorer" target="_blank" rel="noopener noreferrer" hidden>View deployment transaction ↗</a></details>
+    <details class="wallet-help"><summary>Need test BNB?</summary><p class="wallet-small">Test BNB pays testnet network fees. The <a href="https://www.bnbchain.org/en/testnet-faucet" target="_blank" rel="noopener noreferrer">official faucet</a> currently checks for a minimum mainnet balance. See <a href="https://docs.bnbchain.org/bnb-smart-chain/developers/faucet/" target="_blank" rel="noopener noreferrer">BNB Chain's other test-token options</a> if you are not eligible. Do not send real BNB to the demo contract.</p></details>
+  </dialog>
+  <main id="main" tabindex="-1">
+    <div id="home-view">
+      <section class="legacy-hero" aria-labelledby="b7-opening-title">
+        <div class="hero-rain" aria-hidden="true"><video id="gold-rain-video" data-src="assets/b7-gold-rain.mp4" poster="assets/b7-gold-rain-poster.jpg" muted loop playsinline preload="none" tabindex="-1" disablepictureinpicture></video></div>
+        <div class="legacy-hero-content">
+          <div class="legacy-hero-emblem"><img src="assets/b7-moon-logo-original.jpg" alt="B7 moon emblem" width="2048" height="2048"></div>
+          <h1 id="b7-opening-title"><span>Fluctuating markets require</span><span>Sustainable solutions.</span></h1>
+          <p class="legacy-hero-name">B7 FINANCIAL</p>
+          <a href="#dashboard" class="button legacy-enter">Enter app <span aria-hidden="true">↗</span></a>
+          <p class="legacy-hero-intro">Physical gold. Digital ownership. A concept.</p>
+          <p class="concept-note"><span class="status-dot"></span> Portfolio concept by Joseph Bolkovatz</p>
+        </div>
+        <a href="#gold" class="legacy-scroll" aria-label="Discover digital gold"><span>DISCOVER B7</span><span aria-hidden="true">↓</span></a>
+      </section>
+
+      <div class="spec-strip wrap reveal-on-scroll" aria-label="The B7 concept at a glance">
+        <div><span>The asset</span><b>Physical gold</b></div><div><span>Proposed custody</span><b>Switzerland</b></div><div><span>Proposed unit</span><b>1 B7 <i>=</i> 1 gram</b></div><div><span>The experience</span><b>Seven memberships</b></div>
+      </div>
+
+      <section class="gold-story wrap" id="gold" aria-labelledby="gold-title">
+        <div class="gold-story-heading reveal-on-scroll"><p class="eyebrow">01 / Digital gold</p><h2 id="gold-title">Timeless by nature.<br><em>Digital by design.</em></h2><div class="gold-rule" aria-hidden="true"></div></div>
+        <div class="gold-story-copy reveal-on-scroll"><p class="large-copy">One token.<br>One gram of gold.</p><p>The proposed model connects digital ownership to allocated gold and physical redemption.</p><p class="gold-risk">Concept only. No live gold reserves. Ownership requires custody agreements; gold prices can fall.</p><details class="model-explainer"><summary>How B7 would work</summary><div><p>One B7 would represent one gram of fine gold. Supply would grow only after gold purchases are confirmed and allocated. There is no need to issue a large supply upfront.</p><p>Customers could request a supported cash payout or eligible physical-gold delivery under the proposed service. They would not have to swap B7 into BNB. Quotes, fees, minimums and availability would be disclosed.</p><p>BNB pays network fees; it is not the proposed gold backing. A network outage could still delay transfers and redemption. Real custody, payout and recovery services remain to be built.</p><a class="text-link" href="docs/b7-model.html">Read the protocol concept <span aria-hidden="true">↗</span></a></div></details></div>
+      </section>
+
+      <section class="ownership wrap" id="ownership" aria-labelledby="ownership-title">
+        <div class="section-heading reveal-on-scroll"><div><p class="eyebrow">The ownership journey</p><h2 id="ownership-title">Ownership.<br><em>Step by step.</em></h2></div><p>Explore allocation, reserves, and redemption in the demo.</p></div>
+        <div class="journey-grid">
+          <article class="depth-card"><div class="step-art art-order"><span>01</span><div class="mini-order"><small>YOUR ALLOCATION</small><b>5.000 B7</b><i>5 grams represented</i></div></div><div class="journey-copy"><p class="eyebrow">Choose your allocation</p><h3>Choose an amount.</h3><p>Start a simulated purchase.</p><a href="#buy" class="text-link">Explore allocation <span aria-hidden="true">↗</span></a></div></article>
+          <article class="depth-card"><div class="step-art art-vault"><span>02</span><div class="gold-bar bar-back"></div><div class="gold-bar"><b>B7</b><small>FINE GOLD<br>CONCEPT RESERVE</small></div></div><div class="journey-copy"><p class="eyebrow">Connect the reserve</p><h3>Trace the reserve.</h3><p>Confirmed allocation comes before issuance.</p><a href="#reserves" class="text-link">Inspect the model <span aria-hidden="true">↗</span></a></div></article>
+          <article class="depth-card"><div class="step-art art-redemption"><span>03</span><div class="redemption-mark">↗<small>FROM DIGITAL<br>TO PHYSICAL</small></div></div><div class="journey-copy"><p class="eyebrow">Choose what comes next</p><h3>Explore redemption.</h3><p>Follow a simulated delivery.</p><a href="#redeem" class="text-link">Explore delivery <span aria-hidden="true">↗</span></a></div></article>
+        </div>
+      </section>
+
+      <section class="swiss-custody" id="custody" tabindex="-1" aria-labelledby="custody-title">
+        <div id="vault-journey">
+          <div id="custody-research" class="vault-research-anchor" tabindex="-1" aria-label="Custody research"></div>
+          <div class="vault-pin">
+            <div class="vault-scene" aria-hidden="true"><img class="vault-exterior" src="assets/swiss-vault-concept.png" alt="" width="1672" height="941" loading="lazy" decoding="async"><img class="vault-interior" src="assets/swiss-vault-interior.png" alt="" loading="lazy" decoding="async"><div class="vault-shade"></div></div>
+            <div class="vault-scene-top"><span>02 / The reserve vision</span><span>Switzerland · Concept</span></div>
+            <div class="vault-story-track">
+              <article class="vault-story-card vault-opening" data-vault-phase="0"><p class="eyebrow">The reserve</p><h2 id="custody-title">Beyond the token.<br><em>Physical gold.</em></h2><p>A proposed Swiss home for the physical reserve.</p><a href="#custody-research" class="text-link">Explore custody research <span aria-hidden="true">↓</span></a><span class="vault-scroll-hint" aria-hidden="true">SCROLL TO STEP INSIDE <i>↓</i></span></article>
+              <article class="vault-story-card vault-record" data-vault-phase="1"><span class="story-index">01 / Inside the model</span><h3>Allocated.<br>Recorded.<br><em>Connected.</em></h3><p>In this model, each new token follows a confirmed gold allocation.</p><div class="vault-record-line"><span>Gold allocation</span><i aria-hidden="true">→</i><span>B7 issuance</span></div><p class="scene-note">Simulated. Tokens alone do not establish legal gold ownership.</p></article>
+              <article class="vault-story-card vault-research-card" data-vault-phase="2"><span class="story-index">02 / Custody research</span><h3>Custody research.<br><em>AMINA Bank AG.</em></h3><p>A candidate for further research into tokenization and gold custody.</p><div class="research-links"><a href="https://aminagroup.com/corporates/tokenization/" target="_blank" rel="noopener noreferrer">Tokenization services <span aria-hidden="true">↗</span></a><a href="https://uk.aminagroup.com/individuals/amina-gold-token-agt/" target="_blank" rel="noopener noreferrer">Published gold-custody model <span aria-hidden="true">↗</span></a></div><p class="research-status">Independent research. No B7 partnership, custody agreement, or live reserves. AMINA operates a separate product.</p></article>
+            </div>
+            <div class="vault-scene-bottom"><span>Concept imagery. Not a partner facility.</span><div class="vault-progress" aria-hidden="true"><span></span></div></div>
+          </div>
+        </div>
+        <div class="custody-after wrap">
+          <dl class="custody-facts reveal-on-scroll"><div><dt>Intended location</dt><dd>Switzerland</dd></div><div><dt>Proposed framework</dt><dd>Swiss-law custody &amp; ownership</dd></div><div><dt>Current status</dt><dd>Concept. No live reserves.</dd></div></dl>
+          <details class="custody-terms"><summary>Swiss custody, explained</summary><div><p>The intended custody and gold-ownership agreements would be governed by Swiss law, with the metal stored in Switzerland. Those arrangements have not been established.</p><p>A real launch would need defined ownership rights, an appointed custodian, reserve verification, delivery terms, and protections if an operator fails. Swiss storage would not make B7 a Swiss bank or remove obligations elsewhere.</p><p>The prototype's purchases, reserves, and deliveries are simulated. Neither the demo nor its testnet token conveys ownership of physical gold.</p></div></details>
+        </div>
+      </section>
+
+      <section class="membership wrap" id="membership" aria-labelledby="membership-title"><div class="constellation-halo" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="section-heading reveal-on-scroll"><div><p class="eyebrow">03 / The seven sisters</p><h2 id="membership-title">Seven sisters.<br><em>One standard of care.</em></h2></div><p>Membership concepts inspired by the Pleiades.</p></div><div id="tier-preview" class="tier-preview"></div><div class="membership-bottom reveal-on-scroll"><p>Care belongs to everyone.<br><span>Equal security and personal assistance at every level.</span></p><a href="#tiers" class="button">Explore memberships <span aria-hidden="true">↗</span></a></div></section>
+
+      <section class="origin wrap" id="origin"><div class="reveal-on-scroll"><p class="eyebrow">04 / The spark</p><h2>An idea.<br><em>A beginning.</em></h2><div class="origin-orbit" aria-hidden="true"><img src="assets/b7-moon-logo-original.jpg" alt="" width="2048" height="2048" loading="lazy"></div></div><div class="origin-copy reveal-on-scroll"><p class="large-copy">Could gold ownership feel as simple as a digital wallet?</p><p>That question helped lead me into computer science. B7 brings it to life through design, Solidity, and a working simulation.</p><div class="signature">Joseph Bolkovatz <span>CREATOR / B7 FINANCIAL</span></div><a href="#build" class="text-link">Explore the engineering <span aria-hidden="true">↗</span></a></div></section>
+      <section class="closing-invitation wrap reveal-on-scroll"><p class="eyebrow">The idea, made tangible</p><h2>Explore<br><em>the possibility.</em></h2><a href="#dashboard" class="button primary">Experience B7 <span aria-hidden="true">↗</span></a><p>A working demo. No wallet needed.</p></section>
+    </div>
+
+    <section id="dashboard-view" class="workspace wrap" hidden>
+      <div class="workspace-head"><div><p class="eyebrow">YOUR B7 WORKSPACE</p><h1>Your holdings.<br><em>At a glance.</em></h1></div><div class="demo-account"><span class="status-dot"></span><b>Demo account</b><small>Local simulation · no wallet required</small></div></div>
+      <div class="workspace-tabs" role="tablist" aria-label="Account views"><button role="tab" id="tab-overview" data-panel="overview" aria-controls="panel-overview" aria-selected="true">Overview</button><button role="tab" id="tab-buy" data-panel="buy" aria-controls="panel-buy" aria-selected="false" tabindex="-1">Buy B7</button><button role="tab" id="tab-redeem" data-panel="redeem" aria-controls="panel-redeem" aria-selected="false" tabindex="-1">Redeem</button><button role="tab" id="tab-reserves" data-panel="reserves" aria-controls="panel-reserves" aria-selected="false" tabindex="-1">Reserves</button><button role="tab" id="tab-tiers" data-panel="tiers" aria-controls="panel-tiers" aria-selected="false" tabindex="-1">Membership</button></div>
+      <p class="simulation-note">Demo only. Balances, prices, reserves, and deliveries are simulated. No real payments.</p>
+      <div id="notice" class="notice" role="status" aria-live="polite"></div>
+      <section id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" class="account-panel">
+        <div class="metric-grid"><article class="balance-card"><p class="eyebrow">YOUR B7 BALANCE</p><h2><span id="balance-value">12.500</span> <small>B7</small></h2><p id="balance-equivalent">12.5 grams represented</p><a href="#buy" class="button primary">Buy demo B7 <span>↗</span></a><span class="balance-watermark">B7</span></article><article class="metric"><p class="eyebrow">DEMO BUYING POWER</p><b id="buying-power">$10,000.00</b><span>Simulated funds</span><hr><p class="eyebrow">YOUR MEMBERSHIP</p><b id="current-tier">Sterope</b><a href="#tiers" class="text-link">View your level ↗</a></article><article class="metric"><p class="eyebrow">RESERVE COVERAGE</p><b id="reserve-coverage">100%</b><span>Confirmed demo gold / issued B7</span><div class="reserve-meter"><span></span></div><a href="#reserves" class="text-link">Inspect the reserve ↗</a></article></div>
+        <div class="dashboard-bottom"><article class="panel ledger-panel"><div class="panel-title"><h3>Your activity</h3><button class="text-button" id="download-ledger">Export record ↓</button></div><div id="activity-list"></div></article><article class="panel ledger-explainer"><p class="eyebrow">THE RECORD</p><h3>Every step.<br><em>Recorded.</em></h3><p>Allocate before issuing. Hold before redeeming. Follow each step in the demo.</p><a href="#build" class="text-link">See the engineering ↗</a></article></div>
+      </section>
+      <section id="panel-buy" role="tabpanel" aria-labelledby="tab-buy" class="account-panel" hidden><div class="transaction-grid"><form id="buy-form" class="panel transaction-form"><p class="eyebrow">ADD TO YOUR ALLOCATION</p><h2>Choose<br><em>your amount.</em></h2><label for="buy-amount">Amount in demo USD</label><div class="amount-input"><span>$</span><input id="buy-amount" name="amount" inputmode="decimal" value="500.00" autocomplete="off" required aria-describedby="buy-help"></div><div class="quick-amounts"><button type="button" data-amount="100">$100</button><button type="button" data-amount="500">$500</button><button type="button" data-amount="1000">$1,000</button></div><div class="quote-row"><span>You receive</span><b id="buy-quote">5.000000 B7</b></div><div class="quote-row"><span>Illustrative rate</span><b>$100.00 / gram</b></div><p class="field-help" id="buy-help">Fixed demo price. No live quote. Demo fees: $0.</p><button class="button primary full" type="submit">Start demo purchase <span>↗</span></button><p id="buy-error" class="field-error" role="alert"></p></form><article class="panel order-panel"><p class="eyebrow">YOUR ORDER, STEP BY STEP</p><h3>Confirm. Allocate. Issue.</h3><p>Trace your demo purchase.</p><div id="purchase-progress"></div></article></div></section>
+      <section id="panel-redeem" role="tabpanel" aria-labelledby="tab-redeem" class="account-panel" hidden><div class="transaction-grid"><form id="redeem-form" class="panel transaction-form"><p class="eyebrow">FROM DIGITAL TO PHYSICAL</p><h2>From token<br><em>to tangible.</em></h2><label for="redeem-amount">B7 to redeem</label><div class="amount-input"><input id="redeem-amount" name="amount" inputmode="decimal" value="1.000000" autocomplete="off" required aria-describedby="redeem-help"><span>B7</span></div><div class="quote-row"><span>Available B7</span><b id="redeem-available"></b></div><div class="quote-row"><span>Delivery destination</span><b>Demo address</b></div><p class="field-help" id="redeem-help">Demo only; no address needed. B7 is held, then burned after simulated delivery.</p><button class="button primary full" type="submit">Request demo redemption <span>↗</span></button><p id="redeem-error" class="field-error" role="alert"></p></form><article class="panel order-panel"><p class="eyebrow">YOUR REDEMPTION JOURNEY</p><h3>Hold. Deliver. Settle.</h3><p>Follow your simulated delivery.</p><div id="redemption-progress"></div></article></div></section>
+      <section id="panel-reserves" role="tabpanel" aria-labelledby="tab-reserves" class="account-panel" hidden><div class="reserve-heading"><div><p class="eyebrow">THE RESERVE MODEL</p><h2>The reserve.<br><em>In view.</em></h2></div><p>Simulated records linking confirmed allocations to issued tokens.</p></div><div class="reserve-grid" id="reserve-stats"></div><article class="panel reserve-equation"><span>CONFIRMED DEMO GOLD</span><b id="equation-gold"></b><i>≥</i><b id="equation-tokens"></b><span>GOLD REPRESENTED BY ISSUED TOKENS</span></article><div class="reserve-footnote"><p>Pending allocations stay separate. Reserve confirmations are external inputs, not independent proof of gold.</p><a href="#build" class="text-link">Read the contract model ↗</a></div></section>
+      <section id="panel-tiers" role="tabpanel" aria-labelledby="tab-tiers" class="account-panel" hidden><div class="reserve-heading"><div><p class="eyebrow">YOUR OWNERSHIP, RECOGNIZED</p><h2>Your place<br><em>in the constellation.</em></h2></div><p>Proposed benefits based on B7 holdings. Equal care at every level. No promised returns.</p></div><div class="tier-grid" id="tier-grid"></div></section>
+      <div class="workspace-footer"><span>DEMO-WALLET-B7-0001</span><button class="text-button" id="reset-demo">Reset demo account</button></div>
+    </section>
+    <section id="build-view" class="build-view wrap" hidden><p class="eyebrow">THE ENGINEERING BEHIND B7</p><h1>The idea.<br><em>Engineered.</em></h1><p class="build-intro">Solidity, reserve accounting, and product design. A prototype by Joseph Bolkovatz.</p><div class="build-grid">
+      <article class="panel"><span class="build-number">01</span><h3>The contract</h3><p>Reserve-limited issuance. Explicit permissions.</p><div class="code-line">confirmedReserve ≥ tokenSupply</div><details class="build-detail"><summary>Contract details</summary><p>An ERC-20 prototype for BNB Smart Chain. Six decimal places represent fractions of a gram.</p><p>Single-use issuance references and wallet-scoped redemption references prevent replay. Reserve quantities are role-reported, not independently verified gold.</p></details></article>
+      <article class="panel"><span class="build-number">02</span><h3>The lifecycle</h3><p>Hold tokens. Confirm settlement. Reconcile supply.</p><div class="code-line">request → hold → approve → settle</div><details class="build-detail"><summary>Lifecycle details</summary><p>Owners can cancel redemption before approval. An officer approves processing, then confirms settlement to burn tokens and reduce the recorded reserve.</p><p>Operational roles have separate permissions. Administrator handover uses a delayed, two-step process.</p></details></article>
+      <article class="panel"><span class="build-number">03</span><h3>The interface</h3><p>A local simulation. A separate testnet wallet.</p><div class="code-line">integer units · explicit transitions</div><p class="build-check-note">Development checks only. Not independently audited.</p><details class="build-detail"><summary>Verification details</summary><p>Demo orders run on this device without blockchain transactions. The wallet connects separately to BSC Testnet for wallet-approved deployment.</p><p id="verification-summary">The Solidity implementation is tested in a local EVM, including a 160-operation accounting model. The browser engine and interface are checked separately. These are development checks, not an independent security audit.</p></details></article>
+      <article class="panel"><span class="build-number">04</span><h3>The original question</h3><p>Could physical ownership become digitally simple?</p><p>B7 helped inspire my path into computer science. This prototype explores that possibility.</p><div class="build-author">Joseph Bolkovatz / Computer Science</div><a class="text-link" href="docs/b7-model.html">Read the protocol concept ↗</a></article>
+    </div><div class="build-actions"><a href="#dashboard" class="button primary">Try the demo <span>↗</span></a><a href="code/B7DemoGold.sol" class="button" download>Solidity source ↓</a><a href="code/B7DemoGold.json" class="button" download>Contract ABI + bytecode ↓</a></div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="footer-brand" href="#home">B7 <span>FINANCIAL</span></a><p>A portfolio concept. Simulated assets, accounts, and transactions.</p><a href="https://joeybagofbitcoins.github.io/joey_portfolio/#projects">Joseph Bolkovatz’s portfolio ↗</a></footer>
+</body>
+</html>

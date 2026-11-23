@@ -1,0 +1,52 @@
+/* The creator's original B7 opening, carried into the new product concept. */
+.legacy-hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 780px;
+  min-height: min(900px, max(720px, calc(100svh - 105px)));
+  overflow: hidden;
+  background: #0d0c04;
+  border-bottom: 1px solid #c4aa6455;
+  text-align: center;
+}
+.hero-rain, .hero-rain video { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-rain { z-index: -2; pointer-events: none; }
+.hero-rain video { object-fit: cover; object-position: center; }
+.legacy-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, #05060365 0%, #0506031a 28%, #05060370 60%, #050603b0 100%);
+}
+.legacy-hero-content { width: min(1200px, calc(100% - 64px)); padding: 38px 0 100px; }
+.legacy-hero-emblem { width: 128px; height: 128px; margin: 0 auto 50px; position: relative; overflow: hidden; border-radius: 50%; background: #030303; box-shadow: 0 8px 50px #0007; }
+.legacy-hero-emblem img { position: absolute; width: 240px; height: 240px; max-width: none; left: 50%; top: 50%; transform: translate(-50%, -50%); }
+.legacy-hero h1 { margin: 0; color: #fffdf4; font: 900 clamp(36px, 4vw, 58px)/1.2 'Arial Black', Arial, Helvetica, sans-serif; letter-spacing: -.8px; text-transform: uppercase; text-shadow: 0 3px 26px #0009; }
+.legacy-hero h1 span { display: block; }
+.legacy-hero-name { margin: 20px 0 25px; color: #fffdf4; font-size: 22px; font-weight: 800; letter-spacing: 2.5px; text-shadow: 0 2px 15px #000; }
+.legacy-enter { min-width: 182px; min-height: 54px; border: 1px solid #f5e3a6; border-radius: 30px; padding: 14px 29px; background: #0c0b056b; color: #fffdf4; text-transform: uppercase; letter-spacing: 1.3px; font-size: 12px; backdrop-filter: blur(5px); }
+.legacy-enter:hover { background: #e0c680; color: #17140a; border-color: #e0c680; }
+.legacy-hero-intro { font-size: 13px; color: #f5edda; margin: 24px 0 0; text-shadow: 0 2px 12px #000; }
+.legacy-hero .concept-note { color: #e1d8be; font-size: 10px; margin: 12px 0 0; text-shadow: 0 2px 10px #000; }
+.legacy-scroll { display: flex; flex-direction: column; gap: 7px; align-items: center; position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); color: #f0e3bb; white-space: nowrap; font-size: 8px; letter-spacing: 2.1px; padding: 8px 12px; }
+.legacy-scroll > span:last-child { font-size: 20px; line-height: 1; }
+@media(max-width: 940px) {
+  .legacy-hero { min-height: 700px; min-height: max(680px, calc(100svh - 85px)); }
+  .legacy-hero-content { width: calc(100% - 40px); padding-block: 38px 105px; }
+  .legacy-hero-emblem { width: 104px; height: 104px; margin-bottom: 34px; }
+  .legacy-hero-emblem img { width: 195px; height: 195px; }
+  .legacy-hero h1 { font-size: clamp(29px, 5.5vw, 47px); line-height: 1.22; letter-spacing: -.6px; }
+  .legacy-hero h1 span + span { margin-top: 5px; }
+  .legacy-hero-name { font-size: 19px; margin-block: 21px 23px; }
+  .legacy-hero-intro { font-size: 12px; }
+  .legacy-hero .concept-note { font-size: 9px; }
+}
+@media(max-width: 370px) {
+  .legacy-hero-content { width: calc(100% - 32px); }
+  .legacy-hero h1 { font-size: 27px; letter-spacing: -.5px; }
+  .legacy-hero .concept-note { max-width: 250px; margin-inline: auto; }
+}

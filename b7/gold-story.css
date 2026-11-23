@@ -1,0 +1,81 @@
+/* B7's proposed gold-ownership and Swiss-custody narrative. */
+.site-header nav { gap: 24px; }
+.gold-hero { min-height: 690px; padding-block: 78px 74px; }
+.gold-hero h1 { font-size: clamp(60px, 6vw, 86px); line-height: 1.02; letter-spacing: -3.8px; }
+.gold-hero .hero-description { max-width: 480px; font-size: 15px; line-height: 1.8; }
+.gold-hero .concept-note { margin-top: 25px; }
+.gold-story { display: grid; grid-template-columns: 1.08fr 1fr; gap: 90px; padding-block: 100px 76px; border-bottom: 1px solid var(--line); }
+.gold-story h2, .vault-copy h2 { margin: 0; font: 400 clamp(39px, 4.2vw, 59px)/1.12 var(--serif); letter-spacing: -1.8px; }
+.gold-story-copy { padding-top: 3px; }
+.gold-story-copy > p, .research-copy > p { color: var(--soft); font-size: 14px; line-height: 1.85; margin: 0 0 21px; }
+.gold-story-copy > .large-copy, .research-copy > .large-copy { color: var(--ink); font: 400 25px/1.45 var(--serif); max-width: 510px; }
+.gold-story-copy > .gold-risk { padding-top: 18px; margin: 28px 0 0; border-top: 1px solid var(--line); font-size: 11px; color: #bdb6a4; }
+.swiss-custody { padding-block: 6px 34px; }
+.vault-stage { position: relative; isolation: isolate; min-height: 620px; overflow: hidden; border: 1px solid rgba(211,183,121,.28); background: #14110d; }
+.vault-visual { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 57% center; }
+.vault-stage::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg,rgba(8,10,10,.9),rgba(8,10,10,.66) 28%,transparent 65%),linear-gradient(0deg,rgba(8,10,10,.85),transparent 24%); }
+.vault-copy { padding: 80px 50px 110px; max-width: 525px; }
+.vault-copy .eyebrow { color: #e2c890; }
+.vault-copy h2 { font-size: clamp(44px, 4.4vw, 62px); }
+.vault-copy > p:not(.eyebrow) { margin: 28px 0 25px; color: #dbd7cb; font-size: 15px; line-height: 1.8; max-width: 340px; }
+.vault-copy .text-link { color: #e5c98b; }
+.vault-coordinate { position: absolute; right: 25px; top: 27px; font-size: 8px; letter-spacing: 2.1px; color: #e6d7b6; text-shadow: 0 2px 6px #000; }
+.vault-caption { position: absolute; bottom: 19px; left: 30px; right: 30px; font-size: 10px; line-height: 1.6; color: #d2c8b5; margin: 0; }
+.custody-facts { display: grid; grid-template-columns: 1fr 1.4fr 1.3fr; gap: 26px; border: 1px solid var(--line); border-top: 0; margin: 0; padding: 28px 34px; background: linear-gradient(110deg,#d3b7790d,transparent); }
+.custody-facts div + div { padding-left: 30px; border-left: 1px solid var(--line); }
+.custody-facts dt { font-size: 8px; letter-spacing: 1.7px; color: var(--gold); margin-bottom: 8px; }
+.custody-facts dd { font: 19px/1.5 var(--serif); margin: 0; }
+.custody-research { display: grid; grid-template-columns: .8fr 1fr; gap: 85px; padding: 65px 35px 44px; }
+.research-heading h3 { margin: 4px 0 28px; font: 400 clamp(42px, 4vw, 56px)/1.12 var(--serif); letter-spacing: -1.4px; }
+.research-heading h3 em { color: var(--gold); }
+.research-label { display: inline-block; border-bottom: 1px solid var(--line); color: var(--soft); font-size: 8px; line-height: 1.8; letter-spacing: 1.8px; padding-bottom: 9px; }
+.research-links { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-block: 22px; }
+.research-links a { display: inline-flex; gap: 20px; color: var(--gold); font-size: 12px; padding-block: 9px; text-decoration: underline; text-underline-offset: 5px; text-decoration-color: #d3b77955; }
+.research-links a:hover { text-decoration-color: var(--gold); }
+.research-copy > .research-status { font-size: 11px; line-height: 1.75; color: #bdb6a4; margin: 0; }
+.custody-terms { border-block: 1px solid var(--line); margin-inline: 35px; }
+.custody-terms summary { cursor: pointer; padding: 23px 4px; color: var(--ink); font-size: 14px; }
+.custody-terms summary::marker { color: var(--gold); }
+.custody-terms summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
+.custody-terms > div { max-width: 820px; padding: 0 4px 20px; color: var(--soft); font-size: 13px; line-height: 1.8; }
+.custody-terms p { margin: 0 0 14px; }
+@media (max-width: 1100px) {
+  .site-header nav { gap: 16px; font-size: 11px; }
+  .gold-story { gap: 45px; }
+  .vault-stage { min-height: 565px; }
+  .vault-copy { padding: 65px 35px 100px; max-width: 460px; }
+  .custody-research { gap: 45px; padding-inline: 25px; }
+}
+@media (max-width: 940px) {
+  .gold-hero { padding-block: 54px 45px; min-height: 0; }
+  .gold-hero h1 { font-size: clamp(49px, 9vw, 72px); letter-spacing: -2.5px; }
+  .gold-hero .hero-description { font-size: 14px; }
+  .gold-story { grid-template-columns: 1fr; gap: 30px; padding-block: 64px 50px; }
+  .gold-story h2 { font-size: clamp(37px, 6vw, 48px); }
+  .gold-story-copy > .large-copy, .research-copy > .large-copy { font-size: 23px; }
+  .vault-stage { min-height: 640px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .vault-visual { height: 360px; object-position: 79% center; }
+  .vault-stage::before { background: linear-gradient(0deg,#100f0c 4%,#100f0c 38%,transparent 74%); }
+  .vault-copy { max-width: 580px; padding: 300px 28px 63px; }
+  .vault-copy h2 { font-size: 46px; }
+  .vault-copy > p:not(.eyebrow) { max-width: 440px; font-size: 14px; margin-block: 20px; }
+  .vault-coordinate { top: 22px; right: 20px; font-size: 7px; }
+  .vault-caption { left: 28px; right: 28px; font-size: 9px; }
+  .custody-facts { grid-template-columns: 1fr; padding: 22px 28px; gap: 19px; }
+  .custody-facts div + div { padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+  .custody-facts dd { font-size: 20px; }
+  .custody-research { grid-template-columns: 1fr; gap: 30px; padding: 48px 8px 35px; }
+  .research-heading h3 { font-size: 44px; margin-bottom: 18px; }
+  .research-heading .eyebrow { margin-bottom: 17px; }
+  .custody-terms { margin-inline: 8px; }
+  .custody-terms summary { font-size: 13px; }
+}
+@media (max-width: 370px) {
+  .gold-hero h1 { font-size: 45px; letter-spacing: -2.1px; }
+  .gold-hero .hero-actions { flex-wrap: wrap; }
+  .gold-story h2 { font-size: 33px; letter-spacing: -1px; }
+  .vault-copy { padding-inline: 20px; }
+  .vault-copy h2 { font-size: 38px; }
+  .vault-caption { left: 20px; right: 20px; }
+  .custody-facts { padding-inline: 20px; }
+}

@@ -1546,6 +1546,13 @@ body{
   .projectGrid{grid-template-columns:1fr}
 }
 
+
+/* B7's original flowing gold remains visible in the card and active sidebar. */
+#projects .b7FinancialCard .projectMedia{display:block;background:#151508}
+.imgBox .projectArtwork[data-project="b7-financial"]{background:#151508}
+.imgBox .projectArtwork[data-project="b7-financial"] video{filter:none;object-fit:cover;object-position:center;transform:none}
+#projects .b7FinancialCard .projectMedia:focus-visible{outline:3px solid #e0c58b;outline-offset:-3px}
+
 /* One shared scale for the project gallery. Text can grow without clipping. */
 #projects .tag{font-size:9px;letter-spacing:.5px;color:#c5c5cc}
 #projects .projectMedia video{object-fit:contain!important}
@@ -2087,6 +2094,27 @@ body{
 
 
     <div class="projectGrid">
+
+      <article id="b7-financial-project" data-project="b7-financial" class="projectCard darkProjectCard motionPreviewCard b7FinancialCard">
+        <a class="projectMedia" href="b7/" aria-label="Explore B7 Financial">
+          <video muted loop playsinline preload="none" poster="assets/b7-gold-portfolio-poster.jpg" width="1280" height="800" aria-hidden="true">
+            <source src="assets/b7-gold-portfolio-loop.mp4" type="video/mp4">
+          </video>
+        </a>
+        <div class="projectBody">
+          <b>Tokenized gold / portfolio concept</b>
+          <h3>B7 Financial</h3>
+          <p>Physical gold. Digital ownership. A working concept with Solidity, testnet wallets, and a transparent reserve model.</p>
+          <div class="tagRow" aria-label="Selected technologies">
+            <span class="tag">Solidity</span><span class="tag">BNB Testnet</span><span class="tag">WalletConnect</span><span class="tag">JavaScript</span>
+          </div>
+          <div class="actionRow">
+            <a class="actionBtn" href="b7/">Explore B7</a>
+            <a class="actionBtn" href="b7/#build">Explore the build</a>
+          </div>
+        </div>
+      </article>
+
 
       <article data-project="tilly-tunes" class="projectCard darkProjectCard tillyFeatureCard">
         <a class="tillyFeatureMedia" href="https://joeybagofbitcoins.github.io/joey_portfolio/tilly-tunes.html" target="_blank" rel="noopener noreferrer" aria-label="Explore the Tilly Tunes case study — opens in a new tab">
