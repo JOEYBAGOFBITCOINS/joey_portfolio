@@ -40,8 +40,14 @@
     cardVideos.forEach(video => playOrPause(video, moving && inProjects && visibleVideos.has(video)));
     playOrPause(defaultVideo, moving && sidebarVisible && !inProjects);
     layers.forEach(layer => {
-      playOrPause(layer.querySelector('video'), moving && sidebarVisible && inProjects && layer.dataset.project === selected && layer.classList.contains('is-current'));
+      playOrPause(layer.querySelector('video'), moving && sidebarVisible && inProjects && layer.dataset.project === selected);
     });
+  }
+
+  function retryWhenReady(video) {
+    if (!video) return;
+    video.addEventListener('loadeddata', syncPlayback);
+    video.addEventListener('canplay', syncPlayback);
   }
 
   function reveal(layer) {
@@ -85,10 +91,13 @@
       video.playsInline = true;
       video.preload = 'auto';
       if (original.poster) video.poster = original.poster;
-      video.addEventListener('loadeddata', () => reveal(layer), {once:true});
+      retryWhenReady(video);
       video.addEventListener('error', fallback, {once:true});
       video.src = original.getAttribute('src') || original.querySelector('source').getAttribute('src');
       layer.append(video);
+      // Mobile browsers may defer loadeddata until play() is requested.
+      // Reveal the selected poster now so readiness cannot block playback.
+      reveal(layer);
     } else if (original?.tagName === 'IMG') {
       const image = new Image();
       image.alt = '';
@@ -104,7 +113,10 @@
   }
 
   function selectCard(card) {
-    if (selected === card.dataset.project) return;
+    if (selected === card.dataset.project) {
+      syncPlayback();
+      return;
+    }
     selected = card.dataset.project;
     const name = card.querySelector('h3').textContent.trim();
     sidebar.dataset.project = selected;
@@ -169,14 +181,21 @@
   cardVideos.forEach(video => {
     video.muted = true;
     video.defaultMuted = true;
+    retryWhenReady(video);
     visibility.observe(video);
   });
+  retryWhenReady(defaultVideo);
   visibility.observe(sidebar);
   scroller.addEventListener('scroll', scheduleUpdate, {passive:true});
   window.addEventListener('scroll', scheduleUpdate, {passive:true});
   window.addEventListener('resize', scheduleUpdate, {passive:true});
   projects.addEventListener('toggle', scheduleUpdate, true);
-  document.addEventListener('portfolio:sectionchange', scheduleUpdate);
+  // Keep play() in the same user gesture that selects a section or retries it.
+  document.addEventListener('portfolio:sectionchange', updateProjectInView);
+  ['click', 'touchend', 'keydown'].forEach(type => {
+    document.addEventListener(type, updateProjectInView, {passive:true});
+  });
+  window.addEventListener('pageshow', updateProjectInView);
   document.addEventListener('visibilitychange', syncPlayback);
   motion.addEventListener('change', syncPlayback);
   new ResizeObserver(scheduleUpdate).observe(scroller);
